@@ -259,3 +259,52 @@ values
 ('TAG Heuer Carrera', 2200, '/Img/TagH/TagHeuer-06.png',
 'Durchmesser 32,00 mm, Gehäuse aus poliertem Edelstahl', 3, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-07.png',
+'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-08.png',
+'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Monaco', 6400, '/Img/TagH/TagHeuer-09.png',
+'Durchmesser 39,00 mm, Gehäuse aus Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Monaco Calibre 11 Automatik', 6200, '/Img/TagH/TagHeuer-10.png',
+'Durchmesser 39,00 mm, Gehäuse aus Edelstahl mit wechselnden Veredelungen', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Formula 1', 1400, '/Img/TagH/TagHeuer-11.png',
+'Durchmesser 41,00 mm, Gehäuse aus fein gebürstetem und poliertem Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Formula 1 Special Gulf Edition', 1600, '/Img/TagH/TagHeuer-12.png',
+'Durchmesser 43,00 mm, Gehäuse aus fein gebürstetem Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Spirit of Big Bang', 21700, '/Img/Hublot/Hublot-01.png',
+'Durchmesser 45,00 mm, Poliertes und satiniertes Titanium', 3, 1)
+go

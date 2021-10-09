@@ -261,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Img\Hublot\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
