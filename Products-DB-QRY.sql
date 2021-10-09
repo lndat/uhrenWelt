@@ -284,7 +284,7 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('TAG Heuer Monaco Calibre 11 Automatik', 6200, '/Img/TagH/TagHeuer-10.png',
+('TAG Heuer Monaco', 6200, '/Img/TagH/TagHeuer-10.png',
 'Durchmesser 39,00 mm, Gehäuse aus Edelstahl mit wechselnden Veredelungen', 3, 1)
 go
 
@@ -298,7 +298,7 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('TAG Heuer Formula 1 Special Gulf Edition', 1600, '/Img/TagH/TagHeuer-12.png',
+('TAG Heuer Formula 1', 1600, '/Img/TagH/TagHeuer-12.png',
 'Durchmesser 43,00 mm, Gehäuse aus fein gebürstetem Edelstahl', 3, 1)
 go
 
@@ -319,7 +319,7 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('Big Bang MECA-10 Ceramic Blue', 21400, '/Img/Hublot/Hublot-03.png',
+('Big Bang', 21400, '/Img/Hublot/Hublot-03.png',
 'Durchmesser 45,00 mm, Microblasted blaue Keramik', 4, 1)
 go
 
@@ -349,4 +349,46 @@ CategoryID)
 values
 ('Classic Fusion', 8500, '/Img/Hublot/Hublot-07.png',
 'Durchmesser 33,00 mm, Polierte und satinierte schwarze Keramik', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Classic Fusion', 8500, '/Img/Hublot/Hublot-08.png',
+'Durchmesser 45,00 mm, Poliertes und satiniertes Titanium', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Classic Fusion', 12400, '/Img/Hublot/Hublot-09.png',
+'Durchmesser 42,00 mm, Poliertes und satiniertes Titanium', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Big Bang', 9900, '/Img/Hublot/Hublot-10.png',
+'Durchmesser 41,00 mm, Polierte schwarze Keramik', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Spirit of Big Bang', 18600, '/Img/Hublot/Hublot-11.png',
+'Durchmesser 42,00 mm, Poliertes und satiniertes Titanium', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Big Bang', 5100, '/Img/Hublot/Hublot-12.png',
+'Smartwatch - Durchmesser 42,00 mm, Poliertes und satiniertes Titanium', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Pilots', 8400, '/Img/IWC/Schaffhausen-01.png',
+'Durchmesser 44,50 mm, Keramik - Automatik, Kaliber 69380', 5, 1)
 go

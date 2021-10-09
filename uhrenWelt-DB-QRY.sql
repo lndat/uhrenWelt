@@ -106,3 +106,8 @@ insert into Manufacturer([Name])
 values
 ('Hublot')
 go
+
+insert into Manufacturer([Name])
+values
+('IWC Schaffhausen')
+go
