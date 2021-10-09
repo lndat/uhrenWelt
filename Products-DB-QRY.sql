@@ -413,3 +413,24 @@ values
 ('Pilots', 5690, '/Img/IWC/Schaffhausen-04.png',
 'Durchmesser 41,00 mm, Edelstahl Automatik, Kaliber 69385', 5, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Portofino', 9850, '/Img/IWC/Schaffhausen-05.png',
+'Durchmesser 45,00 mm, Edelstahl Handaufzug, Kaliber 59210', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Portofino', 16200, '/Img/IWC/Schaffhausen-06.png',
+'Sekundenanzeige, Datumsanzeige, Wochentage, Stoppfunktion, Saphirglas - Automatik', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Portofino', 11300, '/Img/IWC/Schaffhausen-07.png',
+'Durchmesser 40,00 mm, 18 Karat Rotgold Automatik, Kaliber 35111', 5, 1)
+go
