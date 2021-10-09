@@ -392,3 +392,24 @@ values
 ('Pilots', 8400, '/Img/IWC/Schaffhausen-01.png',
 'Durchmesser 44,50 mm, Keramik - Automatik, Kaliber 69380', 5, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Pilots', 6950, '/Img/IWC/Schaffhausen-02.png',
+'Durchmesser 43,00 mm, Edelstahl Automatik, Kaliber 79320', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Pilots', 5950, '/Img/IWC/Schaffhausen-03.png',
+'Durchmesser 43,00 mm, Edelstahl Automatik, Kaliber 79320', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Pilots', 5690, '/Img/IWC/Schaffhausen-04.png',
+'Durchmesser 41,00 mm, Edelstahl Automatik, Kaliber 69385', 5, 1)
+go
