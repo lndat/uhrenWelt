@@ -196,3 +196,26 @@ values
 ('Premier', 7800, '/Img/Breitling/Navitimer-11.png',
 'Premier B01 Chronograph 42 Bentley', 2, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Endurance Pro', 3100, '/Img/Breitling/Navitimer-12.png',
+'Endurance Pro', 2, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Chronomat', 4400, '/Img/Breitling/Navitimer-13.png',
+'Chronomat Automatic 36', 2, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Transocean', 4790, '/Img/Breitling/Navitimer-14.png',
+'Transocean Day & Date', 2, 1)
+go
+
+
