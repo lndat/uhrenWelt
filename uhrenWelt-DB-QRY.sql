@@ -111,3 +111,8 @@ insert into Manufacturer([Name])
 values
 ('IWC Schaffhausen')
 go
+
+insert into Manufacturer([Name])
+values
+('Longines')
+go

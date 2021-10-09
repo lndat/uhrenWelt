@@ -434,3 +434,38 @@ values
 ('Portofino', 11300, '/Img/IWC/Schaffhausen-07.png',
 'Durchmesser 40,00 mm, 18 Karat Rotgold Automatik, Kaliber 35111', 5, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Portugieser', 12500, '/Img/IWC/Schaffhausen-08.png',
+'Durchmesser 42,30 mm, Edelstahl Automatik, Kaliber 52010', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Portugieser', 9150, '/Img/IWC/Schaffhausen-09.png',
+'Durchmesser 41,00 mm, Edelstahl Automatik, Kaliber 69355', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Portugieser', 11.300, '/Img/IWC/Schaffhausen-10.png',
+'Durchmesser 36,00 mm, Edelstahl Automatik, Kaliber 35111', 5, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('La Grande Classique', 950, '/Img/Longines/Longines-01.png',
+'Durchmesser 37,00 mm, Edelstahl Quarzwerk, Kaliber L420', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('The Longines Avigation', 3230, '/Img/Longines/Longines-02.png',
+'Durchmesser 41,00 mm, Satiniertes und poliertes Titan Automatik, Kaliber L688', 6, 1)
+go
