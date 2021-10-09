@@ -121,3 +121,8 @@ insert into Manufacturer([Name])
 values
 ('Tudor')
 go
+
+insert into Manufacturer([Name])
+values
+('Panerai')
+go

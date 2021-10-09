@@ -581,3 +581,10 @@ values
 ('Royal', 2120, '/Img/Tudor/Tudor-10.png',
 'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Luminor', 12000, '/Img/Panerai/Panerai-01.png',
+'Durchmesser 47,00 mm, Luminor 1950, Composite - Handaufzug, Kaliber P.3000', 8, 1)
+go
