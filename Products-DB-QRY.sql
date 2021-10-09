@@ -515,6 +515,55 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
+('Longines Spirit', 2120, '/Img/Longines/Longines-09.png',
+'Durchmesser 42,00 mm, Edelstahl - Automatik, Kaliber L888.4', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Longines Spirit', 2020, '/Img/Longines/Longines-10.png',
+'Durchmesser 40,00 mm, Edelstahl - Automatik, Kaliber L888.4', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Master Collection', 1870, '/Img/Longines/Longines-11.png',
+'Durchmesser 38,50 mm, Edelstahl - Automatik, Kaliber L636', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Conquest Classic', 1730, '/Img/Longines/Longines-12.png',
+'Durchmesser 40,00 mm, Edelstahl - Automatik, Kaliber L619/888', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('The Longines 1832', 2050, '/Img/Longines/Longines-13.png',
+'Durchmesser 40,00 mm, Edelstahl - Automatik, Kaliber L899', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('The Longines 1832', 1950, '/Img/Longines/Longines-14.png',
+'Durchmesser 40,00 mm, Edelstahl - Automatik, Kaliber L897', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Elegant Collection', 1600, '/Img/Longines/Longines-15.png',
+'Durchmesser 37,00 mm, Edelstahl - Automatik, Kaliber L619/888', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
 ('Royal', 3160, '/Img/Tudor/Tudor-01.png',
 'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Kaliber Mechanisches Uhrwerk mit Selbstaufzug', 7, 1)
 go
