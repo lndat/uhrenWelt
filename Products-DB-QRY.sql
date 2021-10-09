@@ -221,9 +221,41 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('TAG Heuer Carrera', 16400, '/Img/Breitling/TagHeuer-01.png',
-'Automatik, Kaliber TAG Heuer Calibre Heuer 02', 3, 1)
+('TAG Heuer Carrera', 16400, '/Img/TagH/TagHeuer-01.png',
+'Durchmesser 45,00 mm, Gehäuse aus Titan', 3, 1)
 go
 
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Carrera', 5450, '/Img/TagH/TagHeuer-02.png',
+'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 1)
+go
 
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Carrera', 2550, '/Img/TagH/TagHeuer-03.png',
+'Durchmesser 39,00 mm, Gehäuse aus fein gebürstetem und poliertem Edelstahl', 3, 1)
+go
 
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Carrera', 3950, '/Img/TagH/TagHeuer-04.png',
+'Durchmesser 36,00 mm, Gehäuse aus poliertem Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Carrera Lady Quarz', 1950, '/Img/TagH/TagHeuer-05.png',
+'Durchmesser 36,00 mm, Gehäuse aus poliertem Edelstahl', 3, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Carrera', 2200, '/Img/TagH/TagHeuer-06.png',
+'Durchmesser 32,00 mm, Gehäuse aus poliertem Edelstahl', 3, 1)
+go

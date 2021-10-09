@@ -99,5 +99,5 @@ go
 
 insert into Manufacturer([Name])
 values
-('TagHeuer')
+('Tag Heuer')
 go
