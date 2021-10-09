@@ -1,0 +1,45 @@
+﻿@model IEnumerable<uhrenWelt.Data.Product>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Aktuelle <b>Angebote</b></h2>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+
+
+                    <div class="item active">
+                        <div class="row">
+
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-sm-3">
+                                    <div class="thumb-wrapper">
+                                        <div class="img-box">
+                                            <img src="@item.ImagePath" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="thumb-content">
+                                            <h5>@item.Manufacturer.Name</h5>
+                                            <h4>@item.ProductName</h4>
+                                            <p class="item-price"><span>@item.NetUnitPrice €</span></p>
+                                            @*<div class="star-rating">
+            <ul class="list-inline">
+                <li class="list-inline-item"><i class="glyphicon glyphicon-star"></i></li>
+                <li class="list-inline-item"><i class="glyphicon glyphicon-star"></i></li>
+                <li class="list-inline-item"><i class="glyphicon glyphicon-star"></i></li>
+                <li class="list-inline-item"><i class="glyphicon glyphicon-star"></i></li>
+                <li class="list-inline-item"><i class="glyphicon glyphicon-star-empty"></i></li>
+            </ul>
+        </div>*@
+                                            <a href="#" class="btn btn-primary">Kaufen</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>

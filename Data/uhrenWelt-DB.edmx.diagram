@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32f223881fa64488bb8809b441eba3a9" Name="Diagram1">
+        <EntityTypeShape EntityType="uhrenWeltModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Customer" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Manufacturer" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Order" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.OrderLine" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="uhrenWeltModel.FK__Product__Categor__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="uhrenWeltModel.FK__Order__CustomerI__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="uhrenWeltModel.FK__Product__Manufac__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="uhrenWeltModel.FK__OrderLine__Order__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="uhrenWeltModel.FK__OrderLine__Produ__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
