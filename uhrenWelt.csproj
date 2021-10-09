@@ -269,6 +269,9 @@
     <Content Include="Img\Tudor\Tudor-05.png" />
     <Content Include="Img\Tudor\Tudor-06.png" />
     <Content Include="Img\Tudor\Tudor-07.png" />
+    <Content Include="Img\Tudor\Tudor-08.png" />
+    <Content Include="Img\Tudor\Tudor-09.png" />
+    <Content Include="Img\Tudor\Tudor-10.png" />
     <Content Include="Products-DB-QRY.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

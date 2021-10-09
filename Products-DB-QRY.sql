@@ -560,3 +560,24 @@ values
 ('Heritage', 4240, '/Img/Tudor/Tudor-07.png',
 'Durchmesser 42,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber 2892 mit Zusatzmechanismus für die Chronographenfunktion', 7, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Pelagos', 4190, '/Img/Tudor/Tudor-08.png',
+'Durchmesser 42,00 mm, Satiniertes Gehäuse in Titan und Edelstahl Automatik, Kaliber Manufakturwerk Kaliber MT5612', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Style', 3110, '/Img/Tudor/Tudor-09.png',
+'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Royal', 2120, '/Img/Tudor/Tudor-10.png',
+'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
+go
