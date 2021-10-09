@@ -262,6 +262,14 @@
     <Content Include="Img\TagH\TagHeuer-10.png" />
     <Content Include="Img\TagH\TagHeuer-11.png" />
     <Content Include="Img\TagH\TagHeuer-12.png" />
+    <Content Include="Img\Tudor\Tudor-01.png" />
+    <Content Include="Img\Tudor\Tudor-02.png" />
+    <Content Include="Img\Tudor\Tudor-03.png" />
+    <Content Include="Img\Tudor\Tudor-04.png" />
+    <Content Include="Img\Tudor\Tudor-05.png" />
+    <Content Include="Img\Tudor\Tudor-06.png" />
+    <Content Include="Img\Tudor\Tudor-07.png" />
+    <Content Include="Products-DB-QRY.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Data\uhrenWelt-DB.edmx">
@@ -284,6 +292,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="uhrenWelt-DB-QRY.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

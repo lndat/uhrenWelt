@@ -512,3 +512,51 @@ values
 'Durchmesser 34,00 mm, Edelstahl Quarzwerk, Kaliber L156', 6, 1)
 go
 
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Royal', 3160, '/Img/Tudor/Tudor-01.png',
+'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Kaliber Mechanisches Uhrwerk mit Selbstaufzug', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Black Bay', 3800, '/Img/Tudor/Tudor-02.png',
+'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Manufakturwerk Kaliber MT5652', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Black Bay', 4340, '/Img/Tudor/Tudor-03.png',
+'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Quarzwerk, Kaliber Manufakturwerk Kaliber MT5602', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Black Bay Chrono', 5440, '/Img/Tudor/Tudor-04.png',
+'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Manufakturwerk Kaliber MT5813', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Black Bay Chrono', 4880, '/Img/Tudor/Tudor-05.png',
+'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Manufakturwerk Kaliber MT5813', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('1926', 3200, '/Img/Tudor/Tudor-06.png',
+'Durchmesser 36,00 mm, Poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Heritage', 4240, '/Img/Tudor/Tudor-07.png',
+'Durchmesser 42,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber 2892 mit Zusatzmechanismus für die Chronographenfunktion', 7, 1)
+go

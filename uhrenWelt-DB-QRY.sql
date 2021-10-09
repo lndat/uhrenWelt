@@ -116,3 +116,8 @@ insert into Manufacturer([Name])
 values
 ('Longines')
 go
+
+insert into Manufacturer([Name])
+values
+('Tudor')
+go
