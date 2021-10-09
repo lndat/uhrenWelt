@@ -452,7 +452,7 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('Portugieser', 11.300, '/Img/IWC/Schaffhausen-10.png',
+('Portugieser', 11300, '/Img/IWC/Schaffhausen-10.png',
 'Durchmesser 36,00 mm, Edelstahl Automatik, Kaliber 35111', 5, 1)
 go
 
@@ -469,3 +469,46 @@ values
 ('The Longines Avigation', 3230, '/Img/Longines/Longines-02.png',
 'Durchmesser 41,00 mm, Satiniertes und poliertes Titan Automatik, Kaliber L688', 6, 1)
 go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Master Collection', 2190, '/Img/Longines/Longines-03.png',
+'Durchmesser 40,00 mm, Edelstahl', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Master Collection', 2580, '/Img/Longines/Longines-04.png',
+'Durchmesser 40,00 mm, Edelstahl Automatik, Kaliber L651', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Longines Spirit', 2930, '/Img/Longines/Longines-05.png',
+'Durchmesser 42,00 mm, Edelstahl Automatik, Kaliber L688.4', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('HydroConquest', 3470, '/Img/Longines/Longines-06.png',
+'Durchmesser 43,00 mm, schwarze Keramik Automatik, Kaliber L888', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('HydroConquest', 1140, '/Img/Longines/Longines-07.png',
+'Durchmesser 44,00 mm, Edelstahl Automatik, Kaliber L619/888', 6, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Conquest Classic', 800, '/Img/Longines/Longines-08.png',
+'Durchmesser 34,00 mm, Edelstahl Quarzwerk, Kaliber L156', 6, 1)
+go
+
