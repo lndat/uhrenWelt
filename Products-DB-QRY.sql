@@ -585,6 +585,76 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('Luminor', 12000, '/Img/Panerai/Panerai-01.png',
+('Luminor Composite 1950', 12000, '/Img/Panerai/Panerai-01.png',
 'Durchmesser 47,00 mm, Luminor 1950, Composite - Handaufzug, Kaliber P.3000', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Luminor', 9900, '/Img/Panerai/Panerai-02.png',
+'Durchmesser 47,00 mm, Luminor 1950, rostfreier AISI 316L-Stahl poliert - Automatik, Kaliber P.3002/1', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Tuttonero Luminor', 14500, '/Img/Panerai/Panerai-03.png',
+'Durchmesser 44,00 mm, Keramik - Automatik, Kaliber P.9010/GMT', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Luminor California', 7900, '/Img/Panerai/Panerai-04.png',
+'Durchmesser 44,00 mm, Luminor, DLC Titan - Handaufzug, Kaliber P.5000', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Submersible', 17400, '/Img/Panerai/Panerai-05.png',
+'Durchmesser 47,00 mm, Carbotech - Automatik, Kaliber P.9010', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Submersible', 9700, '/Img/Panerai/Panerai-06.png',
+'Durchmesser 42,00 mm, Stahl satiniert, rostfreier AISI 316L - Automatik, Kaliber OPXXXIV', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Luminor Due', 11900, '/Img/Panerai/Panerai-07.png',
+'Durchmesser 45,00 mm, Titan, satiniert - Automatik, Kaliber P.4002', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Luminor Due', 6100, '/Img/Panerai/Panerai-08.png',
+'Durchmesser 38,00 mm, Luminor, rostfreier AISI 316L-Stahl poliert - Automatik, Kaliber P.900', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Radiomir', 10900, '/Img/Panerai/Panerai-09.png',
+'Durchmesser 48,00 mm, Radiomir 1940, Keramik mattschwarz - Handaufzug, Kaliber P.3000', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Radiomir', 9700, '/Img/Panerai/Panerai-10.png',
+'Durchmesser 42,00 mm, Radiomir 1940, rostfreier AISI 316L-Stahl poliert - Automatik, Kaliber P.4000', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Luminor', 9100, '/Img/Panerai/Panerai-11.png',
+'Durchmesser 44,00 mm, Stahl satiniert, rostfreier AISI 316L - Automatik, Kaliber P.9011', 8, 1)
 go
