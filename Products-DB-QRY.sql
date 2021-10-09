@@ -306,5 +306,47 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Spirit of Big Bang', 21700, '/Img/Hublot/Hublot-01.png',
-'Durchmesser 45,00 mm, Poliertes und satiniertes Titanium', 3, 1)
+'Durchmesser 45,00 mm, Poliertes und satiniertes Titanium', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Big Bang', 23800, '/Img/Hublot/Hublot-02.png',
+'Durchmesser 45,00 mm, Satinierte und polierte Keramik', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Big Bang MECA-10 Ceramic Blue', 21400, '/Img/Hublot/Hublot-03.png',
+'Durchmesser 45,00 mm, Microblasted blaue Keramik', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Classic Fusion', 24800, '/Img/Hublot/Hublot-04.png',
+'Durchmesser 45,00 mm, Satiniertes und poliertes 18 Karat King Gold', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Classic Fusion', 17500, '/Img/Hublot/Hublot-05.png',
+'DDurchmesser 45,00 mm, Titan, Automatik, Kaliber HUB1155', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('King Power', 21700, '/Img/Hublot/Hublot-06.png',
+'Durchmesser 48,00 mm, Satinierte und polierte Keramik', 4, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Classic Fusion', 8500, '/Img/Hublot/Hublot-07.png',
+'Durchmesser 33,00 mm, Polierte und satinierte schwarze Keramik', 4, 1)
 go
