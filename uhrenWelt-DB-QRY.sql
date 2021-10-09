@@ -96,3 +96,8 @@ insert into Manufacturer([Name])
 values
 ('Breitling')
 go
+
+insert into Manufacturer([Name])
+values
+('TagHeuer')
+go

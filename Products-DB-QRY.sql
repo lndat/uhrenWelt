@@ -218,4 +218,12 @@ values
 'Transocean Day & Date', 2, 1)
 go
 
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Carrera', 16400, '/Img/Breitling/TagHeuer-01.png',
+'Automatik, Kaliber TAG Heuer Calibre Heuer 02', 3, 1)
+go
+
+
 

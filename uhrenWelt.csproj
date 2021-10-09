@@ -220,6 +220,7 @@
     <Content Include="Img\Rolex\Submariner-04.png" />
     <Content Include="Img\Rolex\Yacht-01.png" />
     <Content Include="Img\Rolex\Yacht-02.png" />
+    <Content Include="Img\TagH\TagHeuer-01.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Data\uhrenWelt-DB.edmx">
