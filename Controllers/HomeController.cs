@@ -10,16 +10,15 @@ namespace uhrenWelt.Controllers
     public class HomeController : Controller
     {
         private uhrenWeltEntities db = new uhrenWeltEntities();
+
         public ActionResult Index()
         {
-            return View(db.Product);
+            return View();
         }
 
-        public ActionResult About()
+        public ActionResult Shop()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View(db.Product);
         }
 
         public ActionResult Contact()

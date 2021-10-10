@@ -1,6 +1,5 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 1px;
     background-color: #D8E3DA;
 }
 
@@ -53,7 +52,7 @@ textarea {
     padding: 2%;
     flex-grow: 1;
     flex-basis: 16%;
-    display: flex; /* so child elements can use flexbox stuff too! */
+    display: flex;
     border: 1px solid #A5ADA7;
     border-radius: 13px;
     margin: 7px;
@@ -66,7 +65,6 @@ textarea {
         text-decoration: none;
         color: #000000;
     }
-
 
 .product-card {
     flex: 1 20%;
@@ -107,7 +105,7 @@ textarea {
     }
 }
 
-/* Select the first two */
+/* Erste reiehe 2 Items */
 .products .product-card:first-child,
 .products .product-card:nth-child(2) {
     flex: 2 39%;

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<uhrenWelt.Data.Product>
+
+@*Filtern/Sortieren*@
+<nav class="product-filter">
+    <h1></h1>
+    <div class="sort">
+        <div class="collection-sort">
+            <label>Filtern:</label>
+            <select>
+                <option value="/">Alle Uhren</option>
+                <option value="/">Marke</option>
+            </select>
+        </div>
+        <div class="collection-sort">
+            <label>Sortieren:</label>
+            <select>
+                <option value="/">Angebote</option>
+                <option value="/">Preis</option>
+            </select>
+        </div>
+    </div>
+</nav>
+
+@*Meine produkt flexboxen*@
+<section class="products">
+    @foreach (var item in Model)
+    {
+        <a href="#" class="product-card">
+            <div class="product-image">
+                <img src="@item.ImagePath" alt="">
+            </div>
+            <div class="product-info">
+                <h2>@item.Manufacturer.Name</h2>
+                <h5>@item.ProductName</h5>
+                <h6>@item.NetUnitPrice €</h6>
+            </div>
+        </a>
+    }
+</section>
+
+
+
