@@ -21,22 +21,20 @@
     </div>
 </nav>
 
-@*Meine produkt flexboxen*@
-<section class="products">
-    @foreach (var item in Model)
-    {
-        <a href="#" class="product-card">
-            <div class="product-image">
-                <img src="@item.ImagePath" alt="">
-            </div>
-            <div class="product-info">
-                <h2>@item.Manufacturer.Name</h2>
-                <h5>@item.ProductName</h5>
-                <h6>@item.NetUnitPrice €</h6>
-            </div>
-        </a>
-    }
-</section>
-
+    <section class="products">
+        @foreach (var item in Model)
+        {
+            <a href="#" class="product-card">
+                <div class="product-image">
+                    <img src="@item.ImagePath" alt="">
+                </div>
+                <div class="product-info">
+                    <h2>@item.Manufacturer.Name</h2>
+                    <h5>@item.ProductName</h5>
+                    <h6>@item.NetUnitPrice €</h6>
+                </div>
+            </a>
+        }
+    </section>
 
 
