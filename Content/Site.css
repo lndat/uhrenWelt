@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+h1{
+    font-size:110px;
+    font-style: italic;
+}
+
 /*FlexBox*/
 
 .product-filter {
@@ -102,6 +107,12 @@ textarea {
     flex-flow:row;
     text-align:start;
     font-family: sans-serif;
+}
+
+.buttonCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 920px) {
