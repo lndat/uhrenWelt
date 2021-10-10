@@ -123,6 +123,13 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
+('Air-Time', 6050, '/Img/Rolex/Cellini-04.png',
+'Oyster, 40 mm, Edelstahl Oystersteel - 3131, Rolex Manufakturwerk', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
 ('Navitimer', 10150, '/Img/Breitling/Navitimer-01.png',
 'Navitimer 1 B01 Chronograph 46', 2, 1)
 go

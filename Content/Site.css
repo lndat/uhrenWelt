@@ -44,7 +44,7 @@ textarea {
 
 .products {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 }
 
 .product-card {
@@ -67,19 +67,17 @@ textarea {
     }
 
 .product-card {
-    flex: 1 20%;
+    flex: 1 22%;
 }
 
 .product-image img {
     max-width: 100%;
-    align-content: flex-start;
 }
 
 .product-info {
     margin-top:10px;
-    flex: 1 100%;
     flex-flow:row;
-    text-align:left;
+    text-align:start;
     font-family: sans-serif;
 }
 
@@ -103,10 +101,4 @@ textarea {
     .sort {
         align-self: flex-start;
     }
-}
-
-/* Erste reiehe 2 Items */
-.products .product-card:first-child,
-.products .product-card:nth-child(2) {
-    flex: 2 39%;
 }
