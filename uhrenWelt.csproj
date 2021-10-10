@@ -237,6 +237,14 @@
     <Content Include="Img\IWC\Schaffhausen-08.png" />
     <Content Include="Img\IWC\Schaffhausen-09.png" />
     <Content Include="Img\IWC\Schaffhausen-10.png" />
+    <Content Include="Img\Logos\brand_hublot.jpg" />
+    <Content Include="Img\Logos\brand_rolex.jpg" />
+    <Content Include="Img\Logos\breitling.jpg" />
+    <Content Include="Img\Logos\iwc.jpg" />
+    <Content Include="Img\Logos\longines.jpg" />
+    <Content Include="Img\Logos\panerai.jpg" />
+    <Content Include="Img\Logos\tag_heuer.jpg" />
+    <Content Include="Img\Logos\tudor.jpg" />
     <Content Include="Img\Longines\Longines-01.png" />
     <Content Include="Img\Longines\Longines-02.png" />
     <Content Include="Img\Longines\Longines-03.png" />
@@ -266,6 +274,7 @@
     <Content Include="Img\Rolex\Cellini-01.png" />
     <Content Include="Img\Rolex\Cellini-02.png" />
     <Content Include="Img\Rolex\Cellini-03.png" />
+    <Content Include="Img\Rolex\Cellini-04.png" />
     <Content Include="Img\Rolex\Cosmograph-01.png" />
     <Content Include="Img\Rolex\Cosmograph-02.png" />
     <Content Include="Img\Rolex\Datejust36-01.png" />
@@ -364,8 +373,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Impressum.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
