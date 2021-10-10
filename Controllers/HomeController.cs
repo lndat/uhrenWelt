@@ -13,7 +13,7 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(db.Product);
         }
 
         public ActionResult Shop()
