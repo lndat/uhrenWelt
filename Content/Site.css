@@ -23,7 +23,6 @@ textarea {
     max-width: 280px;
 }
 
-
 /*FlexBox*/
 
 .product-filter {
@@ -48,22 +47,25 @@ textarea {
 }
 
 .product-card {
-    flex-flow: column;
     padding: 2%;
+    flex-flow:column;
     flex-grow: 1;
     flex-basis: 16%;
     display: flex;
     border: 1px solid #A5ADA7;
     border-radius: 13px;
-    margin: 7px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 8px;
+    box-shadow: 0 0 7px #5E6B4B;
     text-decoration: none;
     color: #000000;
-    background-color: #F2FFF5;
+    background-color: #F8F9FA;
 }
     .product-card:hover {
         text-decoration: none;
         color: #000000;
+        box-shadow: 0 0 6px #D8E3DA inset;
+        border: 1px medium #A5ADA7;
+        background-color: #F0F0F1;
     }
 
 .product-card {
@@ -102,5 +104,4 @@ textarea {
         align-self: flex-start;
     }
 }
-
 
