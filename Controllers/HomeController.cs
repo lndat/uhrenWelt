@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using uhrenWelt.Data;
 
 namespace uhrenWelt.Controllers
@@ -21,9 +17,9 @@ namespace uhrenWelt.Controllers
             return View(db.Product);
         }
 
-        public ActionResult Contact()
+        public ActionResult Geschaeftsbedingungen()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Geschäftsbedingungen";
 
             return View();
         }
@@ -31,6 +27,13 @@ namespace uhrenWelt.Controllers
         public ActionResult Impressum()
         {
             ViewBag.Message = "Impressum";
+
+            return View();
+        }
+
+        public ActionResult Datenschutz()
+        {
+            ViewBag.Message = "Datenschutz";
 
             return View();
         }

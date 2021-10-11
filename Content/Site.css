@@ -9,8 +9,8 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
     white-space: normal;
@@ -26,138 +26,126 @@ textarea {
 h1 {
     font-size: 110px;
     font-style: italic;
-
 }
 
-@media (max-width: 900px) {
-    h1 {
-        font-size: 110px;
-        font-style: italic;
+h1 {
+    font-size: 8vw;
+    font-style: italic;
+}
+
+.removeStyle {
+    text-decoration: none;
+    color: #000000;
+}
+
+/*FlexBox*/
+
+.product-filter {
+    display: flex;
+}
+
+    .product-filter h1 {
+        flex-grow: 1;
     }
+
+.sort {
+    display: flex;
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 50px;
-        font-style: italic;
+.collection-sort {
+    display: flex;
+    flex-direction: column;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    padding: 2%;
+    flex-flow: column;
+    flex-grow: 1;
+    flex-basis: 16%;
+    display: flex;
+    border: 1px solid #A5ADA7;
+    border-radius: 13px;
+    margin: 8px;
+    box-shadow: 0 0 6px #D8E3DA inset;
+    text-decoration: none;
+    color: #000000;
+    background-color: #F8F9FA;
+    align-self: stretch;
+}
+
+    .product-card:hover {
+        text-decoration: none;
+        color: #000000;
+        box-shadow: 0 0 7px #5E6B4B;
+        border: 1px medium #A5ADA7;
+        background-color: #F0F0F1;
+    }
+
+.product-card {
+    flex: 1 22%;
+}
+
+.product-image img {
+    max-width: 100%;
+}
+
+.main-image img {
+    max-width: 150px;
+    height: auto;
+    box-shadow: 0 0 7px #5E6B4B;
+    margin: 5px;
+}
+
+    .main-image img:hover {
+        -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+        filter: blur(1px);
+    }
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.product-info {
+    margin-top: 10px;
+    flex-flow: row;
+    text-align: start;
+    font-family: sans-serif;
+}
+
+.buttonCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 920px) {
+    .product-card {
+        flex: 1 28%;
     }
 }
 
 @media (max-width: 600px) {
-    h1 {
-        font-size: 70px;
-        font-style: italic;
+    .product-card {
+        flex: 1 46%;
     }
 }
-    /*FlexBox*/
 
+@media (max-width: 480px) {
     .product-filter {
-        display: flex;
-    }
-
-        .product-filter h1 {
-            flex-grow: 1;
-        }
-
-    .sort {
-        display: flex;
-    }
-
-    .collection-sort {
-        display: flex;
         flex-direction: column;
     }
 
-    .products {
-        display: flex;
-        flex-wrap: wrap;
+    .sort {
+        align-self: flex-start;
     }
-
-    .product-card {
-        padding: 2%;
-        flex-flow: column;
-        flex-grow: 1;
-        flex-basis: 16%;
-        display: flex;
-        border: 1px solid #A5ADA7;
-        border-radius: 13px;
-        margin: 8px;
-        box-shadow: 0 0 6px #D8E3DA inset;
-        text-decoration: none;
-        color: #000000;
-        background-color: #F8F9FA;
-        align-self: stretch;
-    }
-
-        .product-card:hover {
-            text-decoration: none;
-            color: #000000;
-            box-shadow: 0 0 7px #5E6B4B;
-            border: 1px medium #A5ADA7;
-            background-color: #F0F0F1;
-        }
-
-    .product-card {
-        flex: 1 22%;
-    }
-
-    .product-image img {
-        max-width: 100%;
-    }
-
-    .main-image img {
-        max-width: 150px;
-        height: auto;
-        box-shadow: 0 0 7px #5E6B4B;
-        margin: 5px;
-    }
-
-        .main-image img:hover {
-            -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-            filter: blur(1px);
-        }
-
-    .flex-container {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: center;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-    }
-
-    .product-info {
-        margin-top: 10px;
-        flex-flow: row;
-        text-align: start;
-        font-family: sans-serif;
-    }
-
-    .buttonCenter {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    @media (max-width: 920px) {
-        .product-card {
-            flex: 1 28%;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .product-card {
-            flex: 1 46%;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .product-filter {
-            flex-direction: column;
-        }
-
-        .sort {
-            align-self: flex-start;
-        }
-    }
-
+}
