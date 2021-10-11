@@ -24,7 +24,7 @@
     <section class="products">
         @foreach (var item in Model)
         {
-            <a href="@Url.Action("Contact", "Home", new {id = UrlParameter.Optional })" class="product-card"> @*TODO WARENKORBLINK*@
+            <a href="@Url.Action("Index", "Home", new {id = UrlParameter.Optional })" class="product-card"> @*TODO WARENKORBLINK*@
                 <div class="product-image">
                     <img src="@item.ImagePath" alt="">
                 </div>
