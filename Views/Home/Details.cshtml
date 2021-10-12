@@ -8,6 +8,9 @@
 <h2>Produkt Details</h2>
 
 <div>
+    <p>
+        @Html.ActionLink("Zurück", "Shop", null, new { @class = "removeStyle" })
+    </p>
     <hr />
     <img class="detailsImage" src="@Model.ImagePath" />
     <dl class="dl-horizontal">
