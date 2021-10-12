@@ -148,3 +148,8 @@ h1 {
         align-self: flex-start;
     }
 }
+
+.detailsImage{
+    max-width: 45%;
+    border: 2px solid red;
+}
