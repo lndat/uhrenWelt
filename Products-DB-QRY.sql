@@ -4,132 +4,6 @@ GO
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('Datejust 36', 6650, '/Img/Rolex/Datejust36-01.png',
-'Oyster, 36 mm, Edelstahl Oystersteel' , 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Datejust 36', 10400, '/Img/Rolex/Datejust36-02.png',
-'Oyster, 36 mm, Edelstahl Oystersteel und Gelbgold' , 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Datejust 36', 11300, '/Img/Rolex/Datejust36-03.png',
-'Oyster, 36 mm, Edelstahl Oystersteel und Everose-Gold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Datejust 36', 12100, '/Img/Rolex/Datejust36-04.png',
-'Oyster, 36 mm, Edelstahl Oystersteel und Gelbgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Datejust 36', 7850, '/Img/Rolex/Datejust36-05.png',
-'Oyster, 36 mm, Edelstahl Oystersteel und Weiﬂgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Submariner', 7650, '/Img/Rolex/Submariner-01.png',
-'Oyster, 41 mm, Edelstahl Oystersteel', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Submariner Date', 13450, '/Img/Rolex/Submariner-02.png',
-'Oyster, 41 mm, Edelstahl Oystersteel und Gelbgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Submariner Date', 37400, '/Img/Rolex/Submariner-03.png',
-'Oyster, 41 mm, Weiﬂgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Submariner Date', 34800, '/Img/Rolex/Submariner-04.png',
-'Oyster, 41 mm, Gelbgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Yacht-Master II', 23950, '/Img/Rolex/Yacht-01.png',
-'Oyster, 44 mm, Edelstahl Oystersteel und Everose-Gold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Yacht-Master II', 23950, '/Img/Rolex/Yacht-02.png',
-'Oyster, 44 mm, Gelbgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Cosmograph Daytona', 16450, '/Img/Rolex/Cosmograph-01.png',
-'Oyster, 40 mm, Edelstahl Oystersteel und Gelbgold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Cosmograph Daytona', 12400, '/Img/Rolex/Cosmograph-02.png',
-'Oyster, 40 mm, Edelstahl Oystersteel', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Cosmograph Daytona', 37100, '/Img/Rolex/Cosmograph-02.png',
-'Oyster, 40 mm, Everose-Gold', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Cellini Moonphase', 25250, '/Img/Rolex/Cellini-01.png',
-'39 mm, 18 Karat Everose-Gold, poliert', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Cellini Date', 16800, '/Img/Rolex/Cellini-02.png',
-'39 mm, 18 Karat Weiﬂgold, poliert', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Cellini Time', 14400, '/Img/Rolex/Cellini-03.png',
-'39 mm, 18 Karat Weiﬂgold, poliert', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
-('Air-Time', 6050, '/Img/Rolex/Cellini-04.png',
-'Oyster, 40 mm, Edelstahl Oystersteel - 3131, Rolex Manufakturwerk', 1, 1)
-go
-
-insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
-CategoryID)
-values
 ('Navitimer', 10150, '/Img/Breitling/Navitimer-01.png',
 'Navitimer 1 B01 Chronograph 46', 2, 1)
 go
@@ -713,4 +587,130 @@ CategoryID)
 values
 ('Luminor', 9100, '/Img/Panerai/Panerai-11.png',
 'Durchmesser 44,00 mm, Stahl satiniert, rostfreier AISI 316L - Automatik, Kaliber P.9011', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Datejust 36', 6650, '/Img/Rolex/Datejust36-01.png',
+'Oyster, 36 mm, Edelstahl Oystersteel' , 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Datejust 36', 10400, '/Img/Rolex/Datejust36-02.png',
+'Oyster, 36 mm, Edelstahl Oystersteel und Gelbgold' , 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Datejust 36', 11300, '/Img/Rolex/Datejust36-03.png',
+'Oyster, 36 mm, Edelstahl Oystersteel und Everose-Gold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Datejust 36', 12100, '/Img/Rolex/Datejust36-04.png',
+'Oyster, 36 mm, Edelstahl Oystersteel und Gelbgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Datejust 36', 7850, '/Img/Rolex/Datejust36-05.png',
+'Oyster, 36 mm, Edelstahl Oystersteel und Weiﬂgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Submariner', 7650, '/Img/Rolex/Submariner-01.png',
+'Oyster, 41 mm, Edelstahl Oystersteel', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Submariner Date', 13450, '/Img/Rolex/Submariner-02.png',
+'Oyster, 41 mm, Edelstahl Oystersteel und Gelbgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Submariner Date', 37400, '/Img/Rolex/Submariner-03.png',
+'Oyster, 41 mm, Weiﬂgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Submariner Date', 34800, '/Img/Rolex/Submariner-04.png',
+'Oyster, 41 mm, Gelbgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Yacht-Master II', 23950, '/Img/Rolex/Yacht-01.png',
+'Oyster, 44 mm, Edelstahl Oystersteel und Everose-Gold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Yacht-Master II', 23950, '/Img/Rolex/Yacht-02.png',
+'Oyster, 44 mm, Gelbgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Cosmograph Daytona', 16450, '/Img/Rolex/Cosmograph-01.png',
+'Oyster, 40 mm, Edelstahl Oystersteel und Gelbgold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Cosmograph Daytona', 12400, '/Img/Rolex/Cosmograph-02.png',
+'Oyster, 40 mm, Edelstahl Oystersteel', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Cosmograph Daytona', 37100, '/Img/Rolex/Cosmograph-02.png',
+'Oyster, 40 mm, Everose-Gold', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Cellini Moonphase', 25250, '/Img/Rolex/Cellini-01.png',
+'39 mm, 18 Karat Everose-Gold, poliert', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Cellini Date', 16800, '/Img/Rolex/Cellini-02.png',
+'39 mm, 18 Karat Weiﬂgold, poliert', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Cellini Time', 14400, '/Img/Rolex/Cellini-03.png',
+'39 mm, 18 Karat Weiﬂgold, poliert', 1, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('Air-Time', 6050, '/Img/Rolex/Cellini-04.png',
+'Oyster, 40 mm, Edelstahl Oystersteel - 3131, Rolex Manufakturwerk', 1, 1)
 go
