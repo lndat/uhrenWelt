@@ -13,6 +13,7 @@
     </p>
     <hr />
     <img class="detailsImage" src="@Model.ImagePath"/>
+    <div class="detailDescription">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.CategoryId)
@@ -54,4 +55,5 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
     </dl>
+    </div>
 </div>

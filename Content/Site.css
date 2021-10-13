@@ -150,6 +150,12 @@ h1 {
 }
 
 .detailsImage{
-    max-width: 45%;
+    max-width: 500px;
     border: 2px solid red;
+}
+
+.detailDescription{
+   float:right;
+   padding:40px;
+   margin-right: 20%;
 }
