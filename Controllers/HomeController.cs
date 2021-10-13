@@ -42,7 +42,6 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Details(int? id)
         {
-            ViewBag.ProductId = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

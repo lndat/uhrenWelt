@@ -21,7 +21,7 @@
     </div>
 </nav>
 
-    <section class="products">
+    <div class="products">
         @foreach (var item in Model)
         {
             <a href="@Url.Action("Details", "Home", new { id = item.Id })" class="product-card">
@@ -29,12 +29,12 @@
                     <img src="@item.ImagePath" alt="">
                 </div>
                 <div class="product-info">
-                    <h2>@item.Manufacturer.Name</h2>
-                    <h5>@item.ProductName</h5>
-                    <h6>@item.NetUnitPrice €</h6>
+                    <h3>@item.Manufacturer.Name</h3>
+                    <h6>@item.ProductName</h6>
+                    <h7>@item.NetUnitPrice €</h7>
                 </div>
             </a>
         }
-    </section>
+    </div>
 
 

@@ -24,13 +24,17 @@ textarea {
 }
 
 h1 {
-    font-size: 110px;
+    font-size: 8vw;
     font-style: italic;
 }
 
-h1 {
-    font-size: 8vw;
-    font-style: italic;
+h3{
+    font-variant: small-caps;
+    text-align:left;
+}
+
+h6 {
+    text-align: left;
 }
 
 .removeStyle {
@@ -116,9 +120,6 @@ h1 {
 
 .product-info {
     margin-top: 10px;
-    flex-flow: row;
-    text-align: start;
-    font-family: sans-serif;
 }
 
 .buttonCenter {
@@ -150,12 +151,12 @@ h1 {
 }
 
 .detailsImage{
-    max-width: 500px;
+    max-width: 35%;
     border: 2px solid red;
 }
 
 .detailDescription{
    float:right;
-   padding:40px;
+   padding:30px;
    margin-right: 20%;
 }
