@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using uhrenWelt.ViewModel;
+using uhrenWelt.ViewModels;
 using uhrenWelt.Data;
 
 namespace uhrenWelt.Controllers
@@ -21,9 +21,9 @@ namespace uhrenWelt.Controllers
             return View(GetList());
         }
 
-        public List<CustomerTblVM> GetList()
+        public List<CustomerVM> GetList()
         {
-            List<CustomerTblVM> meineListe = new List<CustomerTblVM>();
+            List<CustomerVM> meineListe = new List<CustomerVM>();
             foreach (var item in GetListFromDB())
             {
                 meineListe.Add(Mapping(item));
@@ -39,9 +39,9 @@ namespace uhrenWelt.Controllers
             }
         }
 
-        public CustomerTblVM Mapping(Customer databaseData)
+        public CustomerVM Mapping(Customer databaseData)
         {
-            CustomerTblVM vm = new CustomerTblVM();
+            CustomerVM vm = new CustomerVM();
 
             vm.Id = databaseData.Id;
             vm.Title = databaseData.Title;

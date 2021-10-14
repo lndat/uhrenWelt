@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace uhrenWelt.ViewModel
+namespace uhrenWelt.ViewModels
 {
-    public class CustomerTblVM
+    public class CustomerVM
     {
         public int Id { get; set; }
         [Display(Name = "Titel")] public string Title { get; set; }
