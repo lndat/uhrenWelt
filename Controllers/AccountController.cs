@@ -1,19 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using uhrenWelt.ViewModels;
 using uhrenWelt.Data;
+using uhrenWelt.ViewModels;
 
 namespace uhrenWelt.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
+        private uhrenWeltEntities db = new uhrenWeltEntities();
+
         public ActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register([Bind(Include = "Id,Title,FirstName,LastName,Email,Street,Zip,City,PwHash,Salt")] Customer customer)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Customer.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(customer);
         }
 
         public ActionResult Show()
