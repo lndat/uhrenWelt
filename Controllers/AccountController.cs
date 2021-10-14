@@ -16,6 +16,29 @@ namespace uhrenWelt.Controllers
             return View();
         }
 
+        public ActionResult Show()
+        {
+            return View(GetList());
+        }
+
+        public List<CustomerTblVM> GetList()
+        {
+            List<CustomerTblVM> meineListe = new List<CustomerTblVM>();
+            foreach (var item in GetListFromDB())
+            {
+                meineListe.Add(Mapping(item));
+            }
+            return meineListe;
+        }
+
+        public List<Customer> GetListFromDB()
+        {
+            using (var db = new uhrenWeltEntities())
+            {
+                return db.Customer.ToList();
+            }
+        }
+
         public CustomerTblVM Mapping(Customer databaseData)
         {
             CustomerTblVM vm = new CustomerTblVM();

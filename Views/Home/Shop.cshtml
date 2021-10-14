@@ -1,4 +1,4 @@
-﻿@model IEnumerable<uhrenWelt.Data.Product>
+﻿@model IEnumerable<uhrenWelt.ViewModel.ProductVM>
 
 @*Filtern/Sortieren*@
 <nav class="product-filter">
@@ -29,9 +29,9 @@
                     <img src="@item.ImagePath" alt="">
                 </div>
                 <div class="product-info">
-                    <h3>@item.Manufacturer.Name</h3>
-                    <h6> @item.ProductName</h6>
-                    <h7> @item.NetUnitPrice €</h7>
+                    <h3>@item.Name</h3>
+                    <h6>@item.ProductName</h6>
+                    <h7>@Html.DisplayFor(model => item.NetUnitPrice)</h7>
                 </div>
             </a>
         }

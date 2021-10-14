@@ -1,5 +1,4 @@
-﻿@model uhrenWelt.Data.Product
-
+﻿@model uhrenWelt.ViewModel.ProductVM
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,6 +15,14 @@
                 <div class="detailDescription">
                     <dl class="dl-horizontal">
                         <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
                             @Html.DisplayNameFor(model => model.ProductName)
                         </dt>
 
@@ -24,19 +31,11 @@
                         </dd>
 
                         <dt>
-                            @Html.DisplayNameFor(model => model.Manufacturer.Name)
-                        </dt>
-
-                        <dd>
-                            @Html.DisplayFor(model => model.Manufacturer.Name)
-                        </dd>
-
-                        <dt>
                             @Html.DisplayNameFor(model => model.NetUnitPrice)
                         </dt>
 
                         <dd>
-                            @Html.DisplayFor(model => model.NetUnitPrice) €
+                            @Html.DisplayFor(model => model.NetUnitPrice)
                         </dd>
 
                         <dt>
