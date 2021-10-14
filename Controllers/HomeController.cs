@@ -61,7 +61,7 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Details(int? id)
         {
-            var temopProductList = GetList().Where(x => x.Id == id).FirstOrDefault();
+            var temopProductList = GetList().Where(x => x.Id == id).Single();
             return View(temopProductList);
         }
 
