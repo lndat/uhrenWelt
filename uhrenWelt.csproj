@@ -131,6 +131,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Data\Category.cs">
       <DependentUpon>uhrenWelt-DB.tt</DependentUpon>
@@ -170,6 +171,7 @@
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CustomerTblVM.cs" />
     <Compile Include="ViewModel\ProductVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -379,9 +381,11 @@
     <Content Include="Views\Home\Geschaeftsbedingungen.cshtml" />
     <Content Include="Views\Home\Datenschutz.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

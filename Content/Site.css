@@ -12,6 +12,7 @@
 /* Override the default bootstrap behavior where horizontal description lists
    will truncate terms that are too long to fit in the left column
 */
+
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -163,13 +164,12 @@ h7 {
     }
 }
 
-.detailsImage{
+.detailsImage {
     max-width: 35%;
     border: 2px solid red;
+    margin-left: 30%
 }
 
 .detailDescription{
-   float:right;
-   padding:30px;
-   margin-right: 20%;
+    margin-left: 30%
 }
