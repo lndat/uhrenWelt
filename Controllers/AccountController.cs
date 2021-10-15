@@ -20,7 +20,7 @@ namespace uhrenWelt.Controllers
         public ActionResult Register(CustomerVM customerVm)
         {
             var newCustomer = new Customer();
-            var salter = uhrenWelt.Services.UserService.CreateSalt(customerVm.PwHash.Length);
+            var salt = uhrenWelt.Services.UserService.CreateSalt(customerVm.PwHash.Length);
 
             newCustomer.Title = customerVm.Title;
             newCustomer.FirstName = customerVm.FirstName;
@@ -29,8 +29,8 @@ namespace uhrenWelt.Controllers
             newCustomer.Street = customerVm.Street;
             newCustomer.Zip = customerVm.Zip;
             newCustomer.City = customerVm.City;
-            newCustomer.PwHash = uhrenWelt.Services.UserService.HashPassword(customerVm.PwHash + salter);
-            newCustomer.Salt = salter;
+            newCustomer.PwHash = uhrenWelt.Services.UserService.HashPassword(customerVm.PwHash + salt);
+            newCustomer.Salt = salt;
 
             if (ModelState.IsValid)
             {

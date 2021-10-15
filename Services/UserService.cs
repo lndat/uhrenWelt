@@ -32,7 +32,7 @@ namespace uhrenWelt.Services
 
         public static string HashPassword(string password)
         {
-            SHA512 sha512 = SHA512Managed.Create();
+            SHA512 sha512 = SHA512.Create();
             byte[] bytes = Encoding.UTF8.GetBytes(password);
             byte[] hash = sha512.ComputeHash(bytes);
             return GetStringFromHash(hash);

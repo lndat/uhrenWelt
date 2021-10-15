@@ -1,7 +1,11 @@
-USE master
-GO
-DROP DATABASE uhrenWelt
-GO
+--USE master
+--GO
+--DROP DATABASE uhrenWelt
+--GO
+
+--SELECT 'SHA2_512' as HashFunction, 
+--HASHBYTES('SHA2_512', '1234qc') as HashWErtDesPasswortes, len(HASHBYTES('SHA2_512', '1234qc') ) as LaengedesHashWertes 
+
 
 CREATE DATABASE uhrenWelt
 GO
@@ -126,3 +130,7 @@ insert into Manufacturer([Name])
 values
 ('Panerai')
 go
+
+
+
+
