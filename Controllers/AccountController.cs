@@ -17,16 +17,29 @@ namespace uhrenWelt.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register([Bind(Include = "Id,Title,FirstName,LastName,Email,Street,Zip,City,PwHash,Salt")] Customer customer)
+        public ActionResult Register(CustomerVM customerVm)
         {
+            var newCustomer = new Customer();
+            var salter = uhrenWelt.Services.UserService.CreateSalt(customerVm.PwHash.Length);
+
+            newCustomer.Title = customerVm.Title;
+            newCustomer.FirstName = customerVm.FirstName;
+            newCustomer.LastName = customerVm.LastName;
+            newCustomer.Email = customerVm.Email;
+            newCustomer.Street = customerVm.Street;
+            newCustomer.Zip = customerVm.Zip;
+            newCustomer.City = customerVm.City;
+            newCustomer.PwHash = uhrenWelt.Services.UserService.HashPassword(customerVm.PwHash + salter);
+            newCustomer.Salt = salter;
+
             if (ModelState.IsValid)
             {
-                db.Customer.Add(customer);
+                db.Customer.Add(newCustomer);
                 db.SaveChanges();
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
 
-            return View(customer); //TODO
+            return View(); //TODO
         }
 
         public ActionResult Show()
