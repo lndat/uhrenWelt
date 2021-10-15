@@ -31,13 +31,13 @@ h1 {
 
 h3 {
     font-variant: small-caps;
-    text-align: left;
     font-size: 22px;
 }
 
 h7 {
-    font-weight:400;
+    font-weight:500;
     color: #0ea116;
+    text-align: right;
 }
 
 .removeStyle {
@@ -76,9 +76,9 @@ h7 {
     flex-basis: 16%;
     display: flex;
     border: 1px solid #A5ADA7;
-    border-radius: 13px;
+    border-radius: 8%;
     margin: 8px;
-    box-shadow: 0 0 6px #D8E3DA inset;
+    box-shadow: 3px 6px 10px #D8E3DA inset;
     text-decoration: none;
     color: #000000;
     background-color: #F8F9FA;
@@ -87,12 +87,15 @@ h7 {
     .product-card:hover {
         text-decoration: none;
         color: #000000;
-        box-shadow: 0 0 7px #5E6B4B;
+        box-shadow: 1px 1px 8px #5E6B4B;
         border: 1px medium #A5ADA7;
         background-color: #F0F0F1;
     }
         .product-card:hover h3 {
-            text-shadow: 0px 1px 12px #5E6B4B;
+            text-shadow: 0px 1px 11px #5E6B4B;
+        }
+        .product-card:hover h6 {
+            text-shadow: 0px 1px 11px #5E6B4B;
         }
 
 .product-card {
@@ -132,8 +135,6 @@ h7 {
     margin-top: 10px;
     display: flex;
     flex-flow:column;
-    justify-content: left;
-    align-items:start;
 }
 
 .buttonCenter {
