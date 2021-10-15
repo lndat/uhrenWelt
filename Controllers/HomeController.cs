@@ -102,7 +102,7 @@ namespace uhrenWelt.Controllers
             vm.ImagePath = databaseData.ImagePath;
             vm.Description = databaseData.Description;
             vm.ManufacturerId = databaseData.ManufacturerId;
-            vm.Name = GetManufacturerFromDB(databaseData.ManufacturerId);
+            vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
 
             return vm;
         }

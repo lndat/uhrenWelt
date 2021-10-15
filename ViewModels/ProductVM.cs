@@ -14,8 +14,7 @@ namespace uhrenWelt.ViewModel
         public string ImagePath { get; set; }
         [Display(Name = "Beschreibung")] public string Description { get; set; }
         public int ManufacturerId { get; set; }
-        [Display(Name = "Hersteller")]
-        public string Name { get; set; }
+        [Display(Name = "Hersteller")] public string ManufacturerName { get; set; }
         public int CategoryId { get; set; }
     }
 }
