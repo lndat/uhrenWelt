@@ -592,6 +592,13 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
+('Luminor', 6200, '/Img/Panerai/Panerai-12.png',
+'Durchmesser 44,00 mm, Luminor, rostfreier AISI 316L-Stahl poliert', 8, 1)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
 ('Datejust 36', 6650, '/Img/Rolex/Datejust36-01.png',
 'Oyster, 36 mm, Edelstahl Oystersteel' , 1, 1)
 go
