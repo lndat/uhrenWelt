@@ -26,7 +26,7 @@ namespace uhrenWelt.Controllers
                 return RedirectToAction("Index","Home");
             }
 
-            return View(customer);
+            return View(customer); //TODO
         }
 
         public ActionResult Show()
