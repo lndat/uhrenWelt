@@ -16,6 +16,7 @@ namespace uhrenWelt.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult Shop()
         {
             var temopProductList = GetList();

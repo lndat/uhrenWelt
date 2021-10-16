@@ -47,5 +47,10 @@ namespace uhrenWelt.Services
             }
             return result.ToString();
         }
+
+        public static bool UserCanLogin(string email, string password)
+        {
+
+        }
     }
 }
