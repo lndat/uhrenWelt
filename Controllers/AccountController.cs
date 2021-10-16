@@ -106,6 +106,13 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Login(string email, string password)
         {
             if (UserService.LoginCheck(email, password))
