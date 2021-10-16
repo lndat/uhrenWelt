@@ -4,6 +4,9 @@ using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModels;
 using uhrenWelt.Services;
+using System;
+using System.Web.Security;
+using System.Web;
 
 namespace uhrenWelt.Controllers
 {
@@ -84,13 +87,49 @@ namespace uhrenWelt.Controllers
             return vm;
         }
 
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Login(string email, string password)
         {
             if (UserService.LoginCheck(email, password))
             {
+                AuthenticateUser(email);
                 return RedirectToAction("Shop", "Home");
             }
             return View();
+        }
+
+        [NonAction]
+        private void AuthenticateUser(string email)
+        {
+            var timeNow = DateTime.Now;
+            var name = email;
+            var rememberMe = false;
+            string userData = "";
+
+            var ticket = new FormsAuthenticationTicket(
+                0, 
+                name,
+                timeNow,
+                timeNow.AddMinutes(30),
+                rememberMe,
+                userData
+                );
+
+            var encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+            var cookie = new HttpCookie(
+                FormsAuthentication.FormsCookieName, // default framework cookiename
+                encryptedTicket
+                );
+
+            // per http response, cookie user übergeben
+            Response.Cookies.Add(cookie);
         }
     }
 }
