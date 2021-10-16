@@ -47,26 +47,10 @@ h7 {
 
 /*FlexBox*/
 
-.product-filter {
-    display: flex;
-}
-
-    .product-filter h1 {
-        flex-grow: 1;
-    }
-
-.sort {
-    display: flex;
-}
-
-.collection-sort {
-    display: flex;
-    flex-direction: column;
-}
-
 .products {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product-card {
@@ -100,7 +84,7 @@ h7 {
 
 .product-card {
     display:flex;
-    flex: 1 17%;
+    flex: 0 18%;
 }
 
 .product-image img {
@@ -145,13 +129,13 @@ h7 {
 
 @media (max-width: 920px) {
     .product-card {
-        flex: 1 29%;
+        flex: 0 29%;
     }
 }
 
 @media (max-width: 600px) {
     .product-card {
-        flex: 1 45%;
+        flex: 0 45%;
     }
 }
 
@@ -177,4 +161,28 @@ h7 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.form-inline {
+    margin-top: 20px;
+    margin-left: 33px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@media (max-width: 800px) {
+    .form-inline input {
+        margin: 10px 0;
+    }
+
+    .form-inline {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.errorMessage{
+    color: #c30000;
+    margin: 10px;
+    font-size:17px;
 }

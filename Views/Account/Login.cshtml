@@ -1,5 +1,10 @@
-﻿<form method="post" action="/Account/Login">
-    <input name="email" /><br />
-    <input name="password" /><br />
-    <button>Einloggen</button>
+﻿<form class="form-inline" method="post" action="/Account/Login">
+    <label for="email">Email:</label>
+    <input type="email" name="email" placeholder="Email-Adresse">
+    <label for="pwd">Password:</label>
+    <input type="password" name="password" placeholder="Passwort">
+    <label>
+        <input type="checkbox" name="remember"> Remember me
+    </label>
+    <button type="submit">Login</button>
 </form>

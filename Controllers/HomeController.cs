@@ -8,18 +8,9 @@ namespace uhrenWelt.Controllers
 {
     public class HomeController : Controller
     {
-        private uhrenWeltEntities db = new uhrenWeltEntities();
-
         public ActionResult Index()
         {
             return View();
-        }
-
-        [Authorize]
-        public ActionResult Shop()
-        {
-            var temopProductList = GetList();
-            return View(temopProductList);
         }
 
         public ActionResult Geschaeftsbedingungen()
@@ -58,53 +49,6 @@ namespace uhrenWelt.Controllers
         //    return View();
         //}
 
-        public ActionResult Details(int? id)
-        {
-            var temopProductList = GetList().Where(x => x.Id == id).Single();
-            return View(temopProductList);
-        }
-
-        public List<ProductVM> GetList()
-        {
-            List<ProductVM> meineListe = new List<ProductVM>();
-            foreach (var item in GetListFromDB())
-            {
-                meineListe.Add(Mapping(item));
-            }
-            return meineListe;
-        }
-
-        public List<Product> GetListFromDB()
-        {
-            using (var db = new uhrenWeltEntities())
-            {
-                return db.Product.ToList();
-            }
-        }
-
-        public string GetManufacturerFromDB(int? id)
-        {
-            using (var db = new uhrenWeltEntities())
-            {
-                var manuId = db.Manufacturer.Find(id);
-                return manuId.Name;
-            }
-        }
-
-        public ProductVM Mapping(Product databaseData)
-        {
-            ProductVM vm = new ProductVM();
-
-            vm.Id = databaseData.Id;
-            vm.ProductName = databaseData.ProductName;
-            vm.NetUnitPrice = databaseData.NetUnitPrice;
-            vm.ImagePath = databaseData.ImagePath;
-            vm.Description = databaseData.Description;
-            vm.ManufacturerId = databaseData.ManufacturerId;
-            vm.CategoryId = databaseData.CategoryId;
-            vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
-
-            return vm;
-        }
+      
     }
 }
