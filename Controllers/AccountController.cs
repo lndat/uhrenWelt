@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
-using uhrenWelt.Data;
-using uhrenWelt.ViewModels;
-using uhrenWelt.Services;
-using System;
-using System.Web.Security;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+using uhrenWelt.Data;
+using uhrenWelt.Services;
+using uhrenWelt.ViewModels;
 
 namespace uhrenWelt.Controllers
 {
@@ -38,12 +38,24 @@ namespace uhrenWelt.Controllers
 
             if (ModelState.IsValid)
             {
+                if (UserService.EmailCheck(customerVm.Email))
+                {
+                    ViewBag.Message = "EmailDupe";
+                    return View();
+                }
+
+                if (customerVm.PwHash != customerVm.PwCheck)
+                {
+                    ViewBag.Message = "PwCheckFail";
+                    return View();
+                }
+
                 db.Customer.Add(newCustomer);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(); //TODO
+            return View(customerVm); //TODO
         }
 
         public ActionResult Show()
@@ -113,7 +125,7 @@ namespace uhrenWelt.Controllers
             string userData = "";
 
             var ticket = new FormsAuthenticationTicket(
-                0, 
+                0,
                 name,
                 timeNow,
                 timeNow.AddMinutes(30),

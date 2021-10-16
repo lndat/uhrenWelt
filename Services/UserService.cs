@@ -7,6 +7,8 @@ namespace uhrenWelt.Services
 {
     public class UserService
     {
+        private static uhrenWeltEntities db = new uhrenWeltEntities();
+
         public static string CreateSalt(int saltLength)
         {
             string s = "";
@@ -48,7 +50,6 @@ namespace uhrenWelt.Services
 
         public static bool LoginCheck(string email, string password)
         {
-            uhrenWeltEntities db = new uhrenWeltEntities();
             var findEmail = db.Customer.Where(x => (x.Email == email));
 
             if (findEmail.Count() > 0)
@@ -67,6 +68,16 @@ namespace uhrenWelt.Services
             {
                 return false;
             }
+        }
+
+        public static bool EmailCheck(string email)
+        {
+            var checkEmail = db.Customer.Where(x => x.Email == email);
+            if (checkEmail.Count() > 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
