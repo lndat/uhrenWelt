@@ -122,3 +122,7 @@ namespace uhrenWelt.Controllers
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Derzeit email check mit db.email.count() > 0 -- funkt
 Next PW+ Salt aus DB -> hashen und dann hash mit db hash checken
+DONE!
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Suchen filtern next
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

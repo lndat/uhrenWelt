@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
-using System.Security;
-using System.Security.Principal;
 
 namespace uhrenWelt
 {
@@ -22,7 +21,6 @@ namespace uhrenWelt
         protected void Application_AuthenticateRequest(Object o, EventArgs eventArgs)
         {
             // cookie auslenen
-
             var cookie = Request.Cookies.Get(FormsAuthentication.FormsCookieName);
 
             if (cookie == null || string.IsNullOrWhiteSpace(cookie.Value)) return;

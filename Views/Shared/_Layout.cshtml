@@ -24,7 +24,7 @@
                     }
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li class="nav-item">@Html.ActionLink("Logout", "Logout", "Account", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Logout " + "("+@User.Identity.Name+")", "Logout", "Account", null, new { @class = "nav-link" })</li>
                     }
                     else
                     {
