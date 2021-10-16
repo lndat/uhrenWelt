@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<uhrenWelt.ViewModel.ProductVM>
 
 @*Filtern/Sortieren*@
-<form class="form-inline" method="post" action="/Shop/Search">
+<form class="form-inline" method="get" action="/Shop/Search">
     <input name="search" class="form-control" placeholder="Suchen..." />
     <button type="submit" class="btn btn-secondary">Suchen</button>
 </form>

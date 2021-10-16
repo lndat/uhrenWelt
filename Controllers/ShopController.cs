@@ -10,12 +10,6 @@ namespace uhrenWelt.Controllers
     {
         private uhrenWeltEntities db = new uhrenWeltEntities();
 
-        // GET: Shop
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [Authorize]
         public ActionResult Shop()
         {
@@ -23,7 +17,15 @@ namespace uhrenWelt.Controllers
             return View(temopProductList);
         }
 
-        public ActionResult Search(string search)
+        [HttpGet, ActionName("Search")]
+        public ActionResult SearchGet(string search)
+        {
+            return View(GetList().Where(x => x.ProductName.ToLower().Contains(search.ToLower())));
+        }
+
+        [HttpPost]
+        [ActionName("Search")]
+        public ActionResult SearchPost(string search)
         {
             return View(GetList().Where(x => x.ProductName.ToLower().Contains(search.ToLower())));
         }
