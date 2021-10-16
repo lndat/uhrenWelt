@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModels;
+using uhrenWelt.Services;
 
 namespace uhrenWelt.Controllers
 {
@@ -81,6 +82,15 @@ namespace uhrenWelt.Controllers
             vm.Salt = databaseData.Salt;
 
             return vm;
+        }
+
+        public ActionResult Login(string email, string password)
+        {
+            if (UserService.LoginCheck(email, password))
+            {
+                return RedirectToAction("Shop", "Home");
+            }
+            return View();
         }
     }
 }

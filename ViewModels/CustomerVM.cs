@@ -16,7 +16,7 @@ namespace uhrenWelt.ViewModels
         [Display(Name = "Straße")] public string Street { get; set; }
         [Display(Name = "Postleitzahl")] public string Zip { get; set; }
         [Display(Name = "Stadt")] public string City { get; set; }
-        public string PwHash { get; set; }
+        [Display(Name = "Passwort")] public string PwHash { get; set; }
         public string Salt { get; set; }
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
+using uhrenWelt.Data;
 
 namespace uhrenWelt.Services
 {
@@ -48,9 +46,27 @@ namespace uhrenWelt.Services
             return result.ToString();
         }
 
-        public static bool UserCanLogin(string email, string password)
+        public static bool LoginCheck(string email, string password)
         {
+            uhrenWeltEntities db = new uhrenWeltEntities();
+            var findEmail = db.Customer.Where(x => (x.Email == email));
 
+            if (findEmail.Count() > 0)
+            {
+                var salt = db.Customer.Where(x => x.Email == email).Select(s => s.Salt).Single();
+                var hashedPassword = HashPassword(password + salt);
+                var checkPassword = db.Customer.Where(x => x.PwHash == hashedPassword);
+
+                if (checkPassword.Count() > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
