@@ -7,6 +7,10 @@ SELECT 'SHA2_512' as HashFunction,
 HASHBYTES('SHA2_512', '1234qc') as HashWErtDesPasswortes, len(HASHBYTES('SHA2_512', '1234qc') ) as LaengedesHashWertes 
 
 
+SELECT [NetUnitPrice], [ProductName] FROM [Product] 
+WHERE [NetUnitPrice] > 20000
+ORDER BY [NetUnitPrice] DESC
+
 CREATE DATABASE uhrenWelt
 GO
 
@@ -88,7 +92,17 @@ GO
 
 insert into Category ([Name], TaxRate)
 values
-('Uhr', '20')
+('Automatic', '20')
+go
+
+insert into Category ([Name], TaxRate)
+values
+('SmartWatch', '20')
+go
+
+insert into Category ([Name], TaxRate)
+values
+('Handaufzug', '20')
 go
 
 insert into Manufacturer([Name])

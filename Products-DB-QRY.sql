@@ -145,14 +145,14 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-07.png',
-'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 1)
+'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-08.png',
-'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 1)
+'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -194,21 +194,21 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Big Bang', 23800, '/Img/Hublot/Hublot-02.png',
-'Durchmesser 45,00 mm, Satinierte und polierte Keramik', 4, 1)
+'Durchmesser 45,00 mm, Satinierte und polierte Keramik', 4, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Big Bang', 21400, '/Img/Hublot/Hublot-03.png',
-'Durchmesser 45,00 mm, Microblasted blaue Keramik', 4, 1)
+'Durchmesser 45,00 mm, Microblasted blaue Keramik', 4, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Classic Fusion', 24800, '/Img/Hublot/Hublot-04.png',
-'Durchmesser 45,00 mm, Satiniertes und poliertes 18 Karat King Gold', 4, 1)
+'Durchmesser 45,00 mm, Satiniertes und poliertes 18 Karat King Gold', 4, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -222,7 +222,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('King Power', 21700, '/Img/Hublot/Hublot-06.png',
-'Durchmesser 48,00 mm, Satinierte und polierte Keramik', 4, 1)
+'Durchmesser 48,00 mm, Satinierte und polierte Keramik', 4, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -264,7 +264,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Big Bang', 5100, '/Img/Hublot/Hublot-12.png',
-'Smartwatch - Durchmesser 42,00 mm, Poliertes und satiniertes Titanium', 4, 1)
+'Smartwatch - Durchmesser 42,00 mm, Poliertes und satiniertes Titanium', 4, 2)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -299,7 +299,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Portofino', 9850, '/Img/IWC/Schaffhausen-05.png',
-'Durchmesser 45,00 mm, Edelstahl Handaufzug, Kaliber 59210', 5, 1)
+'Durchmesser 45,00 mm, Edelstahl Handaufzug, Kaliber 59210', 5, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -446,7 +446,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Royal', 3160, '/Img/Tudor/Tudor-01.png',
-'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Kaliber Mechanisches Uhrwerk mit Selbstaufzug', 7, 1)
+'Durchmesser 41,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Kaliber Mechanisches Uhrwerk mit Selbstaufzug', 7, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -481,14 +481,14 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('1926', 3200, '/Img/Tudor/Tudor-06.png',
-'Durchmesser 36,00 mm, Poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
+'Durchmesser 36,00 mm, Poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Heritage', 4240, '/Img/Tudor/Tudor-07.png',
-'Durchmesser 42,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber 2892 mit Zusatzmechanismus für die Chronographenfunktion', 7, 1)
+'Durchmesser 42,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber 2892 mit Zusatzmechanismus für die Chronographenfunktion', 7, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -502,21 +502,21 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Style', 3110, '/Img/Tudor/Tudor-09.png',
-'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
+'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Royal', 2120, '/Img/Tudor/Tudor-10.png',
-'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 1)
+'Durchmesser 38,00 mm, Satiniertes, poliertes Gehäuse in Edelstahl - Automatik, Kaliber Mechanisches Uhrwerk mit Selbstaufzug, Kaliber T601', 7, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Luminor Composite 1950', 12000, '/Img/Panerai/Panerai-01.png',
-'Durchmesser 47,00 mm, Luminor 1950, Composite - Handaufzug, Kaliber P.3000', 8, 1)
+'Durchmesser 47,00 mm, Luminor 1950, Composite - Handaufzug, Kaliber P.3000', 8, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -537,7 +537,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Luminor California', 7900, '/Img/Panerai/Panerai-04.png',
-'Durchmesser 44,00 mm, Luminor, DLC Titan - Handaufzug, Kaliber P.5000', 8, 1)
+'Durchmesser 44,00 mm, Luminor, DLC Titan - Handaufzug, Kaliber P.5000', 8, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -572,7 +572,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Radiomir', 10900, '/Img/Panerai/Panerai-09.png',
-'Durchmesser 48,00 mm, Radiomir 1940, Keramik mattschwarz - Handaufzug, Kaliber P.3000', 8, 1)
+'Durchmesser 48,00 mm, Radiomir 1940, Keramik mattschwarz - Handaufzug, Kaliber P.3000', 8, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -649,21 +649,21 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Submariner Date', 37400, '/Img/Rolex/Submariner-03.png',
-'Oyster, 41 mm, Weißgold', 1, 1)
+'Oyster, 41 mm, Weißgold', 1, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Submariner Date', 34800, '/Img/Rolex/Submariner-04.png',
-'Oyster, 41 mm, Gelbgold', 1, 1)
+'Oyster, 41 mm, Gelbgold', 1, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Yacht-Master II', 23950, '/Img/Rolex/Yacht-01.png',
-'Oyster, 44 mm, Edelstahl Oystersteel und Everose-Gold', 1, 1)
+'Oyster, 44 mm, Edelstahl Oystersteel und Everose-Gold', 1, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -691,14 +691,14 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Cosmograph Daytona', 37100, '/Img/Rolex/Cosmograph-02.png',
-'Oyster, 40 mm, Everose-Gold', 1, 1)
+'Oyster, 40 mm, Everose-Gold', 1, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Cellini Moonphase', 25250, '/Img/Rolex/Cellini-01.png',
-'39 mm, 18 Karat Everose-Gold, poliert', 1, 1)
+'39 mm, 18 Karat Everose-Gold, poliert', 1, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
