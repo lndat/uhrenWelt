@@ -215,7 +215,7 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Classic Fusion', 17500, '/Img/Hublot/Hublot-05.png',
-'DDurchmesser 45,00 mm, Titan, Automatik, Kaliber HUB1155', 4, 1)
+'Durchmesser 45,00 mm, Titan, Automatik, Kaliber HUB1155', 4, 1)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
