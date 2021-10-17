@@ -6,9 +6,6 @@
 
 <h2 style="margin-top: 3%">Registrieren</h2>
 
-<div>
-    @Html.ActionLink("Zurück", "Index", "Home", new { @class = "removeStyle" })
-</div>
 @if (ViewBag.Message != null && ViewBag.Message == "EmailDupe")
 {
     <br /><span style="color:red;">Email-Adresse ist bereites registriert!</span>
@@ -85,7 +82,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PwHash, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PwHash, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.PasswordFor(model => model.PwHash, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.PwHash, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -93,8 +90,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PwCheck, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PwCheck, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PwHash, "", new { @class = "text-danger" })
+            @Html.PasswordFor(model => model.PwCheck, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PwCheck, "", new { @class = "text-danger" })
         </div>
     </div>
 

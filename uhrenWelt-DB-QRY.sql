@@ -70,7 +70,7 @@ CREATE TABLE [dbo].[Customer](
     [Street] [varchar](150) NOT NULL,
     [Zip] [varchar](5) NOT NULL,
     [City] [varchar](200) NOT NULL,
-    [PwHash] [varchar](200) NOT NULL,
+    [PwHash] [varchar](250) NOT NULL,
     [Salt] [varchar](200) NOT NULL
 )
 

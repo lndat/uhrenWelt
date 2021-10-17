@@ -44,23 +44,12 @@ namespace uhrenWelt.Controllers
                     return View();
                 }
 
-                if (customerVm.PwHash != customerVm.PwCheck)
-                {
-                    ViewBag.Message = "PwCheckFail";
-                    return View();
-                }
-
                 db.Customer.Add(newCustomer);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
             return View(customerVm); //TODO
-        }
-
-        public ActionResult Show()
-        {
-            return View(GetList());
         }
 
         public List<CustomerVM> GetList()
