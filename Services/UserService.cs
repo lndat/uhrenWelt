@@ -55,19 +55,16 @@ namespace uhrenWelt.Services
             if (findEmail.Count() > 0)
             {
                 var salt = db.Customer.Where(x => x.Email == email).Select(s => s.Salt).Single();
-                var hashedPassword = HashPassword(password + salt);
-                var checkPassword = db.Customer.Where(x => x.PwHash == hashedPassword);
+                var hashPassword = HashPassword(password + salt);
+                var checkPasswordHash = db.Customer.Where(x => x.PwHash == hashPassword);
 
-                if (checkPassword.Count() > 0)
+                if (checkPasswordHash.Count() > 0)
                 {
                     return true;
                 }
                 return false;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public static bool EmailCheck(string email)

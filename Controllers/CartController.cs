@@ -71,7 +71,7 @@ namespace uhrenWelt.Controllers
             vm.Description = databaseData.Description;
             vm.ManufacturerId = databaseData.ManufacturerId;
             vm.CategoryId = databaseData.CategoryId;
-            vm.Amount = databaseData.am;
+            //vm.Amount = databaseData;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
 
             return vm;
