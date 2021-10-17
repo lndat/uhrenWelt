@@ -125,8 +125,12 @@ Next PW+ Salt aus DB -> hashen und dann hash mit db hash checken
 Email chec > DONE!
 PW PW WIEDERHOLEN CHECK DONE!
 DONE!
+
+!!! PASSWORT REGELUNG FÜR LÄNGE UND KOMPLEXITÄT MUSS NOCH GEMACHT WERDEN !!!
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Suchen filtern next
-zuerst mal suche checken
+Suchen DONE!!
+FILTER noch nicht gemacht
+
+
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
