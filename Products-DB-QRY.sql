@@ -145,14 +145,14 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-07.png',
-'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
+'SmartWatch - Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-08.png',
-'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
+'SmartWatch - Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,

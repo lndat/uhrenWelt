@@ -20,14 +20,14 @@ namespace uhrenWelt.Controllers
         [HttpGet, ActionName("Search")]
         public ActionResult SearchGet(string search)
         {
-            return View(GetList().Where(x => x.ProductName.ToLower().Contains(search.ToLower())));
+            return View(GetList().Where(x => x.ProductName.ToLower().Contains(search.ToLower()) || x.ManufacturerName.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower())));
         }
 
         [HttpPost]
         [ActionName("Search")]
         public ActionResult SearchPost(string search)
         {
-            return View(GetList().Where(x => x.ProductName.ToLower().Contains(search.ToLower())));
+            return View(GetList().Where(x => x.ProductName.ToLower().Contains(search.ToLower()) || x.ManufacturerName.ToLower().Contains(search.ToLower()) || x.Description.ToLower().Contains(search.ToLower())));
         }
 
         public ActionResult Details(int? id)

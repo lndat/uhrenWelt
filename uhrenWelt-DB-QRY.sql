@@ -11,6 +11,10 @@ SELECT [NetUnitPrice], [ProductName] FROM [Product]
 WHERE [NetUnitPrice] > 20000
 ORDER BY [NetUnitPrice] DESC
 
+
+SELECT [CategoryId], [ProductName] FROM [Product] 
+WHERE [CategoryId] = 2
+
 CREATE DATABASE uhrenWelt
 GO
 
