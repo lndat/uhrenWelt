@@ -32,7 +32,7 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Details(int? id)
         {
-            var temopProductList = GetList().Where(x => x.Id == id).Single();
+            var temopProductList = GetList().Single(x => x.Id == id);
             return View(temopProductList);
         }
 
