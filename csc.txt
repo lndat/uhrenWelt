@@ -118,6 +118,28 @@ namespace uhrenWelt.Controllers
 }
 
 
+***********************************************************************************************************
+using (var db = new KartoffelChipsEntities())
+{
+    var cart = db.Order.Where(x => x.Date == null && x.CustomerID == customerID).FirstOrDefault();
+
+    if (cart != null)
+    {
+        Order newOrder = new Order { CustomerID = customerID, EmployeeID = 1, PaymentID = null, Date = null };
+
+        OrderDetail newOrderDetail = new OrderDetail { ProductID = productId, OrderID = newOrder.ID };
+
+        db.Order.Add(newOrder);
+        db.OrderDetail.Add(newOrderDetail);
+        db.SaveChanges();
+    }
+    else
+    {
+        // OrderDetail newOrderDetail = new OrderDetail { ProductID = productId, OrderID = cart.ID,   };
+    }
+}
+***********************************************************************************************************
+
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Derzeit email check mit db.email.count() > 0 -- funkt

@@ -25,7 +25,7 @@ CREATE TABLE [dbo].[OrderLine](
     [Id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
     [OrderId] [int] NOT NULL,
     [ProductId] [int] NOT NULL,
-    [Amount] [int] NOT NULL,
+    [Amount] [tinyint] NOT NULL,
     [NetUnitPrice] [decimal](12, 2) NOT NULL,
     [TaxRate] [decimal](9, 2) NOT NULL,
 )
@@ -148,7 +148,3 @@ insert into Manufacturer([Name])
 values
 ('Panerai')
 go
-
-
-
-
