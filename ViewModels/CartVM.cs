@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using uhrenWelt.Data;
 
 namespace uhrenWelt.ViewModels
 {
@@ -17,5 +18,6 @@ namespace uhrenWelt.ViewModels
         [Display(Name = "Hersteller")] public string ManufacturerName { get; set; }
         public int CategoryId { get; set; }
         public byte Amount { get; set; }
+        public Customer Customer { get; set; }
     }
 }

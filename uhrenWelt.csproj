@@ -388,6 +388,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shop\Search.cshtml" />
     <Content Include="Views\Cart\ShowCart.cshtml" />
+    <Content Include="Views\Shared\_FilterBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

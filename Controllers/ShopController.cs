@@ -10,7 +10,7 @@ namespace uhrenWelt.Controllers
     {
         private uhrenWeltEntities db = new uhrenWeltEntities();
 
-        [Authorize]
+        //[Authorize]
         public ActionResult Shop()
         {
             var temopProductList = GetList();
