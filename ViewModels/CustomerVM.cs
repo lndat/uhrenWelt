@@ -35,7 +35,8 @@ namespace uhrenWelt.ViewModels
         [Display(Name = "Straße")] 
         public string Street { get; set; }
 
-        [StringLength(4)]
+        [DataType(DataType.PostalCode)]
+        [Range(1010, 9992, ErrorMessage = "Geben Sie eine gültige Postleitzahl ein.")]
         [Required(ErrorMessage = "Pflichtfeld!")]
         [Display(Name = "Postleitzahl")] 
         public string Zip { get; set; }
@@ -45,11 +46,13 @@ namespace uhrenWelt.ViewModels
         [Display(Name = "Stadt")] 
         public string City { get; set; }
 
+        [DataType(DataType.Password)]
         [StringLength(250)]
         [Required(ErrorMessage = "Pflichtfeld!")]
         [Display(Name = "Passwort")] 
         public string PwHash { get; set; }
 
+        [DataType(DataType.Password)]
         [Compare("PwHash", ErrorMessage = "Passwort muss übereinstimmen!")]
         [Display(Name = "Passwort")]
         public string PwCheck { get; set; }
