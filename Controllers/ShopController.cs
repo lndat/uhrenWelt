@@ -33,7 +33,8 @@ namespace uhrenWelt.Controllers
                     .Where(x => x.ProductName.ToLower()
                     .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
                     .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower())).Where(x => x.CategoryId == categories);
+                    .Contains(search.ToLower()))
+                    .Where(x => x.CategoryId == categories);
 
                     return View(searchList);
             }
@@ -43,7 +44,8 @@ namespace uhrenWelt.Controllers
                     .Where(x => x.ProductName.ToLower()
                     .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
                     .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower())).Where(x => x.ManufacturerId == manufacturer);
+                    .Contains(search.ToLower()))
+                    .Where(x => x.ManufacturerId == manufacturer);
 
                     return View(searchList);
             }
@@ -53,7 +55,8 @@ namespace uhrenWelt.Controllers
                     .Where(x => x.ProductName.ToLower()
                     .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
                     .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower())).Where(x => x.ManufacturerId == manufacturer && x.CategoryId == categories);
+                    .Contains(search.ToLower()))
+                    .Where(x => x.ManufacturerId == manufacturer && x.CategoryId == categories);
 
                     return View(searchList);
             }
