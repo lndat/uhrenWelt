@@ -25,18 +25,14 @@
     </select>
 </div>*@
 
-@foreach (var item in Model)
-{
-    int maxcount = 0;
-
-    while (maxcount < 3)
+<div class="d-inline-flex" style="margin-top: 1%; margin-bottom:1%; margin-left:3%">
+    @foreach (var item in Model.Take(1))
     {
-
-    @Html.DropDownListFor(c => item.Categories, (IEnumerable<SelectListItem>)ViewBag.SelectCat)
+        @Html.DropDownListFor(c => item.Categories, (IEnumerable<SelectListItem>)ViewBag.SelectCat,"Kategorie", new { @class = "form-control" })
+        @Html.DropDownListFor(c => item.ManufacturerId, (IEnumerable<SelectListItem>)ViewBag.SelectManu, "Hersteller", new { @class = "form-control" })
     }
+</div>
 
-    
-}
 
 <div class="products">
     @foreach (var item in Model)
