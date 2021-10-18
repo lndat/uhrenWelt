@@ -59,7 +59,6 @@ namespace uhrenWelt.Controllers
 
                     return View(searchList);
             }
-
             return View();
         }
 
