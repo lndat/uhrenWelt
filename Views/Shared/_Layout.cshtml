@@ -8,38 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand navbar-light bg-light">
-        <div class="container">
-            @Html.ActionLink("uhrenwelt.at", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav me-auto">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Shop", "Shop", "Shop", null, new { @class = "nav-link" })</li>
-                    @if (!User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">@Html.ActionLink("Registrieren", "Register", "Account", null, new { @class = "nav-link" })</li>
-                    }
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <li class="nav-item">@Html.ActionLink("Logout " + "(" + @User.Identity.Name + ")", "Logout", "Account", null, new { @class = "nav-link" })</li>
-                    }
-                    else
-                    {
-                        <li class="nav-item">@Html.ActionLink("Login", "Login", "Account", null, new { @class = "nav-link" })</li>
-
-                    }
-                </ul>
-                @*@{
-                    var viewPath = Request.Url;
-
-                    if (viewPath.AbsolutePath == "/Shop/Shop")                                    
-                }*@
-            </div>
-        </div>
-    </nav>
+@Html.Partial("_NavBar")
     <div class="container body-content">
         @RenderBody()
         <hr />
