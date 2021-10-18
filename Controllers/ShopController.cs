@@ -13,6 +13,8 @@ namespace uhrenWelt.Controllers
         //[Authorize]
         public ActionResult Shop()
         {
+            ViewBag.SelectCat = CreateCategories();
+
             var temopProductList = GetList();
             return View(temopProductList);
         }
@@ -46,6 +48,26 @@ namespace uhrenWelt.Controllers
         {
             var temopProductList = GetList().Single(x => x.Id == id);
             return View(temopProductList);
+        }
+
+
+        private List<SelectListItem> CreateCategories()
+        {
+            var item1 = new SelectListItem();
+            item1.Value = "1";
+            item1.Text = "Automatik";
+
+            var item2 = new SelectListItem();
+            item2.Value = "1";
+            item2.Text = "Smartwatch";
+
+            var item3 = new SelectListItem();
+            item3.Value = "1";
+            item3.Text = "Mechanisch";
+
+            var items = new List<SelectListItem> { item1, item2, item3 };
+
+            return items;
         }
 
         public List<ProductVM> GetList()
