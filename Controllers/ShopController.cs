@@ -13,27 +13,53 @@ namespace uhrenWelt.Controllers
         //[Authorize]
         public ActionResult Shop()
         {
-            ViewBag.SelectCat = CreateCategories();
-            ViewBag.SelectManu = CreateManufacturer();
-
             var temopProductList = GetList();
             return View(temopProductList);
         }
 
-        public ActionResult Search(string search)
+        public ActionResult Search(string search, int? categories, int? manufacturer)
         {
-            ViewBag.SelectCat = CreateCategories();
-            ViewBag.SelectManu = CreateManufacturer();
-            if (search != null)
+            if (categories == null && manufacturer == null)
             {
-                var searchList = GetList()
-                .Where(x => x.ProductName.ToLower()
-                .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
-                .Contains(search.ToLower()) || x.Description.ToLower()
-                .Contains(search.ToLower()));
+                    var searchList = GetList()
+                    .Where(x => x.ProductName.ToLower()
+                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                    .Contains(search.ToLower()) || x.Description.ToLower()
+                    .Contains(search.ToLower()));
 
-                return View(searchList);
+                    return View(searchList);
             }
+            else if (categories != null && manufacturer == null)
+            {
+                    var searchList = GetList()
+                    .Where(x => x.ProductName.ToLower()
+                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                    .Contains(search.ToLower()) || x.Description.ToLower()
+                    .Contains(search.ToLower())).Where(x => x.CategoryId == categories);
+
+                    return View(searchList);
+            }
+            else if(categories == null && manufacturer != null)
+            {
+                    var searchList = GetList()
+                    .Where(x => x.ProductName.ToLower()
+                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                    .Contains(search.ToLower()) || x.Description.ToLower()
+                    .Contains(search.ToLower())).Where(x => x.ManufacturerId == manufacturer);
+
+                    return View(searchList);
+            }
+            else if(categories != null && manufacturer != null)
+            {
+                    var searchList = GetList()
+                    .Where(x => x.ProductName.ToLower()
+                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                    .Contains(search.ToLower()) || x.Description.ToLower()
+                    .Contains(search.ToLower())).Where(x => x.ManufacturerId == manufacturer && x.CategoryId == categories);
+
+                    return View(searchList);
+            }
+
             return View();
         }
 
@@ -41,64 +67,6 @@ namespace uhrenWelt.Controllers
         {
             var temopProductList = GetList().Single(x => x.Id == id);
             return View(temopProductList);
-        }
-
-        private List<SelectListItem> CreateCategories()
-        {
-            var item1 = new SelectListItem();
-            item1.Value = "1";
-            item1.Text = "Automatik";
-
-            var item2 = new SelectListItem();
-            item2.Value = "2";
-            item2.Text = "Smartwatch";
-
-            var item3 = new SelectListItem();
-            item3.Value = "3";
-            item3.Text = "Mechanisch";
-
-            var items = new List<SelectListItem> { item1, item2, item3 };
-
-            return items;
-        }
-
-        private List<SelectListItem> CreateManufacturer()
-        {
-            var item1 = new SelectListItem();
-            item1.Value = "1";
-            item1.Text = "Rolex";
-
-            var item2 = new SelectListItem();
-            item2.Value = "2";
-            item2.Text = "Breitling";
-
-            var item3 = new SelectListItem();
-            item3.Value = "3";
-            item3.Text = "Tag Heuer";
-
-            var item4 = new SelectListItem();
-            item4.Value = "4";
-            item4.Text = "Hublot";
-
-            var item5 = new SelectListItem();
-            item5.Value = "5";
-            item5.Text = "IWC Schaffhausen";
-
-            var item6 = new SelectListItem();
-            item6.Value = "6";
-            item6.Text = "Longines";
-
-            var item7 = new SelectListItem();
-            item7.Value = "7";
-            item7.Text = "Tudor";
-
-            var item8 = new SelectListItem();
-            item8.Value = "8";
-            item8.Text = "Panerai";
-
-            var items = new List<SelectListItem> { item1, item2, item3, item4, item5, item6, item7, item8 };
-
-            return items;
         }
 
         public List<ProductVM> GetList()
