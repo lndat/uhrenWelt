@@ -1,0 +1,11 @@
+﻿@model IEnumerable<uhrenWelt.ViewModel.ProductVM>
+
+<form class="form-inline" method="get" action="/Shop/Search">
+    @foreach (var item in Model.Take(1))
+    {
+        @Html.DropDownListFor(c => item.CategoryId, (IEnumerable<SelectListItem>)ViewBag.SelectCat, "Kategorie", new { @class = "form-control", style = "max-width: 12%; margin-right: 10px;" })
+        @Html.DropDownListFor(m => item.ManufacturerId, (IEnumerable<SelectListItem>)ViewBag.SelectManu, "Hersteller", new { @class = "form-control", style = "margin-right: 50px; max-width: 12%;" })
+    }
+    <input name="search" class="form-control" placeholder="Suchen..." />
+    <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Suchen</button>
+</form>

@@ -20,29 +20,21 @@ namespace uhrenWelt.Controllers
             return View(temopProductList);
         }
 
-        [HttpGet, ActionName("Search")]
-        public ActionResult SearchGet(string search)
+        public ActionResult Search(string search)
         {
-            var searchList = GetList()
+            ViewBag.SelectCat = CreateCategories();
+            ViewBag.SelectManu = CreateManufacturer();
+            if (search != null)
+            {
+                var searchList = GetList()
                 .Where(x => x.ProductName.ToLower()
                 .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
                 .Contains(search.ToLower()) || x.Description.ToLower()
                 .Contains(search.ToLower()));
 
-            return View(searchList);
-        }
-
-        [HttpPost]
-        [ActionName("Search")]
-        public ActionResult SearchPost(string search)
-        {
-            var searchList = GetList()
-                .Where(x => x.ProductName.ToLower()
-                .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
-                .Contains(search.ToLower()) || x.Description.ToLower()
-                .Contains(search.ToLower()));
-
-            return View(searchList);
+                return View(searchList);
+            }
+            return View();
         }
 
         public ActionResult Details(int? id)
@@ -50,7 +42,6 @@ namespace uhrenWelt.Controllers
             var temopProductList = GetList().Single(x => x.Id == id);
             return View(temopProductList);
         }
-
 
         private List<SelectListItem> CreateCategories()
         {

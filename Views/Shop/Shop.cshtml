@@ -1,38 +1,26 @@
 ﻿@model IEnumerable<uhrenWelt.ViewModel.ProductVM>
 
-<form class="form-inline" method="post" action="/Shop/Search">
-    <input name="search" class="form-control" placeholder="Suchen..." />
-    <button type="submit" class="btn btn-secondary">Suchen</button>
-</form>
+@Html.Partial("_SearchFilterBar")
 
 @*<div class="d-inline-flex" style="margin-top: 1%; margin-bottom:1%;">
-    <select class="form-control" name="Category" style="margin-left: 11.7%;">
-        <option value="" selected disabled hidden>Kategorie</option>
-        <option>Automatik</option>
-        <option>Smartwatch</option>
-        <option>Mechanisch</option>
-    </select>
-    <select class="form-control" name="Manufacturer" style="margin-left: 10px;">
-        <option value="" selected disabled hidden>Hersteller</option>
-        <option>Rolex</option>
-        <option>Breitling</option>
-        <option>Tag Heuer</option>
-        <option>Hublot</option>
-        <option>IWC Schaffhausen</option>
-        <option>Longines</option>
-        <option>Tudor</option>
-        <option>Panerai</option>
-    </select>
-</div>*@
-
-<div class="d-inline-flex" style="margin-top: 1%; margin-bottom:1%; margin-left:3%">
-    @foreach (var item in Model.Take(1))
-    {
-        @Html.DropDownListFor(c => item.Categories, (IEnumerable<SelectListItem>)ViewBag.SelectCat,"Kategorie", new { @class = "form-control" })
-        @Html.DropDownListFor(c => item.ManufacturerId, (IEnumerable<SelectListItem>)ViewBag.SelectManu, "Hersteller", new { @class = "form-control" })
-    }
-</div>
-
+        <select class="form-control" name="Category" style="margin-left: 11.7%;">
+            <option value="" selected disabled hidden>Kategorie</option>
+            <option>Automatik</option>
+            <option>Smartwatch</option>
+            <option>Mechanisch</option>
+        </select>
+        <select class="form-control" name="Manufacturer" style="margin-left: 10px;">
+            <option value="" selected disabled hidden>Hersteller</option>
+            <option>Rolex</option>
+            <option>Breitling</option>
+            <option>Tag Heuer</option>
+            <option>Hublot</option>
+            <option>IWC Schaffhausen</option>
+            <option>Longines</option>
+            <option>Tudor</option>
+            <option>Panerai</option>
+        </select>
+    </div>*@
 
 <div class="products">
     @foreach (var item in Model)

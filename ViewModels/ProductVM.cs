@@ -16,8 +16,5 @@ namespace uhrenWelt.ViewModel
         public int ManufacturerId { get; set; }
         [Display(Name = "Hersteller")] public string ManufacturerName { get; set; }
         public int CategoryId { get; set; }
-
-        public IEnumerable<uhrenWelt.Data.Category> Categories { get; set; }
-
     }
 }
