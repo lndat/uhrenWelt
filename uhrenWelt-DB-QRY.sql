@@ -4,7 +4,7 @@ DROP DATABASE uhrenWelt
 GO
 
 SELECT 'SHA2_512' as HashFunction, 
-HASHBYTES('SHA2_512', '1234qc') as HashWErtDesPasswortes, len(HASHBYTES('SHA2_512', '1234qc') ) as LaengedesHashWertes 
+HASHBYTES('SHA2_512', 'testSWLm') as HashWErtDesPasswortes, len(HASHBYTES('SHA2_512', 'testSWLm') ) as LaengedesHashWertes 
 
 
 SELECT [NetUnitPrice], [ProductName] FROM [Product] 
@@ -54,10 +54,6 @@ CREATE TABLE [dbo].[Order](
     [Street] [varchar](150) NOT NULL,
     [Zip] [varchar](5) NOT NULL,
     [City] [varchar](200) NOT NULL,
-    [FirstName] [varchar](150) NOT NULL,
-    [LastName] [varchar](150) NOT NULL,
-    [VoucherId] [int] NULL,
-    [PriceToPay] [decimal](12, 2) NOT NULL
 )
 
 CREATE TABLE [dbo].[Manufacturer](

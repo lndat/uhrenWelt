@@ -117,7 +117,7 @@ namespace uhrenWelt.Controllers
         {
             var timeNow = DateTime.Now;
             var name = email;
-            var rememberMe = false;
+            var rememberMe = true;
             string userData = "";
 
             var ticket = new FormsAuthenticationTicket(
