@@ -17,7 +17,7 @@ namespace uhrenWelt.ViewModels
         public int ManufacturerId { get; set; }
         [Display(Name = "Hersteller")] public string ManufacturerName { get; set; }
         public int CategoryId { get; set; }
-        public byte Amount { get; set; }
-        public Customer Customer { get; set; }
+        public int Amount { get; set; }
+        public Product Product { get; set; }
     }
 }

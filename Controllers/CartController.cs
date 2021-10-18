@@ -15,13 +15,9 @@ namespace uhrenWelt.Controllers
         // GET: Cart
         public ActionResult ShowCart()
         {
-            return View();
-        }
+            var showIndex = GetList();
 
-        [HttpPost]
-        public ActionResult ShowCart(CartVM product)
-        {
-            return View();
+            return View(showIndex);
         }
 
         public List<CartVM> GetList()
@@ -34,11 +30,11 @@ namespace uhrenWelt.Controllers
             return meineListe;
         }
 
-        public List<Product> GetListFromDB()
+        public List<OrderLine> GetListFromDB()
         {
             using (var db = new uhrenWeltEntities())
             {
-                return db.Product.ToList();
+                return db.OrderLine.ToList();
             }
         }
 
@@ -60,19 +56,18 @@ namespace uhrenWelt.Controllers
             }
         }
 
-        public CartVM Mapping(Product databaseData)
+        public CartVM Mapping(OrderLine databaseData)
         {
             CartVM vm = new CartVM();
 
             vm.Id = databaseData.Id;
-            vm.ProductName = databaseData.ProductName;
             vm.NetUnitPrice = databaseData.NetUnitPrice;
-            vm.ImagePath = databaseData.ImagePath;
-            vm.Description = databaseData.Description;
-            vm.ManufacturerId = databaseData.ManufacturerId;
-            vm.CategoryId = databaseData.CategoryId;
-            //vm.Amount = databaseData;
-            vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
+            vm.Product.ImagePath = databaseData.Product.ImagePath;
+            vm.Description = databaseData.Product.Description;
+            vm.ManufacturerId = databaseData.Product.ManufacturerId;
+            vm.CategoryId = databaseData.Product.CategoryId;
+            vm.Amount = databaseData.Amount;
+            vm.ManufacturerName = GetManufacturerFromDB(databaseData.Product.ManufacturerId);
 
             return vm;
         }
