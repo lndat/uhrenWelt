@@ -15,9 +15,9 @@ namespace uhrenWelt.Controllers
         // GET: Cart
         public ActionResult ShowCart()
         {
-            var showIndex = GetList();
+           
 
-            return View(showIndex);
+            return View();
         }
 
         public List<CartVM> GetList()
