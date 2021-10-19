@@ -21,6 +21,7 @@ namespace uhrenWelt.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult AddToCart(int? id)
         {
             if (id == null)
@@ -41,8 +42,8 @@ namespace uhrenWelt.Controllers
                 Debug.WriteLine("SESSION FOUND!! SESSION FOUND!! SESSION FOUND!! SESSION FOUND!!");
 
                 List<Cart> cartList = (List<Cart>)Session[SESSION_NAME];
-                int check = Services.CartService.CartItemAmount(id, cartList);
-                if (check == 0)
+                int check = CartItemAmount(id);
+                if (check == -1)
                 {
                     cartList.Add(new Cart(db.Product.Find(id), 1));
                 }
@@ -55,6 +56,19 @@ namespace uhrenWelt.Controllers
             return View("Cart");
         }
 
+        public int CartItemAmount(int? id)
+        {
+            List<Cart> cartList = (List<Cart>)Session[SESSION_NAME];
+
+            for (int i = 0; i < cartList.Count; i++)
+            {
+                if (cartList[i].Product.Id == id)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
 
     }
 }

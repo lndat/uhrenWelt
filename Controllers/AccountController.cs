@@ -92,6 +92,7 @@ namespace uhrenWelt.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 
@@ -106,7 +107,6 @@ namespace uhrenWelt.Controllers
         {
             if (UserService.LoginCheck(email, password))
             {
-
                 AuthenticateUser(email);
                 return RedirectToAction("Shop", "Shop");
             }
