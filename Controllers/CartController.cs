@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,70 +12,50 @@ namespace uhrenWelt.Controllers
     public class CartController : Controller
     {
         private uhrenWeltEntities db = new uhrenWeltEntities();
+        public const string SESSION_NAME = "CartSession";
 
         // GET: Cart
-        public ActionResult AddToCart(int? productId)
+        public ActionResult Index()
         {
-            var userEmail = User.Identity.Name;
-            var getUser = db.Customer.Single(x => x.Email == userEmail);
 
-            uhrenWelt.Services.CartService.AddItemToCart(productId, getUser.Id, 69);
-            var temopProductList = GetList().Where(x => x.Id == productId);
-            return View(temopProductList);
+            return View();
         }
 
-        public List<OrderDetail> GetList()
+        public ActionResult AddToCart(int? id)
         {
-            List<OrderDetail> meineListe = new List<OrderDetail>();
-            foreach (var item in GetListFromDB())
+            if (id == null)
             {
-                meineListe.Add(Mapping(item));
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
             }
-            return meineListe;
-        }
-
-        public List<OrderLine> GetListFromDB()
-        {
-            using (var db = new uhrenWeltEntities())
+            if (Session[SESSION_NAME] == null)
             {
-                return db.OrderLine.ToList();
+                Debug.WriteLine("NO SESSION FOUND :( NOOOO");
+                List<Cart> cartList = new List<Cart>
+                {
+                    new Cart(db.Product.Find(id), 1)
+                };
+                Session[SESSION_NAME] = cartList;
             }
-        }
-
-        public string GetManufacturerFromDB(int? id)
-        {
-            using (var db = new uhrenWeltEntities())
+            else
             {
-                var manuId = db.Manufacturer.Find(id);
-                return manuId.Name;
+                Debug.WriteLine("SESSION FOUND!! SESSION FOUND!! SESSION FOUND!! SESSION FOUND!!");
+
+                List<Cart> cartList = (List<Cart>)Session[SESSION_NAME];
+                int check = Services.CartService.CartItemAmount(id, cartList);
+                if (check == 0)
+                {
+                    cartList.Add(new Cart(db.Product.Find(id), 1));
+                }
+                else
+                {
+                    cartList[check].Amount++;
+                }
+                Session[SESSION_NAME] = cartList;
             }
+            return View("Cart");
         }
 
-        public int GetAmountFromDB(int? id)
-        {
-            using (var db = new uhrenWeltEntities())
-            {
-                var manuId = db.OrderLine.Where(x => x.ProductId == id).FirstOrDefault();
-                return manuId.Amount;
-            }
-        }
 
-        public OrderDetail Mapping(OrderLine databaseData)
-        {
-            OrderDetail vm = new OrderDetail();
-
-            vm.Id = databaseData.Id;
-            vm.NetUnitPrice = databaseData.NetUnitPrice;
-            vm.ImagePath = databaseData.Product.ImagePath;
-            vm.ManufacturerId = databaseData.Product.ManufacturerId;
-            vm.Amount = databaseData.Amount;
-            vm.ManufacturerName = GetManufacturerFromDB(databaseData.Product.ManufacturerId);
-            vm.ProductId = databaseData.ProductId;
-            vm.ProductName = databaseData.Product.ProductName;
-            vm.NetUnitPrice = databaseData.NetUnitPrice;
-
-            return vm;
-        }
     }
 }
 

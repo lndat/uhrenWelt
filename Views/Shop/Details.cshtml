@@ -49,5 +49,16 @@
                 </div>
             </div>
 <div class="buttonCenter">
-    @Html.ActionLink("Kaufen", "AddToCart", "Cart", new { productId = Model.Id }, new { @class = "btn btn-secondary" })
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Kaufen", "AddToCart", "Cart", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+    }
+    else
+    {
+    <div class="small">
+        <p style="color:darkred; font-size:15px;">Sie müssen eingeloggt sein um ein Produkt zu kaufen!</p>
+        <button type="button" class="btn btn-secondary" disabled>Kaufen</button>
+    </div>
+       
+    }
 </div>

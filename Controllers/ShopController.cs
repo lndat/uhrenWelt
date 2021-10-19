@@ -8,7 +8,7 @@ namespace uhrenWelt.Controllers
 {
     public class ShopController : Controller
     {
-        [Authorize]
+        //[Authorize]
         public ActionResult Shop()
         {
             var temopProductList = GetList();

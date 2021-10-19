@@ -106,6 +106,7 @@ namespace uhrenWelt.Controllers
         {
             if (UserService.LoginCheck(email, password))
             {
+
                 AuthenticateUser(email);
                 return RedirectToAction("Shop", "Shop");
             }
