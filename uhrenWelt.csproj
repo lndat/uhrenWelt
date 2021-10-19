@@ -171,6 +171,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CartService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -388,13 +390,12 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shop\Search.cshtml" />
-    <Content Include="Views\Cart\ShowCart.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_SearchFilterBar.cshtml" />
+    <Content Include="Views\Cart\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

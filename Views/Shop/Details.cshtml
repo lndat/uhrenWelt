@@ -49,5 +49,5 @@
                 </div>
             </div>
 <div class="buttonCenter">
-    @Html.ActionLink("Kaufen", "Cart", "ShowCart", new { Id = Model.Id }, new { @class = "btn btn-secondary" })
+    @Html.ActionLink("Kaufen", "AddToCart", "Cart", new { productId = Model.Id }, new { @class = "btn btn-secondary" })
 </div>
