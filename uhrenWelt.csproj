@@ -250,6 +250,10 @@
     <Content Include="Img\Logos\brand_hublot.jpg" />
     <Content Include="Img\Logos\brand_rolex.jpg" />
     <Content Include="Img\Logos\breitling.jpg" />
+    <Content Include="Img\Logos\cartImg.png" />
+    <Content Include="Img\Logos\Icon_Naturbewusst.svg" />
+    <Content Include="Img\Logos\Icon_Regional__1_.svg" />
+    <Content Include="Img\Logos\Icon_Zuverl__ssig.svg" />
     <Content Include="Img\Logos\iwc.jpg" />
     <Content Include="Img\Logos\longines.jpg" />
     <Content Include="Img\Logos\panerai.jpg" />
@@ -393,6 +397,7 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_SearchFilterBar.cshtml" />
     <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

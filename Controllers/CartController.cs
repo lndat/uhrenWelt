@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.Models;
@@ -15,10 +12,18 @@ namespace uhrenWelt.Controllers
         public const string SESSION_NAME = "CartSession";
 
         // GET: Cart
-        public ActionResult Index()
+        public ActionResult ShowCart()
         {
+            var cartList = new List<Cart>();
+            cartList = (List<Cart>)Session[SESSION_NAME];
 
-            return View();
+            if (cartList != null)
+            {
+                ViewBag.Message = "EmptyCart";
+                return View();
+            }
+
+            return View(cartList);
         }
 
         [Authorize]
@@ -69,8 +74,5 @@ namespace uhrenWelt.Controllers
             }
             return -1;
         }
-
     }
 }
-
-

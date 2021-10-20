@@ -1,0 +1,35 @@
+﻿@using uhrenWelt.Models;
+
+@{
+    ViewBag.Title = "Einkaufswagen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Einkaufswagen</h2>
+@if ((List<Cart>)Session["CartSession"] != null)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Manufacturer</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Einzelpreis</th>
+            <th>Gesamt Preis</th>
+        </tr>
+        @foreach (var cart in (List<Cart>)Session["CartSession"])
+        {
+            <tr>
+                <td>@cart.Product.Manufacturer.Name</td>
+                <td>@cart.Product.ProductName</td>
+                <td>@cart.Amount</td>
+                <td>@cart.Product.NetUnitPrice</td>
+                <td>@(cart.Product.NetUnitPrice * cart.Amount)</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <br /><span style="color:red;">Einkaufswagen ist leer!</span>
+}
+
