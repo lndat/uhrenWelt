@@ -49,7 +49,7 @@ namespace uhrenWelt.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(customerVm); //TODO
+            return View(customerVm); 
         }
 
         public List<CustomerVM> GetList()
