@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.Models;
@@ -8,15 +9,15 @@ namespace uhrenWelt.Controllers
 {
     public class CartController : Controller
     {
-        private uhrenWeltEntities db = new uhrenWeltEntities();
         public const string SESSION_NAME = "CartSession";
+        private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
         // GET: Cart
         [Authorize]
         public ActionResult ShowCart()
         {
             var cartList = new List<Cart>();
-            cartList = (List<Cart>)Session[SESSION_NAME];
+            cartList = (List<Cart>) Session[SESSION_NAME];
 
             if (cartList != null)
             {
@@ -30,14 +31,11 @@ namespace uhrenWelt.Controllers
         [Authorize]
         public ActionResult AddToCart(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             if (Session[SESSION_NAME] == null)
             {
                 Debug.WriteLine("NO SESSION FOUND :( NOOOO");
-                List<Cart> cartList = new List<Cart>
+                var cartList = new List<Cart>
                 {
                     new Cart(db.Product.Find(id), 1)
                 };
@@ -47,32 +45,25 @@ namespace uhrenWelt.Controllers
             {
                 Debug.WriteLine("SESSION FOUND!! SESSION FOUND!! SESSION FOUND!! SESSION FOUND!!");
 
-                List<Cart> cartList = (List<Cart>)Session[SESSION_NAME];
-                int check = CartItemAmount(id);
+                var cartList = (List<Cart>) Session[SESSION_NAME];
+                var check = CartItemAmount(id);
                 if (check == -1)
-                {
                     cartList.Add(new Cart(db.Product.Find(id), 1));
-                }
                 else
-                {
                     cartList[check].Amount++;
-                }
                 Session[SESSION_NAME] = cartList;
             }
+
             return View("Cart");
         }
 
         public int CartItemAmount(int? id)
         {
-            List<Cart> cartList = (List<Cart>)Session[SESSION_NAME];
+            var cartList = (List<Cart>) Session[SESSION_NAME];
 
-            for (int i = 0; i < cartList.Count; i++)
-            {
+            for (var i = 0; i < cartList.Count; i++)
                 if (cartList[i].Product.Id == id)
-                {
                     return i;
-                }
-            }
             return -1;
         }
     }

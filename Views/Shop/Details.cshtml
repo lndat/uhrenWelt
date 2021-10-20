@@ -7,58 +7,57 @@
 <h2>Produkt Details</h2>
 
 <div>
-                <p>
-                    <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-1);">Zurück</a>
-                </p>
-                <hr />
-                <img class="detailsImage" src="@Model.ImagePath" />
-                <div class="detailDescription">
-                    <dl class="dl-horizontal">
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ManufacturerName)
-                        </dt>
+    <p>
+        <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-1);">Zurück</a>
+    </p>
+    <hr/>
+    <img class="detailsImage" src="@Model.ImagePath"/>
+    <div class="detailDescription">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ManufacturerName)
+            </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.ManufacturerName)
-                        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ManufacturerName)
+            </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.ProductName)
-                        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.ProductName)
-                        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.NetUnitPrice)
-                        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NetUnitPrice)
+            </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.NetUnitPrice)
-                        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NetUnitPrice)
+            </dd>
 
-                        <dt>
-                            @Html.DisplayNameFor(model => model.Description)
-                        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-                        <dd>
-                            @Html.DisplayFor(model => model.Description)
-                        </dd>
-                    </dl>
-                </div>
-            </div>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+        </dl>
+    </div>
+</div>
 <div class="buttonCenter">
     @if (User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink("Kaufen", "AddToCart", "Cart", new { id = Model.Id }, new { @class = "btn btn-secondary" })
+        @Html.ActionLink("Kaufen", "AddToCart", "Cart", new {id = Model.Id}, new {@class = "btn btn-secondary"})
     }
     else
     {
-    <div class="small">
-        <p style="color:darkred; font-size:15px;">Sie müssen eingeloggt sein um ein Produkt zu kaufen!</p>
-        <button type="button" class="btn btn-secondary" disabled>Kaufen</button>
-    </div>
-       
+        <div class="small">
+            <p style="color:darkred; font-size:15px;">Sie müssen eingeloggt sein um ein Produkt zu kaufen!</p>
+            <button type="button" class="btn btn-secondary" disabled>Kaufen</button>
+        </div>
     }
 </div>

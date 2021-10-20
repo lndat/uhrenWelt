@@ -5,7 +5,7 @@
 <div class="products">
     @foreach (var item in Model)
     {
-        <a href="@Url.Action("Details", "Shop", new { id = item.Id })" class="product-card">
+        <a href="@Url.Action("Details", "Shop", new {id = item.Id})" class="product-card">
             <div class="product-image">
                 <img src="@item.ImagePath" alt="">
             </div>

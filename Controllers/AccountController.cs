@@ -12,7 +12,7 @@ namespace uhrenWelt.Controllers
 {
     public class AccountController : Controller
     {
-        private uhrenWeltEntities db = new uhrenWeltEntities();
+        private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
         public ActionResult Register()
         {
@@ -24,7 +24,7 @@ namespace uhrenWelt.Controllers
         public ActionResult Register(CustomerVM customerVm)
         {
             var newCustomer = new Customer();
-            var salt = uhrenWelt.Services.UserService.CreateSalt(customerVm.PwHash.Length);
+            var salt = UserService.CreateSalt(customerVm.PwHash.Length);
 
             newCustomer.Title = customerVm.Title;
             newCustomer.FirstName = customerVm.FirstName;
@@ -33,7 +33,7 @@ namespace uhrenWelt.Controllers
             newCustomer.Street = customerVm.Street;
             newCustomer.Zip = customerVm.Zip;
             newCustomer.City = customerVm.City;
-            newCustomer.PwHash = uhrenWelt.Services.UserService.HashPassword(customerVm.PwHash + salt);
+            newCustomer.PwHash = UserService.HashPassword(customerVm.PwHash + salt);
             newCustomer.Salt = salt;
 
             if (ModelState.IsValid)
@@ -54,11 +54,8 @@ namespace uhrenWelt.Controllers
 
         public List<CustomerVM> GetList()
         {
-            List<CustomerVM> meineListe = new List<CustomerVM>();
-            foreach (var item in GetListFromDB())
-            {
-                meineListe.Add(Mapping(item));
-            }
+            var meineListe = new List<CustomerVM>();
+            foreach (var item in GetListFromDB()) meineListe.Add(Mapping(item));
             return meineListe;
         }
 
@@ -72,7 +69,7 @@ namespace uhrenWelt.Controllers
 
         public CustomerVM Mapping(Customer databaseData)
         {
-            CustomerVM vm = new CustomerVM();
+            var vm = new CustomerVM();
 
             vm.Id = databaseData.Id;
             vm.Title = databaseData.Title;
@@ -110,6 +107,7 @@ namespace uhrenWelt.Controllers
                 AuthenticateUser(email);
                 return RedirectToAction("Shop", "Shop");
             }
+
             return View();
         }
 
@@ -119,7 +117,7 @@ namespace uhrenWelt.Controllers
             var timeNow = DateTime.Now;
             var name = email;
             var rememberMe = true;
-            string userData = "";
+            var userData = "";
 
             var ticket = new FormsAuthenticationTicket(
                 0,
@@ -128,14 +126,14 @@ namespace uhrenWelt.Controllers
                 timeNow.AddMinutes(30),
                 rememberMe,
                 userData
-                );
+            );
 
             var encryptedTicket = FormsAuthentication.Encrypt(ticket);
 
             var cookie = new HttpCookie(
                 FormsAuthentication.FormsCookieName, // default framework cookiename
                 encryptedTicket
-                );
+            );
 
             // per http response, cookie user übergeben
             Response.Cookies.Add(cookie);

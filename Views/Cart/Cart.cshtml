@@ -1,5 +1,4 @@
-﻿@using uhrenWelt.Models;
-
+﻿@using uhrenWelt.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,10 +15,12 @@
         <th>Einzelpreis</th>
         <th>Gesamt Preis</th>
     </tr>
-    @foreach (var cart in (List<Cart>)Session["CartSession"])
+    @foreach (var cart in (List<Cart>) Session["CartSession"])
     {
         <tr>
-            <td><img src="@cart.Product.ImagePath" style="max-height:3em"/></td>
+            <td>
+                <img src="@cart.Product.ImagePath" style="max-height:3em"/>
+            </td>
             <td>@cart.Product.Manufacturer.Name</td>
             <td>@cart.Product.ProductName</td>
             <td>@cart.Amount</td>

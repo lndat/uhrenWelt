@@ -7,26 +7,24 @@ namespace uhrenWelt.Services
 {
     public class UserService
     {
-        private static uhrenWeltEntities db = new uhrenWeltEntities();
+        private static readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
         public static string CreateSalt(int saltLength)
         {
-            string s = "";
+            var s = "";
             const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
-            using (RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider())
+            using (var provider = new RNGCryptoServiceProvider())
             {
                 while (s.Length != saltLength)
                 {
-                    byte[] oneByte = new byte[1];
+                    var oneByte = new byte[1];
                     provider.GetBytes(oneByte);
-                    char character = (char)oneByte[0];
-                    if (validChars.Contains(character))
-                    {
-                        s += character;
-                    }
+                    var character = (char) oneByte[0];
+                    if (validChars.Contains(character)) s += character;
                 }
             }
+
             return s;
         }
 
@@ -41,16 +39,13 @@ namespace uhrenWelt.Services
         private static string GetStringFromHash(byte[] hash)
         {
             StringBuilder result = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-            {
-                result.Append(hash[i].ToString("X2"));
-            }
+            for (int i = 0; i < hash.Length; i++) result.Append(hash[i].ToString("X2"));
             return result.ToString();
         }
 
         public static bool LoginCheck(string email, string password)
         {
-            var findEmail = db.Customer.Where(x => (x.Email == email));
+            var findEmail = db.Customer.Where(x => x.Email == email);
 
             if (findEmail.Count() > 0)
             {
@@ -58,22 +53,17 @@ namespace uhrenWelt.Services
                 var hashPassword = HashPassword(password + salt);
                 var checkPasswordHash = db.Customer.Where(x => x.PwHash == hashPassword);
 
-                if (checkPasswordHash.Count() > 0)
-                {
-                    return true;
-                }
+                if (checkPasswordHash.Count() > 0) return true;
                 return false;
             }
+
             return false;
         }
 
         public static bool EmailCheck(string email)
         {
             var checkEmail = db.Customer.Where(x => x.Email == email);
-            if (checkEmail.Count() > 0)
-            {
-                return true;
-            }
+            if (checkEmail.Count() > 0) return true;
             return false;
         }
     }

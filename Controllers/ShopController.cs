@@ -11,72 +11,73 @@ namespace uhrenWelt.Controllers
         //[Authorize]
         public ActionResult Shop()
         {
-            var temopProductList = GetList();
-            return View(temopProductList);
+            var tempProductList = GetList();
+            return View(tempProductList);
         }
 
         public ActionResult Search(string search, int? categories, int? manufacturer)
         {
             if (categories == null && manufacturer == null)
             {
-                    var searchList = GetList()
+                var searchList = GetList()
                     .Where(x => x.ProductName.ToLower()
-                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
-                    .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower()));
+                        .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                        .Contains(search.ToLower()) || x.Description.ToLower()
+                        .Contains(search.ToLower()));
 
-                    return View(searchList);
+                return View(searchList);
             }
-            else if (categories != null && manufacturer == null)
+
+            if (categories != null && manufacturer == null)
             {
-                    var searchList = GetList()
+                var searchList = GetList()
                     .Where(x => x.ProductName.ToLower()
-                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
-                    .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower()))
+                        .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                        .Contains(search.ToLower()) || x.Description.ToLower()
+                        .Contains(search.ToLower()))
                     .Where(x => x.CategoryId == categories);
 
-                    return View(searchList);
+                return View(searchList);
             }
-            else if(categories == null && manufacturer != null)
+
+            if (categories == null && manufacturer != null)
             {
-                    var searchList = GetList()
+                var searchList = GetList()
                     .Where(x => x.ProductName.ToLower()
-                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
-                    .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower()))
+                        .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                        .Contains(search.ToLower()) || x.Description.ToLower()
+                        .Contains(search.ToLower()))
                     .Where(x => x.ManufacturerId == manufacturer);
 
-                    return View(searchList);
+                return View(searchList);
             }
-            else if(categories != null && manufacturer != null)
+
+            if (categories != null && manufacturer != null)
             {
-                    var searchList = GetList()
+                var searchList = GetList()
                     .Where(x => x.ProductName.ToLower()
-                    .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
-                    .Contains(search.ToLower()) || x.Description.ToLower()
-                    .Contains(search.ToLower()))
+                        .Contains(search.ToLower()) || x.ManufacturerName.ToLower()
+                        .Contains(search.ToLower()) || x.Description.ToLower()
+                        .Contains(search.ToLower()))
                     .Where(x => x.ManufacturerId == manufacturer && x.CategoryId == categories);
 
-                    return View(searchList);
+                return View(searchList);
             }
+
             return View();
         }
 
         public ActionResult Details(int? id)
         {
-            var temopProductList = GetList().Single(x => x.Id == id);
-            return View(temopProductList);
+            var tempProductList = GetList().Single(x => x.Id == id);
+            return View(tempProductList);
         }
 
         public List<ProductVM> GetList()
         {
-            List<ProductVM> meineListe = new List<ProductVM>();
-            foreach (var item in GetListFromDB())
-            {
-                meineListe.Add(Mapping(item));
-            }
-            return meineListe;
+            var tempProductList = new List<ProductVM>();
+            foreach (var item in GetListFromDB()) tempProductList.Add(Mapping(item));
+            return tempProductList;
         }
 
         public List<Product> GetListFromDB()
@@ -98,7 +99,7 @@ namespace uhrenWelt.Controllers
 
         public ProductVM Mapping(Product databaseData)
         {
-            ProductVM vm = new ProductVM();
+            var vm = new ProductVM();
 
             vm.Id = databaseData.Id;
             vm.ProductName = databaseData.ProductName;

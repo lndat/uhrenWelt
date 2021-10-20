@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - uhrenwelt.at</title>
     @Styles.Render("~/Content/css")
@@ -9,18 +9,18 @@
 </head>
 <body>
 @Html.Partial("_NavBar")
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p align=center>
-                @Html.ActionLink("Impressum", "Impressum", "Home",null, new { @class ="removeStyle"}) - @Html.ActionLink("Allgemeine Geschäftsbedingungen", "Geschaeftsbedingungen", "Home",null, new { @class ="removeStyle"}) - @Html.ActionLink("Datenschutz", "Datenschutz", "Home",null, new { @class ="removeStyle"})
-            </p>
-            <p align=center>&copy; @DateTime.Now.Year - uhrenwelt.at</p>
-        </footer>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p align="center">
+            @Html.ActionLink("Impressum", "Impressum", "Home", null, new {@class = "removeStyle"}) - @Html.ActionLink("Allgemeine Geschäftsbedingungen", "Geschaeftsbedingungen", "Home", null, new {@class = "removeStyle"}) - @Html.ActionLink("Datenschutz", "Datenschutz", "Home", null, new {@class = "removeStyle"})
+        </p>
+        <p align="center">&copy; @DateTime.Now.Year - uhrenwelt.at</p>
+    </footer>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)
 </body>
 </html>
