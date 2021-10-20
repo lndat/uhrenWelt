@@ -4,8 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>Einkaufswagen</h2>
+<p>
+    <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-2);">Zurück</a>
+</p>
 <table class="table">
     <tr>
         <th>Bild</th>
@@ -15,11 +17,11 @@
         <th>Einzelpreis</th>
         <th>Gesamt Preis</th>
     </tr>
-    @foreach (var cart in (List<Cart>) Session["CartSession"])
+    @foreach (var cart in (List<Cart>)Session["CartSession"])
     {
         <tr>
             <td>
-                <img src="@cart.Product.ImagePath" style="max-height:3em"/>
+                <img src="@cart.Product.ImagePath" style="max-height:3em" />
             </td>
             <td>@cart.Product.Manufacturer.Name</td>
             <td>@cart.Product.ProductName</td>

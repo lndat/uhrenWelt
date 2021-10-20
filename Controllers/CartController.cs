@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using uhrenWelt.Data;
@@ -19,7 +20,7 @@ namespace uhrenWelt.Controllers
             var cartList = new List<Cart>();
             cartList = (List<Cart>) Session[SESSION_NAME];
 
-            if (cartList != null)
+            if (cartList == null)
             {
                 ViewBag.Message = "EmptyCart";
                 return View();
