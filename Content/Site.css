@@ -42,6 +42,10 @@ h7 {
 
 .removeStyle {
     text-decoration: none;
+    color: #0A3826;
+}
+.removeStyle:hover {
+    text-decoration: none;
     color: #000000;
 }
 
@@ -191,4 +195,8 @@ h7 {
     width: 100%;
     text-align: center;
     display: inline-block;
+}
+
+input, label {
+    display: block;
 }

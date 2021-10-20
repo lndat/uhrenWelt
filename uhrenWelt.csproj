@@ -237,6 +237,7 @@
     <Content Include="Img\Hublot\Hublot-10.png" />
     <Content Include="Img\Hublot\Hublot-11.png" />
     <Content Include="Img\Hublot\Hublot-12.png" />
+    <Content Include="Img\Hublot\Hublot-13.png" />
     <Content Include="Img\IWC\Schaffhausen-01.png" />
     <Content Include="Img\IWC\Schaffhausen-02.png" />
     <Content Include="Img\IWC\Schaffhausen-03.png" />
@@ -314,6 +315,7 @@
     <Content Include="Img\TagH\TagHeuer-10.png" />
     <Content Include="Img\TagH\TagHeuer-11.png" />
     <Content Include="Img\TagH\TagHeuer-12.png" />
+    <Content Include="Img\TagH\TagHeuer-13.png" />
     <Content Include="Img\Tudor\Tudor-01.png" />
     <Content Include="Img\Tudor\Tudor-02.png" />
     <Content Include="Img\Tudor\Tudor-03.png" />

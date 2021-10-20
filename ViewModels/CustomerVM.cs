@@ -55,7 +55,7 @@ namespace uhrenWelt.ViewModels
 
         [DataType(DataType.Password)]
         [Compare("PwHash", ErrorMessage = "Passwort muss übereinstimmen!")]
-        [Display(Name = "Passwort")]
+        [Display(Name = "Passwort wiederholen")]
         public string PwCheck { get; set; }
 
         public string Salt { get; set; }

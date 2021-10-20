@@ -5,21 +5,21 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('Navitimer', 10150, '/Img/Breitling/Navitimer-01.png',
-'Navitimer 1 B01 Chronograph 46', 2, 1)
+'Navitimer 1 B01 Chronograph 46, Mechanisch', 2, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Navitimer', 7880, '/Img/Breitling/Navitimer-02.png',
-'Navitimer 1 B01 Chronograph 43 Pan Am', 2, 1)
+'Navitimer 1 B01 Chronograph 43 Pan Am, Mechanisch', 2, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('Navitimer', 7700, '/Img/Breitling/Navitimer-03.png',
-'Navitimer 1 Chronograph 41', 2, 1)
+'Navitimer 1 Chronograph 41, Mechanisch', 2, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -103,14 +103,14 @@ insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], Manufa
 CategoryID)
 values
 ('TAG Heuer Carrera', 16400, '/Img/TagH/TagHeuer-01.png',
-'Durchmesser 45,00 mm, Gehäuse aus Titan', 3, 1)
+'Durchmesser 45,00 mm, Gehäuse aus Titan, Mechanisch', 3, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
 ('TAG Heuer Carrera', 5450, '/Img/TagH/TagHeuer-02.png',
-'Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 1)
+'Durchmesser 45,00 mm, Gehäuse aus Edelstahl, Mechanisch', 3, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -153,6 +153,13 @@ CategoryID)
 values
 ('TAG Heuer Connected', 1700, '/Img/TagH/TagHeuer-08.png',
 'SmartWatch - Durchmesser 45,00 mm, Gehäuse aus Edelstahl', 3, 2)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
+('TAG Heuer Connected', 2400, '/Img/TagH/TagHeuer-13.png',
+'Smartwatch - TAG Heuer Golf - Durchmesser 45,00 mm, Gehäuse aus Titan', 3, 2)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
@@ -270,6 +277,13 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
+('Big Bang', 5700, '/Img/Hublot/Hublot-13.png',
+'Smartwatch - Big Bang Uefa Euro 2020 - Durchmesser 42,00 mm, Polierte schwarze Keramik', 4, 2)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
 ('Pilots', 8400, '/Img/IWC/Schaffhausen-01.png',
 'Durchmesser 44,50 mm, Keramik - Automatik, Kaliber 69380', 5, 1)
 go
@@ -354,8 +368,8 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
-('Master Collection', 2190, '/Img/Longines/Longines-03.png',
-'Durchmesser 40,00 mm, Edelstahl', 6, 1)
+('Master Collection', 4190, '/Img/Longines/Longines-03.png',
+'Durchmesser 40,00 mm, Edelstahl, Mechanisch', 6, 3)
 go
 
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
