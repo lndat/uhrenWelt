@@ -69,8 +69,12 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Details(int? id)
         {
-            var tempProductList = GetList().Single(x => x.Id == id);
-            return View(tempProductList);
+            if (id != null)
+            {
+                var tempProductList = GetList().Single(x => x.Id == id);
+                return View(tempProductList);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public List<ProductVM> GetList()
