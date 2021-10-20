@@ -10,6 +10,7 @@
 {
     <table class="table table-bordered">
         <tr>
+            <th>Bild</th>
             <th>Manufacturer</th>
             <th>Name</th>
             <th>Amount</th>
@@ -18,13 +19,14 @@
         </tr>
         @foreach (var cart in (List<Cart>)Session["CartSession"])
         {
-            <tr>
-                <td>@cart.Product.Manufacturer.Name</td>
-                <td>@cart.Product.ProductName</td>
-                <td>@cart.Amount</td>
-                <td>@cart.Product.NetUnitPrice</td>
-                <td>@(cart.Product.NetUnitPrice * cart.Amount)</td>
-            </tr>
+    <tr>
+        <td><img src="@cart.Product.ImagePath" style="max-height:3em" /></td>
+        <td>@cart.Product.Manufacturer.Name</td>
+        <td>@cart.Product.ProductName</td>
+        <td>@cart.Amount</td>
+        <td>@cart.Product.NetUnitPrice</td>
+        <td>@(cart.Product.NetUnitPrice * cart.Amount)</td>
+    </tr>
         }
     </table>
 }
