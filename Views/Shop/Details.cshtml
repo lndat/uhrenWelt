@@ -8,7 +8,7 @@
 
 <div>
                 <p>
-                    @Html.ActionLink("Zurück", "Shop", "Shop", null, new { @class = "removeStyle" })
+                    <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-1);">Zurück</a>
                 </p>
                 <hr />
                 <img class="detailsImage" src="@Model.ImagePath" />

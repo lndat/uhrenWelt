@@ -12,6 +12,7 @@ namespace uhrenWelt.Controllers
         public const string SESSION_NAME = "CartSession";
 
         // GET: Cart
+        [Authorize]
         public ActionResult ShowCart()
         {
             var cartList = new List<Cart>();
