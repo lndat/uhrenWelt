@@ -107,8 +107,8 @@ namespace uhrenWelt.Controllers
                 AuthenticateUser(email);
                 return RedirectToAction("Shop", "Shop");
             }
-
-            return View();
+                ViewBag.Message = "WrongLoginData";
+                return View();
         }
 
         [NonAction]

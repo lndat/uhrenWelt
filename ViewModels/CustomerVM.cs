@@ -46,6 +46,7 @@ namespace uhrenWelt.ViewModels
         [Display(Name = "Stadt")] 
         public string City { get; set; }
 
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{10,}$", ErrorMessage = "Ihr Passwort muss mindestens 10 Zeichen lang sein und muss mindestens einen Großbuchstaben, einen Kleinbuchstaben und eine Ziffer enthalten.")]
         [DataType(DataType.Password)]
         [StringLength(250)]
         [Required(ErrorMessage = "Pflichtfeld!")]

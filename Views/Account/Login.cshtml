@@ -8,3 +8,8 @@
     </label>
     <button type="submit">Login</button>
 </form>
+@if (ViewBag.Message != null && ViewBag.Message == "WrongLoginData")
+{
+    <br />
+    <p style="color:red; text-align: center;">E-Mail-Adresse oder Passwort falsch!</p>
+}
