@@ -6,12 +6,16 @@
 
 <h2>Produkt Details</h2>
 
+@*@{
+    var priceChek = Model.NetUnitPrice > 10000 ? "klasseTeuer" : "klasseBillig";
+}
+<h2 class="@priceChek"></h2>*@
 <div>
     <p>
         <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-1);">Zurück</a>
     </p>
-    <hr/>
-    <img class="detailsImage" src="@Model.ImagePath"/>
+    <hr />
+    <img class="detailsImage" src="@Model.ImagePath" />
     <div class="detailDescription">
         <dl class="dl-horizontal">
             <dt>
@@ -51,7 +55,7 @@
 <div class="buttonCenter">
     @if (User.Identity.IsAuthenticated)
     {
-        @Html.ActionLink("Kaufen", "AddToCart", "Cart", new {id = Model.Id}, new {@class = "btn btn-secondary"})
+        @Html.ActionLink("Kaufen", "AddToCart", "Cart", new { id = Model.Id }, new { @class = "btn btn-secondary" })
     }
     else
     {
