@@ -155,7 +155,7 @@ Order erstellen, email mit pdf rechnung erstellen und versenden
 Order => ohne DateOrdered wird gespeichert -> erst mit DateOrdered wird email mit rechnung verschickt
 1. Warenkorb -> OrderLine erstellen beim hinzufügen eines Produktes
 
-
+Rotativa für View zu PDF installiert
 
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

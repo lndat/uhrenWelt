@@ -1,4 +1,12 @@
-﻿using System.Linq;
+﻿using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using Rotativa;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Security.Cryptography;
 using System.Text;
 using uhrenWelt.Data;
@@ -20,7 +28,7 @@ namespace uhrenWelt.Services
                 {
                     var oneByte = new byte[1];
                     provider.GetBytes(oneByte);
-                    var character = (char) oneByte[0];
+                    var character = (char)oneByte[0];
                     if (validChars.Contains(character)) s += character;
                 }
             }
@@ -64,6 +72,33 @@ namespace uhrenWelt.Services
             var checkEmail = db.Customer.Where(x => x.Email == email);
             if (checkEmail.Count() > 0) return true;
             return false;
+        }
+
+        public static bool SendEmail(string email, string password, byte[] invoicePdf)
+        {
+            // TODO
+            // das (später) erstellte PDF muss hier noch rein gehängt werden
+            //var getId = db.Customer.Single(x => x.Id == GetUserIdByEmail(email));
+            var emailBody = new MailMessage("ITN241552@qualifizierung.at", email);
+            emailBody.Subject = "Ihre uhrenwelt.at Rechnung";
+            emailBody.Body = "Vielen Dank für Ihr vertrauen und Ihr Geld!";
+
+            var attachment = new Attachment(new MemoryStream(invoicePdf), "Rechnung"); //this is from the articles referred above
+            emailBody.Attachments.Add(attachment);
+
+            SmtpClient mailer = new SmtpClient("smtp.office365.com", 587);
+            mailer.Credentials = new NetworkCredential(email, password);
+            mailer.EnableSsl = true;
+            mailer.Send(emailBody);
+
+            return true;
+        }
+
+        public static int GetUserIdByEmail(string email)
+        {
+            var getUser = db.Customer.Single(x => x.Email == email);
+
+            return getUser.Id;
         }
     }
 }

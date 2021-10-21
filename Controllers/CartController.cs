@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Rotativa;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -67,5 +68,17 @@ namespace uhrenWelt.Controllers
                     return i;
             return -1;
         }
+
+        //public ActionResult PrintIndex()
+        //{
+        //    return new ActionAsPdf("Index", new { name = "ö" }) { FileName = "Test.pdf" };
+        //}
+
+        //public ActionResult Index(string name)
+        //{
+        //    ViewBag.Message = string.Format("Hello {0} to ASP.NET MVC!", name);
+
+        //    return View();
+        //}
     }
 }
