@@ -140,7 +140,6 @@ using (var db = new KartoffelChipsEntities())
 }
 ***********************************************************************************************************
 
-
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Derzeit email check mit db.email.count() > 0 -- funkt
 Next PW+ Salt aus DB -> hashen und dann hash mit db hash checken
@@ -151,7 +150,11 @@ DONE!
 !!! PASSWORT REGELUNG FÜR LÄNGE UND KOMPLEXITÄT MUSS NOCH GEMACHT WERDEN !!!
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Suchen DONE!!
-FILTER noch nicht gemacht
+FILTER DONE!!!
+Order erstellen, email mit pdf rechnung erstellen und versenden
+Order => ohne DateOrdered wird gespeichert -> erst mit DateOrdered wird email mit rechnung verschickt
+1. Warenkorb -> OrderLine erstellen beim hinzufügen eines Produktes
+
 
 
 
