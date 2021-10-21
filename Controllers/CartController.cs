@@ -8,6 +8,7 @@ using uhrenWelt.Models;
 
 namespace uhrenWelt.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         public const string SESSION_NAME = "CartSession";
@@ -28,8 +29,7 @@ namespace uhrenWelt.Controllers
 
             return View(cartList);
         }
-
-        [Authorize]
+  
         public ActionResult AddToCart(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
