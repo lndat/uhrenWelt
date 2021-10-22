@@ -1,4 +1,4 @@
-﻿@using uhrenWelt.Models
+﻿@model IEnumerable<uhrenWelt.Models.Cart>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,7 @@
         <th>Einzelpreis</th>
         <th>Gesamt Preis</th>
     </tr>
-    @foreach (var cart in (List<Cart>)Session["CartSession"])
+    @foreach (var cart in Model)
     {
         <tr>
             <td>

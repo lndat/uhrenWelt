@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -49,7 +50,7 @@ namespace uhrenWelt.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View(customerVm); 
+            return View(customerVm);
         }
 
         public List<CustomerVM> GetList()
@@ -102,13 +103,16 @@ namespace uhrenWelt.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
+            if (email == null || password == null)
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             if (UserService.LoginCheck(email, password))
             {
                 AuthenticateUser(email);
                 return RedirectToAction("Shop", "Shop");
             }
-                ViewBag.Message = "WrongLoginData";
-                return View();
+            ViewBag.Message = "WrongLoginData";
+            return View();
         }
 
         [NonAction]

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModel;
@@ -69,12 +70,12 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Details(int? id)
         {
-            if (id != null)
+            if (id == null)
             {
-                var tempProductList = GetList().Single(x => x.Id == id);
-                return View(tempProductList);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return RedirectToAction("Index", "Home");
+            var tempProductList = GetList().Single(x => x.Id == id);
+            return View(tempProductList);
         }
 
         public List<ProductVM> GetList()
