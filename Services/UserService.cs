@@ -32,7 +32,6 @@ namespace uhrenWelt.Services
                     if (validChars.Contains(character)) s += character;
                 }
             }
-
             return s;
         }
 
@@ -98,7 +97,10 @@ namespace uhrenWelt.Services
         {
             var getUser = db.Customer.Single(x => x.Email == email);
 
-            return getUser.Id;
+            if (getUser != null)
+                return getUser.Id;
+
+            return -1;
         }
     }
 }
