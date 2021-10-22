@@ -31,7 +31,5 @@ namespace uhrenWelt.Data
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderLine> OrderLine { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-
-        public System.Data.Entity.DbSet<uhrenWelt.Models.OrderDetail> OrderDetails { get; set; }
     }
 }
