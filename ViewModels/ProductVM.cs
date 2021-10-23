@@ -30,7 +30,7 @@ namespace uhrenWelt.ViewModel
         public int CategoryId { get; set; }
 
         [Display(Name = "Anzahl")]
-        [Range(1, 5, ErrorMessage = "Maximal 5 Stück pro Bestellung!")]
+        [Range(1, 9, ErrorMessage = "Maximal 5 Stück pro Bestellung!")]
         public int Amount { get; set; } = 1;
     }
 }

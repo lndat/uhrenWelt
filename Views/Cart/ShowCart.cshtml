@@ -5,37 +5,44 @@
 }
 
 <h2>Einkaufswagen</h2>
-    <p>
-        <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-1);">Zurück</a>
-    </p>
+<p>
+    <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-1);">Zurück</a>
+</p>
 @if (Model != null)
 {
-    <table class="table table-bordered">
+    <table class="table table-striped">
         <tr>
             <th>Bild</th>
             <th>Manufacturer</th>
             <th>Name</th>
             <th>Amount</th>
             <th>Einzelpreis</th>
-            <th>Gesamt Preis</th>
+            <th>Gesamt Preis mit MwSt</th>
+            <th></th>
         </tr>
         @foreach (var cart in Model)
         {
+            var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
             <tr>
                 <td>
-                    <img src="@cart.ImagePath" style="max-height:3em"/>
+                    <img src="@cart.ImagePath" style="max-height:3em" />
                 </td>
                 <td>@cart.ManufacturerName</td>
                 <td>@cart.ProductName</td>
                 <td>@cart.Amount</td>
-                <td>@cart.NetUnitPrice</td>
-                <td>@(cart.NetUnitPrice * cart.Amount)</td>
+                <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
+                <td>@String.Format("{0:C}", totalPrice)</td>
+                <td>
+                    <form class="form-inline" method="Post" action="/Cart/Order">
+                        <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Kaufen</button>
+                    </form>
+                </td>
             </tr>
         }
     </table>
 }
 else
 {
-    <br/>
+    <br />
     <span style="color:red;">Einkaufswagen ist leer!</span>
 }

@@ -35,6 +35,7 @@ namespace uhrenWelt.Controllers
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
 
+            // if we dont find an order with date = null -> new order is created
             if (getNoOrderDateCart.Count() == 0)
             {
                 // create new order
@@ -63,14 +64,16 @@ namespace uhrenWelt.Controllers
                     db.SaveChanges();
                 }
             }
+            // else we find an order where date is null
             else
             {
                 var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
                 var checkProductCount = db.OrderLine.Where(x => x.OrderId == getOrderId.Id).Where(x => x.ProductId == (int)id);
 
+                // checkinfo for productId in Order, if it exists edit orderLine (changing product amount)
                 if (checkProductCount.Count() > 0)
                 {
-                    OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == getOrderId.Id).FirstOrDefault();
+                    OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == getOrderId.Id && x.ProductId == (int)id).FirstOrDefault();
                     orderLine.Amount += (int)amount; 
 
                     if (ModelState.IsValid)
@@ -81,7 +84,7 @@ namespace uhrenWelt.Controllers
                 }
                 else
                 {
-                    // create new OrderLine
+                    // productid not in orderLine, create new OrderLine
                     OrderLine newOrderLine = new OrderLine();
                     newOrderLine.Id = newOrderLine.Id++;
                     newOrderLine.OrderId = getOrderId.Id;
@@ -105,8 +108,8 @@ namespace uhrenWelt.Controllers
         [Authorize]
         public ActionResult Order(int? id, int? amount)
         {
-
-            return View();
+            // TODO
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
         private decimal CalculateTotalPrice(decimal unitPrice, int quantity)

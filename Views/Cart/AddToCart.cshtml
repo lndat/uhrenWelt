@@ -16,27 +16,28 @@
         <th>Name</th>
         <th>Amount</th>
         <th>Einzelpreis</th>
-        <th>Gesamt Preis</th>
+        <th>Gesamt Preis mit MwSt</th>
         <th></th>
     </tr>
     @foreach (var cart in Model)
     {
-        <tr>
-            <td>
-                <img src="@cart.ImagePath" style="max-height:3em" />
-            </td>
-            <td>@cart.ManufacturerName</td>
-            <td>@cart.ProductName</td>
-            <td>@cart.Amount</td>
-            <td>@cart.NetUnitPrice</td>
-            <td>@(cart.NetUnitPrice * cart.Amount)</td>
-            <td>
-                <form class="form-inline" method="Post" action="/Cart/Order">
-                    <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Kaufen</button>
-                </form>
-            </td>
+        var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
+<tr>
+    <td>
+        <img src="@cart.ImagePath" style="max-height:3em" />
+    </td>
+    <td>@cart.ManufacturerName</td>
+    <td>@cart.ProductName</td>
+    <td>@cart.Amount</td>
+    <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
+    <td>@String.Format("{0:C}", totalPrice)</td>
+    <td>
+        <form class="form-inline" method="Post" action="/Cart/Order">
+            <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Ändern</button>
+        </form>
+    </td>
 
-        </tr>
+</tr>
     }
 </table>
 
