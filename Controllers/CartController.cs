@@ -53,7 +53,7 @@ namespace uhrenWelt.Controllers
                 newOrderLine.Id = newOrderLine.Id++;
                 newOrderLine.OrderId = newOrder.Id;
                 newOrderLine.ProductId = (int)id;
-                newOrderLine.Amount = (int)amount; // TODO amount
+                newOrderLine.Amount = (int)amount;
                 newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
                 newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
 
@@ -89,7 +89,7 @@ namespace uhrenWelt.Controllers
                     newOrderLine.Id = newOrderLine.Id++;
                     newOrderLine.OrderId = getOrderId.Id;
                     newOrderLine.ProductId = (int)id;
-                    newOrderLine.Amount = (int)amount; // TODO amount
+                    newOrderLine.Amount = (int)amount;
                     newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
                     newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
 
@@ -106,26 +106,16 @@ namespace uhrenWelt.Controllers
         }
 
         [Authorize]
-        public ActionResult Order(int? id, int? amount)
+        public ActionResult Order(int? id)
         {
-            // TODO
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            // TODO Create Order
+            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
         }
 
         private decimal CalculateTotalPrice(decimal unitPrice, int quantity)
         {
             return (unitPrice * quantity) * 1.2m;
         }
-
-        //public int CartItemAmount(int? id)
-        //{
-        //    var cartList = (List<Cart>)Session[SESSION_NAME];
-
-        //    for (var i = 0; i < cartList.Count; i++)
-        //        if (cartList[i].Product.Id == id)
-        //            return i;
-        //    return -1;
-        //}
 
         public List<Cart> GetList()
         {

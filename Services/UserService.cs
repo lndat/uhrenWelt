@@ -75,20 +75,7 @@ namespace uhrenWelt.Services
 
         public static bool SendEmail(string email, string password, byte[] invoicePdf)
         {
-            // TODO
-            // das (später) erstellte PDF muss hier noch rein gehängt werden
-            //var getId = db.Customer.Single(x => x.Id == GetUserIdByEmail(email));
-            var emailBody = new MailMessage("ITN241552@qualifizierung.at", email);
-            emailBody.Subject = "Ihre uhrenwelt.at Rechnung";
-            emailBody.Body = "Vielen Dank für Ihr vertrauen und Ihr Geld!";
-
-            var attachment = new Attachment(new MemoryStream(invoicePdf), "Rechnung"); //this is from the articles referred above
-            emailBody.Attachments.Add(attachment);
-
-            SmtpClient mailer = new SmtpClient("smtp.office365.com", 587);
-            mailer.Credentials = new NetworkCredential(email, password);
-            mailer.EnableSsl = true;
-            mailer.Send(emailBody);
+            // TODO Send email
 
             return true;
         }
