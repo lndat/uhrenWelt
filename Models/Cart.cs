@@ -12,6 +12,7 @@ namespace uhrenWelt.Models
         public int Id { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }
+        [Display(Name = "Anzahl")]
         public int Amount { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
