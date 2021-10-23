@@ -47,6 +47,7 @@ namespace uhrenWelt.Controllers
 
                 db.Customer.Add(newCustomer);
                 db.SaveChanges();
+                AuthenticateUser(newCustomer.Email);
                 return RedirectToAction("Index", "Home");
             }
 

@@ -104,7 +104,6 @@ h7 {
     box-shadow: 0 0 7px #5E6B4B;
     margin: 5px;
 }
-
     .main-image img:hover {
         -webkit-filter: blur(1px); /* Safari 6.0 - 9.0 */
         filter: blur(1px);

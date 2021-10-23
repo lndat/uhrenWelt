@@ -158,4 +158,63 @@ Order => ohne DateOrdered wird gespeichert -> erst mit DateOrdered wird email mi
 Rotativa für View zu PDF installiert
 
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            #cross-join
+            List<Product> products = GetProductList();
+
+            var q = from c in categories
+                    join p in products on c equals p.Category
+                    select (Category: c, p.ProductName);
+
+            foreach (var v in q)
+            {
+                Console.WriteLine(v.ProductName + ": " + v.Category);
+            }
+            #endregion
+            return 0;
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            ---------------------------------------------------------
+
+            #region where-multiple-properties
+            List<Product> products = GetProductList();
+
+            var expensiveInStockProducts = from prod in products
+                                           where prod.UnitsInStock > 0 && prod.UnitPrice > 3.00M
+                                           select prod;
+
+            Console.WriteLine("In-stock products that cost more than 3.00:");
+            foreach (var product in expensiveInStockProducts)
+            {
+                Console.WriteLine($"{product.ProductName} is in stock and costs more than 3.00.");
+            }
+            #endregion
+            return 0;
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+            #region where-indexed
+            string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+            var shortDigits = digits.Where((digit, index) => digit.Length < index);
+
+            Console.WriteLine("Short digits:");
+            foreach (var d in shortDigits)
+            {
+                Console.WriteLine($"The word {d} is shorter than its value.");
+            }
+            #endregion
+            return 0;
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+            #region equal-sequence
+            var wordsA = new string[] { "cherry", "apple", "blueberry" };
+            var wordsB = new string[] { "cherry", "apple", "blueberry" };
+
+            bool match = wordsA.SequenceEqual(wordsB);
+
+            Console.WriteLine($"The sequences match: {match}");
+            #endregion
+            return 0;
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

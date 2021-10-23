@@ -10,7 +10,6 @@ namespace uhrenWelt.Controllers
 {
     public class CartController : Controller
     {
-        public const string SESSION_NAME = "CartSession";
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
         // GET: Cart
@@ -19,7 +18,7 @@ namespace uhrenWelt.Controllers
         {
             var tempCarttList = GetList();
 
-            if (tempCarttList == null)
+            if (tempCarttList.Count() <= 0)
             {
                 ViewBag.Message = "EmptyCart";
                 return View();
@@ -29,127 +28,85 @@ namespace uhrenWelt.Controllers
         }
 
         [Authorize]
-        public ActionResult AddToCart(int? id)
+        public ActionResult AddToCart(int? id, int? amount)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
-            var checkForOrder = db.Order.Where(x => x.CustomerId == getCustomer.Id);
-            var cartList = new List<Cart> { new Cart(db.Product.Find(id), 1) };
+            var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
 
-            // Suche nach Order, wenn keine da, Session check und Session erstellen + CartListe bekommt das gewählte Produkt
-            if (checkForOrder.Count() <= 0)
+            if (getNoOrderDateCart.Count() == 0)
             {
-                // neue Order wird erstellt (ohne OrderDate erstmal - Warenkorb "speicherfunktion")
-                var createNewOrder = new Order();
+                // create new order
+                Order newOrder = new Order();
+                newOrder.Id = newOrder.Id++;
+                newOrder.CustomerId = getCustomer.Id;
+                newOrder.PriceTotal = CalculateTotalPrice(22, 22); // TODO totalprice
+                newOrder.Street = getCustomer.Street;
+                newOrder.Zip = getCustomer.Zip;
+                newOrder.City = getCustomer.City;
+                newOrder.DateOrdered = null;
 
-                foreach (var item in cartList)
-                {
-                    createNewOrder.Id = createNewOrder.Id++;
-                    createNewOrder.CustomerId = GetCustomerByEmail(User.Identity.Name).Id;
-                    createNewOrder.PriceTotal = CalculateTotalPrice(item.Product.NetUnitPrice, item.Amount);
-                    createNewOrder.DateOrdered = null;
-                    createNewOrder.Street = GetCustomerByEmail(User.Identity.Name).Street;
-                    createNewOrder.Zip = GetCustomerByEmail(User.Identity.Name).Zip;
-                    createNewOrder.City = GetCustomerByEmail(User.Identity.Name).City;
-                }
-
-                // auch eine neue OrderLine wird erstellt
-                var createNewOrderLine = new OrderLine();
-
-                foreach (var item in cartList)
-                {
-                    createNewOrderLine.Id = createNewOrderLine.Id++;
-                    createNewOrderLine.OrderId = createNewOrder.Id;
-                    createNewOrderLine.ProductId = (int)id;
-                    createNewOrderLine.Amount = item.Amount;
-                    createNewOrderLine.NetUnitPrice = item.Product.NetUnitPrice;
-                    createNewOrderLine.TaxRate = createNewOrderLine.TaxRate;
-                }
+                // create new OrderLine
+                OrderLine newOrderLine = new OrderLine();
+                newOrderLine.Id = newOrderLine.Id++;
+                newOrderLine.OrderId = newOrder.Id;
+                newOrderLine.ProductId = (int)id;
+                newOrderLine.Amount = (int)amount; // TODO amount
+                newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
+                newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
 
                 if (ModelState.IsValid)
                 {
-                    db.Order.Add(createNewOrder);
-
-                    if (ModelState.IsValid)
-                    {
-                        db.OrderLine.Add(createNewOrderLine);
-                    }
+                    db.Order.Add(newOrder);
+                    db.OrderLine.Add(newOrderLine);
                     db.SaveChanges();
                 }
             }
-            //else
-            //{
-            //    var cartList = (List<Cart>)Session[SESSION_NAME];
-            //    var check = CartItemAmount(id);
-            //    if (check == -1)
-            //        cartList.Add(new Cart(db.Product.Find(id), 1));
-            //    else
-            //        cartList[check].Amount++;
-            //    Session[SESSION_NAME] = cartList;
-            //}
+            else
+            {
+                var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+                var checkProductCount = db.OrderLine.Where(x => x.OrderId == getOrderId.Id).Where(x => x.ProductId == (int)id);
 
-            //var newOrder = new Order();
+                if (checkProductCount.Count() > 0)
+                {
+                    OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == getOrderId.Id).FirstOrDefault();
+                    orderLine.Amount += (int)amount; 
 
-            //foreach (var item in (List<Cart>)Session[SESSION_NAME])
-            //{
-            //    newOrder.Id = newOrder.Id++;
-            //    newOrder.CustomerId = GetCustomerByEmail(User.Identity.Name).Id;
-            //    newOrder.PriceTotal = CalculateTotalPrice(item.Product.NetUnitPrice, item.Amount);
-            //    newOrder.DateOrdered = null;
-            //    newOrder.Street = GetCustomerByEmail(User.Identity.Name).Street;
-            //    newOrder.Zip = GetCustomerByEmail(User.Identity.Name).Zip;
-            //    newOrder.City = GetCustomerByEmail(User.Identity.Name).City;
-            //}
+                    if (ModelState.IsValid)
+                    {
+                        db.Entry(orderLine).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
+                else
+                {
+                    // create new OrderLine
+                    OrderLine newOrderLine = new OrderLine();
+                    newOrderLine.Id = newOrderLine.Id++;
+                    newOrderLine.OrderId = getOrderId.Id;
+                    newOrderLine.ProductId = (int)id;
+                    newOrderLine.Amount = (int)amount; // TODO amount
+                    newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
+                    newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
 
-            //// auch eine neue OrderLine wird erstellt
-            //var newOrderLine = new OrderLine();
+                    if (ModelState.IsValid)
+                    {
+                        db.OrderLine.Add(newOrderLine);
+                        db.SaveChanges();
+                    }
+                }
+            }
 
-            //foreach (var item in (List<Cart>)Session[SESSION_NAME])
-            //{
-            //    newOrderLine.Id = newOrderLine.Id++;
-            //    newOrderLine.OrderId = newOrder.Id;
-            //    newOrderLine.ProductId = (int)id;
-            //    newOrderLine.Amount = item.Amount;
-            //    newOrderLine.NetUnitPrice = item.Product.NetUnitPrice;
-            //    newOrderLine.TaxRate = newOrderLine.TaxRate;
-            //}
+            var tempCarttList = GetList();
+            return View(tempCarttList);
+        }
 
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(newOrder).State = EntityState.Modified;
+        [Authorize]
+        public ActionResult Order(int? id, int? amount)
+        {
 
-            //    if (ModelState.IsValid)
-            //    {
-            //        db.Entry(newOrderLine).State = EntityState.Modified;
-            //    }
-            //    db.SaveChanges();
-            //}
-
-
-            //if (Session[SESSION_NAME] == null)
-            //{
-            //    Debug.WriteLine("NO SESSION FOUND :( NOOOO");
-            //    var cartList = new List<Cart>
-            //    {
-            //        new Cart(db.Product.Find(id), 1)
-            //    };
-            //    Session[SESSION_NAME] = cartList;
-            //}
-            //else
-            //{
-            //    Debug.WriteLine("SESSION FOUND!! SESSION FOUND!! SESSION FOUND!! SESSION FOUND!!");
-
-            //    var cartList = (List<Cart>)Session[SESSION_NAME];
-            //    var check = CartItemAmount(id);
-            //    if (check == -1)
-            //        cartList.Add(new Cart(db.Product.Find(id), 1));
-            //    else
-            //        cartList[check].Amount++;
-            //    Session[SESSION_NAME] = cartList;
-            //}
-
-            return View(cartList);
+            return View();
         }
 
         private decimal CalculateTotalPrice(decimal unitPrice, int quantity)
@@ -157,21 +114,15 @@ namespace uhrenWelt.Controllers
             return (unitPrice * quantity) * 1.2m;
         }
 
-        public int CartItemAmount(int? id)
-        {
-            var cartList = (List<Cart>)Session[SESSION_NAME];
+        //public int CartItemAmount(int? id)
+        //{
+        //    var cartList = (List<Cart>)Session[SESSION_NAME];
 
-            for (var i = 0; i < cartList.Count; i++)
-                if (cartList[i].Product.Id == id)
-                    return i;
-            return -1;
-        }
-
-        public Customer GetCustomerByEmail(string email)
-        {
-            var c = db.Customer.Single(x => x.Email == email);
-            return c;
-        }
+        //    for (var i = 0; i < cartList.Count; i++)
+        //        if (cartList[i].Product.Id == id)
+        //            return i;
+        //    return -1;
+        //}
 
         public List<Cart> GetList()
         {
@@ -180,11 +131,12 @@ namespace uhrenWelt.Controllers
             return tempProductList;
         }
 
-        public List<Product> GetListFromDB()
+        public List<OrderLine> GetListFromDB()
         {
             using (var db = new uhrenWeltEntities())
             {
-                return db.Product.ToList();
+                var cusId = GetCustomerByEmail(User.Identity.Name).Id;
+                return db.OrderLine.Where(x => x.Order.CustomerId == cusId).ToList();
             }
         }
 
@@ -196,44 +148,63 @@ namespace uhrenWelt.Controllers
             vm.OrderId = databaseData.Id;
             vm.ProductId = databaseData.ProductId;
             vm.Amount = databaseData.Amount;
-            vm.NetUnitPrice = GetNetUnitPrice(GetCustomerByEmail(User.Identity.Name).Id);
+            vm.NetUnitPrice = GetNetUnitPrice(databaseData.ProductId);
             vm.TaxRate = databaseData.TaxRate;
+            vm.ManufacturerName = GetManufacturerName(GetManufacturerId(databaseData.ProductId));
+            vm.ProductName = GetProductName(databaseData.ProductId);
+            vm.ImagePath = GetImagePath(databaseData.ProductId);
 
             return vm;
         }
-        public Cart Mapping(Order databaseData)
+
+        private int GetManufacturerId(int id)
         {
-            var vm = new Cart();
-
-            vm.Order.Id = databaseData.Id;
-            vm.Order.CustomerId = databaseData.CustomerId;
-            vm.Order.PriceTotal = databaseData.PriceTotal;
-            vm.Order.DateOrdered = databaseData.DateOrdered;
-            vm.Order.Street = databaseData.Street;
-            vm.Order.Zip = databaseData.Zip;
-            vm.Order.City = databaseData.City;
-
-            return vm;
+            var getId = db.Product.Single(x => x.Id == id);
+            return getId.ManufacturerId;
         }
-        public Cart Mapping(Product databaseData)
+
+        private decimal GetTaxRate(int id)
         {
-            var vm = new Cart();
+            var getTax = db.Category.Single(x => x.Id == id);
+            return getTax.TaxRate;
+        }
 
-            vm.Product.Id = databaseData.Id;
-            vm.Product.ProductName = databaseData.ProductName;
-            vm.Product.NetUnitPrice = databaseData.NetUnitPrice;
-            vm.Product.ImagePath = databaseData.ImagePath;
-            vm.Product.Description = databaseData.Description;
-            vm.Product.ManufacturerId = databaseData.ManufacturerId;
-            vm.Product.CategoryId = databaseData.CategoryId;
+        private int GetProductCategoryId(int id)
+        {
+            var getId = db.Product.Single(x => x.Id == id);
+            return getId.CategoryId;
+        }
 
-            return vm;
+        private string GetManufacturerName(int id)
+        {
+            var getName = db.Manufacturer.Single(x => x.Id == id);
+            return getName.Name;
+        }
+
+        private string GetImagePath(int id)
+        {
+            var getName = db.Product.Single(x => x.Id == id);
+
+            return getName.ImagePath;
+        }
+
+        private string GetProductName(int id)
+        {
+            var getName = db.Product.Single(x => x.Id == id);
+
+            return getName.ProductName;
         }
 
         private decimal GetNetUnitPrice(int id)
         {
             var getPrice = db.Product.Single(x => x.Id == id);
             return getPrice.NetUnitPrice;
+        }
+
+        public Customer GetCustomerByEmail(string email)
+        {
+            var c = db.Customer.Single(x => x.Email == email);
+            return c;
         }
     }
 }

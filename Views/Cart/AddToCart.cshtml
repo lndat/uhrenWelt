@@ -8,7 +8,8 @@
 <p>
     <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-2);">Zurück</a>
 </p>
-<table class="table">
+
+<table class="table table-striped">
     <tr>
         <th>Bild</th>
         <th>Manufacturer</th>
@@ -16,18 +17,27 @@
         <th>Amount</th>
         <th>Einzelpreis</th>
         <th>Gesamt Preis</th>
+        <th></th>
     </tr>
     @foreach (var cart in Model)
     {
         <tr>
             <td>
-                <img src="@cart.Product.ImagePath" style="max-height:3em" />
+                <img src="@cart.ImagePath" style="max-height:3em" />
             </td>
-            <td>@cart.Product.Manufacturer.Name</td>
-            <td>@cart.Product.ProductName</td>
+            <td>@cart.ManufacturerName</td>
+            <td>@cart.ProductName</td>
             <td>@cart.Amount</td>
-            <td>@cart.Product.NetUnitPrice</td>
-            <td>@(cart.Product.NetUnitPrice * cart.Amount)</td>
+            <td>@cart.NetUnitPrice</td>
+            <td>@(cart.NetUnitPrice * cart.Amount)</td>
+            <td>
+                <form class="form-inline" method="Post" action="/Cart/Order">
+                    <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Kaufen</button>
+                </form>
+            </td>
+
         </tr>
     }
 </table>
+
+
