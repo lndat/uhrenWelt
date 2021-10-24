@@ -6,7 +6,7 @@
 
 <h2>Einkaufswagen</h2>
 <p>
-    <a href="javascript:void(0);" class="removeStyle" onclick="history.go(-2);">Zurück</a>
+    @Html.ActionLink("Zurück", "Shop", "Shop", null, new { @class = "removeStyle" })
 </p>
 
 <table class="table table-striped">
@@ -22,23 +22,26 @@
     @foreach (var cart in Model)
     {
         var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
-<tr>
-    <td>
-        <img src="@cart.ImagePath" style="max-height:3em" />
-    </td>
-    <td>@cart.ManufacturerName</td>
-    <td>@cart.ProductName</td>
-    <td>@cart.Amount</td>
-    <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
-    <td>@String.Format("{0:C}", totalPrice)</td>
-    <td>
-        <form class="form-inline" method="Post" action="/Cart/Order">
-            <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Ändern</button>
-        </form>
-    </td>
+        <tr>
+            <td>
+                <img src="@cart.ImagePath" style="max-height:3em" />
+            </td>
+            <td>@cart.ManufacturerName</td>
+            <td>@cart.ProductName</td>
+            <td>@cart.Amount</td>
+            <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
+            <td>@String.Format("{0:C}", totalPrice)</td>
+            <td>
+                <form class="form-inline" method="Post" action="/Cart/ChangeAmount">
+                    @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger" })
+                    <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Ändern</button>
+                </form>
+            </td>
 
-</tr>
+        </tr>
     }
 </table>
-
+<div class="buttonCenter">
+    @Html.ActionLink("Bestellen", "Order", "Cart", null, new { @class = "btn btn-success btn-lg" })
+</div>
 

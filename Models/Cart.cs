@@ -21,6 +21,7 @@ namespace uhrenWelt.Models
         public string ManufacturerName { get; set; }
         public string ProductName { get; set; }
         public string ImagePath { get; set; }
+        public decimal PriceTotal { get; set; }
 
     }
 }

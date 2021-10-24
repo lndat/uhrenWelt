@@ -74,7 +74,7 @@ namespace uhrenWelt.Controllers
                 if (checkProductCount.Count() > 0)
                 {
                     OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == getOrderId.Id && x.ProductId == (int)id).FirstOrDefault();
-                    orderLine.Amount += (int)amount; 
+                    orderLine.Amount += (int)amount;
 
                     if (ModelState.IsValid)
                     {
@@ -109,7 +109,24 @@ namespace uhrenWelt.Controllers
         public ActionResult Order(int? id)
         {
             // TODO Create Order
-            return new HttpStatusCodeResult(HttpStatusCode.NoContent);
+            return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
+        }
+
+        [Authorize]
+        public ActionResult ChangeAmount(int? id)
+        {
+            // TODO Create Order
+            return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
+        }
+
+
+        [Authorize]
+        public ActionResult Delete(int id)
+        {
+            var orderLine = db.OrderLine.Find(id);
+            db.OrderLine.Remove(orderLine);
+            db.SaveChanges();
+            return RedirectToAction("ShowCart");
         }
 
         private decimal CalculateTotalPrice(decimal unitPrice, int quantity)
