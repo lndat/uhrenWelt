@@ -18,12 +18,11 @@ namespace uhrenWelt.Controllers
         {
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
-            if (getNoOrderDateCart.Count() > 0)
-            {
-                ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
-            }
-
             var tempCarttList = GetList();
+
+            if (getNoOrderDateCart.Count() > 0)
+                ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
+
 
             if (tempCarttList.Count() <= 0)
             {
@@ -38,22 +37,18 @@ namespace uhrenWelt.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+            #region qry
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
-            var getNoOrderDateCartS = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var getProductPrice = db.Product.Single(x => x.Id == id);
-            var checkForProductInOrderLine = db.OrderLine.Where(x => x.OrderId == getNoOrderDateCartS.Id);
+            #endregion
 
-            if (getNoOrderDateCart.Count() > 0 && checkForProductInOrderLine.Count() > 0)
-            {
+            if (getNoOrderDateCart.Count() > 0)
                 ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount));
-            }
             else
-            {
                 ViewBag.Total = getProductPrice.NetUnitPrice * 1.2m * amount;
-            }
 
-            // check if order with date=null exists -> if not new order is created
+            // check if order with date=null exists -> if not -> a new order is created
             if (getNoOrderDateCart.Count() == 0)
             {
                 // create new order
@@ -146,13 +141,11 @@ namespace uhrenWelt.Controllers
         {
             OrderLine orderLine = db.OrderLine.Find((int)id);
             if (orderLine.Amount > 0)
-            {
                 orderLine.Amount -= 1;
-            }
+
             if (orderLine.Amount <= 0)
-            {
                 return RedirectToAction("Delete", new { Id = id });
-            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(orderLine).State = EntityState.Modified;
@@ -200,7 +193,6 @@ namespace uhrenWelt.Controllers
         public Cart Mapping(OrderLine databaseData)
         {
             var vm = new Cart();
-
             vm.Id = databaseData.Id;
             vm.OrderId = databaseData.Id;
             vm.ProductId = databaseData.ProductId;
