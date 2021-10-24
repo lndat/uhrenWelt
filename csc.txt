@@ -218,3 +218,9 @@ Rotativa für View zu PDF installiert
             return 0;
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+<a href="@Url.Action("ListView", "Home")" title="List View" class="links">
+            <img alt="List View" src="@Url.Content("~/Images/ListView.png")"> 
+            List View
+       </a>

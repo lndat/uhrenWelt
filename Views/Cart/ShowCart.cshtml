@@ -26,7 +26,7 @@
                 var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
                 <tr>
                     <td>
-                        <img src="@cart.ImagePath" style="max-height:3em" />
+                        <a href="@Url.Action("Details", "Shop", new { Id = cart.ProductId })"> <img src="@cart.ImagePath" style="max-height:3em" ></a>
                     </td>
                     <td>@cart.ManufacturerName</td>
                     <td>@cart.ProductName</td>
