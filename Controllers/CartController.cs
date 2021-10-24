@@ -17,8 +17,11 @@ namespace uhrenWelt.Controllers
         public ActionResult ShowCart()
         {
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
-            ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
-
+            var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            if (getNoOrderDateCart.Count() > 0)
+            {
+                ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
+            }
 
             var tempCarttList = GetList();
 
@@ -37,8 +40,18 @@ namespace uhrenWelt.Controllers
 
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            var getNoOrderDateCartS = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var getProductPrice = db.Product.Single(x => x.Id == id);
-            ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount));
+            var checkForProductInOrderLine = db.OrderLine.Where(x => x.OrderId == getNoOrderDateCartS.Id);
+
+            if (getNoOrderDateCart.Count() > 0 && checkForProductInOrderLine.Count() > 0)
+            {
+                ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount));
+            }
+            else
+            {
+                ViewBag.Total = getProductPrice.NetUnitPrice * 1.2m * amount;
+            }
 
             // check if order with date=null exists -> if not new order is created
             if (getNoOrderDateCart.Count() == 0)
@@ -47,7 +60,7 @@ namespace uhrenWelt.Controllers
                 Order newOrder = new Order();
                 newOrder.Id = newOrder.Id++;
                 newOrder.CustomerId = getCustomer.Id;
-                newOrder.PriceTotal = CalculateTotalPrice(getCustomer.Email);
+                newOrder.PriceTotal = (GetNetUnitPrice((int)id) * (int)amount) * 1.2m;
                 newOrder.Street = getCustomer.Street;
                 newOrder.Zip = getCustomer.Zip;
                 newOrder.City = getCustomer.City;
@@ -105,7 +118,6 @@ namespace uhrenWelt.Controllers
                     }
                 }
             }
-
             var tempCarttList = GetList();
             return View(tempCarttList);
         }
