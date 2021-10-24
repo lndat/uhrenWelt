@@ -160,6 +160,7 @@ namespace uhrenWelt.Controllers
             var orderLine = db.OrderLine.Find(id);
             db.OrderLine.Remove(orderLine);
             db.SaveChanges();
+
             return RedirectToAction("ShowCart");
         }
 
