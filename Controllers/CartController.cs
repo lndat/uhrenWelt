@@ -123,7 +123,7 @@ namespace uhrenWelt.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
         }
 
-        public ActionResult IcrementAmount(int? id)
+        public ActionResult IncrementAmount(int? id)
         {
             OrderLine orderLine = db.OrderLine.Find(id);
             orderLine.Amount += 1;
