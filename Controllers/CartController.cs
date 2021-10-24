@@ -113,10 +113,41 @@ namespace uhrenWelt.Controllers
         }
 
         [Authorize]
-        public ActionResult ChangeAmount(int? id)
+        public ActionResult IcrementAmount(int? id)
         {
             // TODO Change Amount
-            return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
+            OrderLine orderLine = db.OrderLine.Find(id);
+            orderLine.Amount += 1;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(orderLine).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ShowCart");
+        }
+        [Authorize]
+        public ActionResult DecrementAmount(int? id)
+        {
+            // TODO Change Amount
+            OrderLine orderLine = db.OrderLine.Find((int)id);
+            if (orderLine.Amount > 0)
+            {
+            orderLine.Amount -= 1;
+            }
+            if (orderLine.Amount <= 0)
+            {
+                return RedirectToAction("Delete", new { Id = id });
+            }
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(orderLine).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("ShowCart");
         }
 
 
