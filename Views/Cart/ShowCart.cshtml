@@ -18,7 +18,7 @@
                 <th>Name</th>
                 <th>Anzahl</th>
                 <th>Einzelpreis</th>
-                <th>Gesamt Preis inkl. MwSt</th>
+                <th>Gesamtpreis inkl. MwSt</th>
                 <th></th>
             </tr>
             @foreach (var cart in Model)
@@ -42,6 +42,10 @@
                     </td>
                 </tr>
             }
+            <tr>
+                <th>Gesamtpreis:</th>
+                <td style="white-space: nowrap;">@String.Format("{0:C}", ViewBag.Total)</td>
+            </tr>
         </table>
     </div>
     <div class="buttonCenter">

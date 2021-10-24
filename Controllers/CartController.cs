@@ -16,6 +16,9 @@ namespace uhrenWelt.Controllers
         // GET: Cart
         public ActionResult ShowCart()
         {
+            var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
+            ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
+
             var tempCarttList = GetList();
 
             if (tempCarttList.Count() <= 0)
@@ -33,6 +36,8 @@ namespace uhrenWelt.Controllers
 
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            var getProductPrice = db.Product.Single(x => x.Id == id);
+            ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + (getProductPrice.NetUnitPrice * 1.2m));
 
             // check if order with date=null exists -> if not new order is created
             if (getNoOrderDateCart.Count() == 0)
@@ -41,7 +46,7 @@ namespace uhrenWelt.Controllers
                 Order newOrder = new Order();
                 newOrder.Id = newOrder.Id++;
                 newOrder.CustomerId = getCustomer.Id;
-                newOrder.PriceTotal = CalculateTotalPrice(22, 22); // TODO totalprice
+                newOrder.PriceTotal = CalculateTotalPrice(getCustomer.Email);
                 newOrder.Street = getCustomer.Street;
                 newOrder.Zip = getCustomer.Zip;
                 newOrder.City = getCustomer.City;
@@ -112,7 +117,6 @@ namespace uhrenWelt.Controllers
 
         public ActionResult IcrementAmount(int? id)
         {
-            // TODO Change Amount
             OrderLine orderLine = db.OrderLine.Find(id);
             orderLine.Amount += 1;
 
@@ -127,11 +131,10 @@ namespace uhrenWelt.Controllers
 
         public ActionResult DecrementAmount(int? id)
         {
-            // TODO Change Amount
             OrderLine orderLine = db.OrderLine.Find((int)id);
             if (orderLine.Amount > 0)
             {
-            orderLine.Amount -= 1;
+                orderLine.Amount -= 1;
             }
             if (orderLine.Amount <= 0)
             {
@@ -155,9 +158,13 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("ShowCart");
         }
 
-        private decimal CalculateTotalPrice(decimal unitPrice, int quantity)
+        private decimal CalculateTotalPrice(string email)
         {
-            return (unitPrice * quantity) * 1.2m; // TODO calculate totoal price
+            var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
+            var getNoOrderDateCart = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            var getSum = db.OrderLine.Where(c => c.OrderId == getNoOrderDateCart.Id).Sum(x => x.NetUnitPrice * x.Amount);
+
+            return getSum * 1.2m;
         }
 
         public List<Cart> GetList()
