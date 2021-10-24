@@ -89,8 +89,13 @@ namespace uhrenWelt.Controllers
                     OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == getOrderId.Id && x.ProductId == (int)id).FirstOrDefault();
                     orderLine.Amount += (int)amount;
 
+                    var totalPriceGen = CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount);
+                    Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
+                    order.PriceTotal = (decimal)totalPriceGen;
+
                     if (ModelState.IsValid)
                     {
+                        db.Entry(order).State = EntityState.Modified;
                         db.Entry(orderLine).State = EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -106,9 +111,14 @@ namespace uhrenWelt.Controllers
                     newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
                     newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
 
+                    var totalPriceGen = CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount);
+                    Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
+                    order.PriceTotal = (decimal)totalPriceGen;
+
                     if (ModelState.IsValid)
                     {
                         db.OrderLine.Add(newOrderLine);
+                        db.Entry(order).State = EntityState.Modified;
                         db.SaveChanges();
                     }
                 }
@@ -119,12 +129,16 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Order(int? id)
         {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             // TODO Create Order
             return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
         }
 
         public ActionResult IncrementAmount(int? id)
         {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             OrderLine orderLine = db.OrderLine.Find(id);
             orderLine.Amount += 1;
 
@@ -139,6 +153,8 @@ namespace uhrenWelt.Controllers
 
         public ActionResult DecrementAmount(int? id)
         {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             OrderLine orderLine = db.OrderLine.Find((int)id);
             if (orderLine.Amount > 0)
                 orderLine.Amount -= 1;
@@ -155,8 +171,10 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("ShowCart");
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
             var orderLine = db.OrderLine.Find(id);
             db.OrderLine.Remove(orderLine);
             db.SaveChanges();
@@ -195,7 +213,7 @@ namespace uhrenWelt.Controllers
         {
             var vm = new Cart();
             vm.Id = databaseData.Id;
-            vm.OrderId = databaseData.Id;
+            vm.OrderId = databaseData.OrderId;
             vm.ProductId = databaseData.ProductId;
             vm.Amount = databaseData.Amount;
             vm.NetUnitPrice = GetNetUnitPrice(databaseData.ProductId);

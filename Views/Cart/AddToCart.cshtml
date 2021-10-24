@@ -40,16 +40,19 @@
 
             </tr>
         }
-    <tr>
-        <th>Gesamtpreis:</th>
-        @if (ViewBag.Total != null)
-        {
-            <td style="white-space: nowrap; text-decoration: underline #9CA39D;">@String.Format("{0:C}", ViewBag.Total)</td>
-        }
-    </tr>
+        <tr>
+            <th>Gesamtpreis:</th>
+            @if (ViewBag.Total != null)
+            {
+                <td style="white-space: nowrap; text-decoration: underline #9CA39D;">@String.Format("{0:C}", ViewBag.Total)</td>
+            }
+        </tr>
     </table>
 </div>
 <div class="buttonCenter">
-    @Html.ActionLink("Bestellen", "Order", "Cart", null, new { @class = "btn btn-success btn-lg" })
+    @foreach (var item in Model.Take(1))
+    {
+        @Html.ActionLink("Bestellen", "Order", "Cart", new { Id = item.OrderId }, new { @class = "btn btn-success btn-lg" })
+    }
 </div>
 
