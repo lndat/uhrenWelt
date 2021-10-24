@@ -115,7 +115,7 @@ namespace uhrenWelt.Controllers
         [Authorize]
         public ActionResult ChangeAmount(int? id)
         {
-            // TODO Create Order
+            // TODO Change Amount
             return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
         }
 
@@ -131,7 +131,7 @@ namespace uhrenWelt.Controllers
 
         private decimal CalculateTotalPrice(decimal unitPrice, int quantity)
         {
-            return (unitPrice * quantity) * 1.2m;
+            return (unitPrice * quantity) * 1.2m; // TODO calculate totoal price
         }
 
         public List<Cart> GetList()
