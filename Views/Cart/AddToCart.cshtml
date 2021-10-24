@@ -3,45 +3,45 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Einkaufswagen</h2>
 <p>
     @Html.ActionLink("Zurück", "Shop", "Shop", null, new { @class = "removeStyle" })
 </p>
-
-<table class="table table-striped">
-    <tr>
-        <th>Bild</th>
-        <th>Hersteller</th>
-        <th>Name</th>
-        <th>Anazhl</th>
-        <th>Einzelpreis</th>
-        <th>Gesamt Preis inkl. MwSt</th>
-        <th></th>
-    </tr>
-    @foreach (var cart in Model)
-    {
-        var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
+<div class="table-responsive">
+    <table class="table table-striped">
         <tr>
-            <td>
-                <img src="@cart.ImagePath" style="max-height:3em" />
-            </td>
-            <td>@cart.ManufacturerName</td>
-            <td>@cart.ProductName</td>
-            <td>@cart.Amount</td>
-            <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
-            <td>@String.Format("{0:C}", totalPrice)</td>
-            <td>
-                <form class="form-inline" method="Post" action="/Cart/ChangeAmount">
-                    @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:4px;" })
-                    @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
-                    @Html.ActionLink("+", "IcrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
-                </form>
-            </td>
-
+            <th>Bild</th>
+            <th>Hersteller</th>
+            <th>Name</th>
+            <th>Anazhl</th>
+            <th>Einzelpreis</th>
+            <th>Gesamt Preis inkl. MwSt</th>
+            <th></th>
         </tr>
-    }
-</table>
+        @foreach (var cart in Model)
+        {
+            var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
+            <tr>
+                <td>
+                    <img src="@cart.ImagePath" style="max-height:3em" />
+                </td>
+                <td>@cart.ManufacturerName</td>
+                <td>@cart.ProductName</td>
+                <td>@cart.Amount</td>
+                <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
+                <td>@String.Format("{0:C}", totalPrice)</td>
+                <td>
+                    <form class="form-inline" method="Post" action="/Cart/ChangeAmount">
+                        @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:4px;" })
+                        @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
+                        @Html.ActionLink("+", "IcrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </table>
+</div>
 <div class="buttonCenter">
     @Html.ActionLink("Bestellen", "Order", "Cart", null, new { @class = "btn btn-success btn-lg" })
 </div>

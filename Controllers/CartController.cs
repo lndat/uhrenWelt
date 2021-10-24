@@ -8,12 +8,12 @@ using uhrenWelt.Models;
 
 namespace uhrenWelt.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
         // GET: Cart
-        [Authorize]
         public ActionResult ShowCart()
         {
             var tempCarttList = GetList();
@@ -27,7 +27,6 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
-        [Authorize]
         public ActionResult AddToCart(int? id, int? amount)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -35,7 +34,7 @@ namespace uhrenWelt.Controllers
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
 
-            // if we dont find an order with date = null -> new order is created
+            // check if order with date=null exists -> if not new order is created
             if (getNoOrderDateCart.Count() == 0)
             {
                 // create new order
@@ -105,14 +104,12 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
-        [Authorize]
         public ActionResult Order(int? id)
         {
             // TODO Create Order
             return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
         }
 
-        [Authorize]
         public ActionResult IcrementAmount(int? id)
         {
             // TODO Change Amount
@@ -127,7 +124,7 @@ namespace uhrenWelt.Controllers
 
             return RedirectToAction("ShowCart");
         }
-        [Authorize]
+
         public ActionResult DecrementAmount(int? id)
         {
             // TODO Change Amount
@@ -150,8 +147,6 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("ShowCart");
         }
 
-
-        [Authorize]
         public ActionResult Delete(int id)
         {
             var orderLine = db.OrderLine.Find(id);
