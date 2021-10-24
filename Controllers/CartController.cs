@@ -19,6 +19,7 @@ namespace uhrenWelt.Controllers
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
 
+
             var tempCarttList = GetList();
 
             if (tempCarttList.Count() <= 0)
@@ -37,7 +38,7 @@ namespace uhrenWelt.Controllers
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var getProductPrice = db.Product.Single(x => x.Id == id);
-            ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + (getProductPrice.NetUnitPrice * 1.2m));
+            ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount));
 
             // check if order with date=null exists -> if not new order is created
             if (getNoOrderDateCart.Count() == 0)
@@ -140,7 +141,6 @@ namespace uhrenWelt.Controllers
             {
                 return RedirectToAction("Delete", new { Id = id });
             }
-
             if (ModelState.IsValid)
             {
                 db.Entry(orderLine).State = EntityState.Modified;
@@ -162,9 +162,11 @@ namespace uhrenWelt.Controllers
         {
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
-            var getSum = db.OrderLine.Where(c => c.OrderId == getNoOrderDateCart.Id).Sum(x => x.NetUnitPrice * x.Amount);
+            var getSum = db.OrderLine.Where(c => c.OrderId == getNoOrderDateCart.Id).Sum(x => (decimal?)x.NetUnitPrice * (int?)x.Amount);
+            
+            if (getSum <= 0 || getSum == null) return -1m;
 
-            return getSum * 1.2m;
+            return (decimal)getSum * 1.2m;
         }
 
         public List<Cart> GetList()
