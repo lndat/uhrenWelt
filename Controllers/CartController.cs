@@ -175,7 +175,7 @@ namespace uhrenWelt.Controllers
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var getSum = db.OrderLine.Where(c => c.OrderId == getNoOrderDateCart.Id).Sum(x => (decimal?)x.NetUnitPrice * (int?)x.Amount);
-            
+
             if (getSum <= 0 || getSum == null) return -1m;
 
             return (decimal)getSum * 1.2m;
