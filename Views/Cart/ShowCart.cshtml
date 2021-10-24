@@ -26,7 +26,7 @@
                 var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
                 <tr>
                     <td>
-                        <a href="@Url.Action("Details", "Shop", new { Id = cart.ProductId })"> <img src="@cart.ImagePath" style="max-height:3em" ></a>
+                        <a href="@Url.Action("Details", "Shop", new { Id = cart.ProductId })"> <img src="@cart.ImagePath" style="max-height:3em"></a>
                     </td>
                     <td>@cart.ManufacturerName</td>
                     <td>@cart.ProductName</td>
@@ -42,13 +42,13 @@
                     </td>
                 </tr>
             }
-        <tr>
-            <th>Gesamtpreis:</th>
-            @if (ViewBag.Total != null)
-            {
-                <td style="white-space: nowrap;">@String.Format("{0:C}", ViewBag.Total)</td>
-            }
-        </tr>
+            <tr>
+                <th>Gesamtpreis:</th>
+                @if (ViewBag.Total != null)
+                {
+                    <td style="white-space: nowrap;">@String.Format("{0:C}", ViewBag.Total)</td>
+                }
+            </tr>
         </table>
     </div>
     <div class="buttonCenter">

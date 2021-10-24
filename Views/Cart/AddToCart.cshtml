@@ -40,13 +40,13 @@
 
             </tr>
         }
-    <tr>
-        <th>Gesamtpreis:</th>
-        @if (ViewBag.Total != null)
-        {
-            <td style="white-space: nowrap;">@String.Format("{0:C}", ViewBag.Total)</td>
-        }
-    </tr>
+        <tr>
+            <th>Gesamtpreis:</th>
+            @if (ViewBag.Total != null)
+            {
+                <td style="white-space: nowrap;">@String.Format("{0:C}", ViewBag.Total)</td>
+            }
+        </tr>
     </table>
 </div>
 <div class="buttonCenter">
