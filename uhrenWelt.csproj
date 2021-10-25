@@ -143,6 +143,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Data\Category.cs">
       <DependentUpon>uhrenWelt-DB.tt</DependentUpon>
@@ -420,7 +421,7 @@
     <Content Include="Views\Shared\_SearchFilterBar.cshtml" />
     <Content Include="Views\Cart\AddToCart.cshtml" />
     <Content Include="Views\Cart\ShowCart.cshtml" />
-    <Content Include="Views\Cart\Order.cshtml" />
+    <Content Include="Views\Order\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

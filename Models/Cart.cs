@@ -9,6 +9,7 @@ namespace uhrenWelt.Models
 {
     public class Cart
     {
+        public Customer Customer { get; set; }
         public int Id { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }

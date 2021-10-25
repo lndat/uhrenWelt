@@ -126,14 +126,6 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
-        public ActionResult Order(int? id)
-        {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            // TODO Create Order
-            return new HttpStatusCodeResult(HttpStatusCode.NotImplemented);
-        }
-
         public ActionResult IncrementAmount(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -236,6 +228,7 @@ namespace uhrenWelt.Controllers
             vm.OrderId = databaseData.OrderId;
             vm.ProductId = databaseData.ProductId;
             vm.Amount = databaseData.Amount;
+            vm.PriceTotal = GetTotalPrice(databaseData.OrderId);
             vm.NetUnitPrice = GetNetUnitPrice(databaseData.ProductId);
             vm.TaxRate = databaseData.TaxRate;
             vm.ManufacturerName = GetManufacturerName(GetManufacturerId(databaseData.ProductId));
@@ -287,6 +280,12 @@ namespace uhrenWelt.Controllers
         {
             var getPrice = db.Product.Single(x => x.Id == id);
             return getPrice.NetUnitPrice;
+        }
+
+        private decimal GetTotalPrice(int id)
+        {
+            var getTotalPrice = db.Order.Single(x => x.Id == id);
+            return getTotalPrice.PriceTotal;
         }
 
         public Customer GetCustomerByEmail(string email)

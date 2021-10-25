@@ -52,7 +52,7 @@
 <div class="buttonCenter">
     @foreach (var item in Model.Take(1))
     {
-        @Html.ActionLink("Bestellen", "Order", "Cart", new { Id = item.OrderId }, new { @class = "btn btn-success btn-lg" })
+        @Html.ActionLink("Bestellen", "Order", "Order", new { Id = item.OrderId }, new { @class = "btn btn-success btn-lg" })
     }
 </div>
 
