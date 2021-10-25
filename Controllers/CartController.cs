@@ -23,7 +23,6 @@ namespace uhrenWelt.Controllers
             if (getNoOrderDateCart.Count() > 0)
                 ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
 
-
             if (tempCarttList.Count() <= 0)
             {
                 ViewBag.Message = "EmptyCart";
@@ -41,7 +40,7 @@ namespace uhrenWelt.Controllers
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var getProductPrice = db.Product.Single(x => x.Id == id);
-            #endregion
+            #endregion qry
 
             if (getNoOrderDateCart.Count() > 0)
                 ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount));
@@ -142,8 +141,18 @@ namespace uhrenWelt.Controllers
             OrderLine orderLine = db.OrderLine.Find(id);
             orderLine.Amount += 1;
 
+            #region qry
+            var getProductPrice = db.Product.Single(x => x.Id == orderLine.ProductId);
+            var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
+            var totalPriceGen = CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m));
+            var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
+            order.PriceTotal = (decimal)totalPriceGen;
+            #endregion qry
+
             if (ModelState.IsValid)
             {
+                db.Entry(order).State = EntityState.Modified;
                 db.Entry(orderLine).State = EntityState.Modified;
                 db.SaveChanges();
             }
@@ -161,6 +170,17 @@ namespace uhrenWelt.Controllers
 
             if (orderLine.Amount <= 0)
                 return RedirectToAction("Delete", new { Id = id });
+
+            #region qry
+
+            var getProductPrice = db.Product.Single(x => x.Id == orderLine.ProductId);
+            var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
+            var totalPriceGen = CalculateTotalPrice(getCustomer.Email) - ((getProductPrice.NetUnitPrice * 1.2m));
+            var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
+            order.PriceTotal = (decimal)totalPriceGen;
+
+            #endregion qry
 
             if (ModelState.IsValid)
             {
