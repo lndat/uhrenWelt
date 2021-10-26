@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModels;
+using Rotativa;
 
 namespace uhrenWelt.Controllers
 {
@@ -21,6 +22,26 @@ namespace uhrenWelt.Controllers
             var tempCarttList = GetList();
             return View(tempCarttList);
         }
+
+
+        public ActionResult DownloadPartialViewPDF(OrderVM oderVm, int orderId)
+        {
+            var getOrderLine = db.OrderLine.Where(x => x.OrderId == orderId).ToList();
+            var getTotalPrice = db.Order.Single(x => x.Id == orderId);
+            var vm = new OrderVM();
+            foreach (var item in getOrderLine)
+            {
+                vm.OrderId = item.OrderId;
+                vm.ProductId = item.ProductId;
+                vm.Amount = item.Amount;
+                vm.ProductName = GetProductName(item.ProductId);
+                vm.NetUnitPrice = item.NetUnitPrice;
+                vm.PriceTotal = getTotalPrice.PriceTotal;
+            }
+            //Code to get content
+            return new Rotativa.PartialViewAsPdf("_PartialRechnung", vm) { FileName = "Rechnung.pdf" };
+        }
+
 
         // confirming with orderdate & email
         public ActionResult ConfirmOrder(int? id)

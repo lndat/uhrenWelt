@@ -40,7 +40,7 @@
             <th>ProduktNr</th>
             <th>Name</th>
             <th>Anzahl</th>
-            <th>Preis inkl. MwSt.</th>
+            <th>Gesamtpreis</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -48,14 +48,13 @@
                 <td>@item.ProductId</td>
                 <td>@item.ProductName</td>
                 <td>@item.Amount</td>
-                <td>@String.Format("{0:C}", (item.NetUnitPrice * item.Amount) * 1.2m)</td>
+                <td>@String.Format("{0:C}", item.NetUnitPrice * item.Amount)</td>
             </tr>
         }
         @foreach (var item in Model.Take(1))
         {
             <tr>
-                <th>Gesamtpreis:</th>
-                <td>@String.Format("{0:C}", item.PriceTotal)</td>
+                <th width="320px">Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
             </tr>
         }
     </table>

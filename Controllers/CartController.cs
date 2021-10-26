@@ -5,6 +5,7 @@ using System.Net;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.Models;
+using uhrenWelt.ViewModels;
 
 namespace uhrenWelt.Controllers
 {
@@ -32,6 +33,7 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
+        [HttpPost]
         public ActionResult AddToCart(int? id, int? amount)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

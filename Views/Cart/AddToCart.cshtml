@@ -15,12 +15,12 @@
             <th>Name</th>
             <th>Anazhl</th>
             <th>Einzelpreis</th>
-            <th>Gesamtpreis inkl. MwSt</th>
+            <th>Gesamtpreis</th>
             <th></th>
         </tr>
         @foreach (var cart in Model)
         {
-            var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
+            var totalPrice = cart.NetUnitPrice * cart.Amount;
             <tr>
                 <td>
                     <a href="@Url.Action("Details", "Shop", new { Id = cart.ProductId })"> <img src="@cart.ImagePath" style="max-height:3em"></a>
@@ -55,7 +55,7 @@
             </tr>
         }
         <tr>
-            <th>Gesamtpreis:</th>
+            <th style="white-space: nowrap;" colspan="2">Gesamtpreis inkl. MwSt:</th>
             @if (ViewBag.Total != null)
             {
                 <td style="white-space: nowrap; text-decoration: underline #9CA39D;">@String.Format("{0:C}", ViewBag.Total)</td>
