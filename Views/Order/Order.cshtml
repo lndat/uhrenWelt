@@ -1,66 +1,69 @@
-﻿@model IEnumerable<uhrenWelt.Models.Cart>
+﻿@model IEnumerable<uhrenWelt.ViewModels.OrderVM>
 @{
     ViewBag.Title = "Bestellung";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Ihre Bestellung</h2>
-<p>
-    @Html.ActionLink("Zurück", "Shop", "Shop", null, new { @class = "removeStyle" })
-</p>
+<h2>Adresse</h2>
 <div class="table-responsive">
     <table class="table table-striped">
         <tr>
-            <th>Vorname</th>
-            <th>Nachname</th>
             <th>Straße</th>
             <th>Stadt</th>
             <th>Postleitzahl</th>
         </tr>
-        @foreach (var cart in Model)
-        {
-            var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
-            <tr>
-                <td>@cart.ProductId</td>
-                <td>@cart.ProductName</td>
-                <td>@Html.DisplayFor(c => cart.Amount)</td>
-                <td>@String.Format("{0:C}", totalPrice)</td>
-            </tr>
-        }
         @foreach (var item in Model.Take(1))
         {
             <tr>
-                <th>Gesamtpreis:</th>
-                <td>@String.Format("{0:C}", @item.PriceTotal)</td>
+                <td>@item.Street</td>
+                <td>@item.City</td>
+                <td>@item.Zip</td>
             </tr>
         }
     </table>
-</div>
-<div class="table-responsive">
+    <div class="buttonCenter">
+        @foreach (var item in Model.Take(1))
+        {
+            @Html.ActionLink("Bearbeiten", "Order", "Order", new { Id = item.OrderId }, new { @class = "btn btn-warning" })
+        }
+    </div>
+    <br />
+    @foreach (var item in Model.Take(1))
+    {
+        <h2>Rechnung</h2>
+        <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+        <br />
+        <h8>Rechnungsnummer: @item.OrderId</h8>
+    }
     <table class="table table-striped">
         <tr>
             <th>ProduktNr</th>
             <th>Name</th>
             <th>Anzahl</th>
-            <th>Gesamtpreis inkl. MwSt</th>
+            <th>Preis inkl. MwSt.</th>
         </tr>
-        @foreach (var cart in Model)
+        @foreach (var item in Model)
         {
-            var totalPrice = (cart.NetUnitPrice * cart.Amount) * 1.2m;
             <tr>
-                <td>@cart.ProductId</td>
-                <td>@cart.ProductName</td>
-                <td>@Html.DisplayFor(c => cart.Amount)</td>
-                <td>@String.Format("{0:C}", totalPrice)</td>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.Amount</td>
+                <td>@String.Format("{0:C}", (item.NetUnitPrice * item.Amount) * 1.2m)</td>
             </tr>
         }
         @foreach (var item in Model.Take(1))
         {
             <tr>
                 <th>Gesamtpreis:</th>
-                <td>@String.Format("{0:C}", @item.PriceTotal)</td>
+                <td>@String.Format("{0:C}", item.PriceTotal)</td>
             </tr>
         }
     </table>
+</div>
+<div class="buttonCenter">
+    @foreach (var item in Model.Take(1))
+    {
+        @Html.ActionLink("Jetzt kaufen", "ConfirmOrder", "Order", new { Id = item.OrderId }, new { @class = "btn btn-success" })
+    }
 </div>
 

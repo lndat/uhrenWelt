@@ -23,7 +23,7 @@ namespace uhrenWelt.Controllers
             if (getNoOrderDateCart.Count() > 0)
                 ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
 
-            if (tempCarttList.Count() <= 0)
+            if (tempCarttList.Count() <= 0 || getNoOrderDateCart.Count() <= 0)
             {
                 ViewBag.Message = "EmptyCart";
                 return View();
@@ -122,8 +122,7 @@ namespace uhrenWelt.Controllers
                     }
                 }
             }
-            var tempCarttList = GetList();
-            return View(tempCarttList);
+            return RedirectToAction("ShowCart");
         }
 
         public ActionResult IncrementAmount(int? id)
@@ -186,10 +185,24 @@ namespace uhrenWelt.Controllers
         public ActionResult Delete(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             var orderLine = db.OrderLine.Find(id);
             db.OrderLine.Remove(orderLine);
             db.SaveChanges();
+
+            #region qry
+            var getProductPrice = db.Product.Single(x => x.Id == orderLine.ProductId);
+            var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
+            var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
+            var totalPriceGen = getOrderId.PriceTotal - (getProductPrice.NetUnitPrice * 1.2m);
+            Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
+            order.PriceTotal = (decimal)totalPriceGen;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            #endregion
 
             return RedirectToAction("ShowCart");
         }
@@ -217,7 +230,7 @@ namespace uhrenWelt.Controllers
             using (var db = new uhrenWeltEntities())
             {
                 var cusId = GetCustomerByEmail(User.Identity.Name).Id;
-                return db.OrderLine.Where(x => x.Order.CustomerId == cusId).ToList();
+                return db.OrderLine.Where(x => x.Order.CustomerId == cusId).Include("Order").Where(x => x.Order.DateOrdered == null).ToList();
             }
         }
 
