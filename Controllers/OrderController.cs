@@ -1,18 +1,13 @@
-﻿using System;
+﻿using Rotativa.Options;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
+using System.Net.Mail;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModels;
-using Rotativa;
-using System.IO;
-using System.Web.Routing;
-using uhrenWelt.Services;
-using System.Net.Mail;
-using System.Net.Mime;
 
 namespace uhrenWelt.Controllers
 {
@@ -20,10 +15,8 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
-        public ActionResult Order(int? id)
+        public ActionResult Order()
         {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
             var tempCarttList = GetList();
             return View(tempCarttList);
         }
@@ -33,8 +26,9 @@ namespace uhrenWelt.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+            // TODO customer can change shipping address (in Order)
             SendEmail(GetCustomerByEmail(User.Identity.Name).Email);
-            
+
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             order.DateOrdered = DateTime.Now;
 
@@ -46,33 +40,42 @@ namespace uhrenWelt.Controllers
 
             var tempCarttList = GetList();
 
-            // TODO email & pdf creation to end ordering process
             return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
         }
 
         public bool SendEmail(string customerEmail)
         {
-            var customer = GetCustomerByEmail(User.Identity.Name);
-            OrderVM emailBody = new OrderVM();
+            var customer = GetCustomerByEmail(customerEmail);
             var tempCarttList = GetList();
+            OrderVM emailBody = new OrderVM();
+
             foreach (var item in tempCarttList)
             {
-                emailBody.OrderId = item.OrderId;
-                emailBody.ProductId = item.ProductId;
-                emailBody.Amount = item.Amount;
-                emailBody.NetUnitPrice = item.NetUnitPrice;
-                emailBody.PriceTotal = item.PriceTotal;
                 emailBody.FirstName = customer.FirstName;
                 emailBody.LastName = customer.LastName;
             }
 
+            var actionPDF = new Rotativa.ActionAsPdf("Order")
+            {
+                FileName = "Rechnung.pdf",
+                PageSize = Size.A4,
+                PageOrientation = Rotativa.Options.Orientation.Landscape,
+                PageMargins = { Left = 1, Right = 1 }
+            };
+
+            byte[] applicationPDFData = actionPDF.BuildFile(ControllerContext);
+            string path = Server.MapPath(@"~/Rechnung.pdf");
+            System.IO.File.WriteAllBytes(path, applicationPDFData);
+
             var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
             message.Subject = "Vielen Dank für Ihre Bestellung bei uhrenwelt.at!";
-            message.Body = $"Ihre Rechnung {emailBody.FirstName} {emailBody.LastName}! \nGesamtpreis inkl. MwSt.: {emailBody.PriceTotal}";
+            message.Body = $"Ihre Rechnung {emailBody.FirstName} {emailBody.LastName}! \n Danke und bis zum nächsten mal :)";
             SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
+            message.Attachments.Add(new Attachment(path));
             mailer.Credentials = new NetworkCredential("testmailuhrenwelt@gmail.com", "User123!");
             mailer.EnableSsl = true;
             mailer.Send(message);
+
             return true;
         }
 
