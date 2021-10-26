@@ -8,6 +8,11 @@ using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModels;
 using Rotativa;
+using System.IO;
+using System.Web.Routing;
+using uhrenWelt.Services;
+using System.Net.Mail;
+using System.Net.Mime;
 
 namespace uhrenWelt.Controllers
 {
@@ -23,32 +28,13 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
-
-        public ActionResult DownloadPartialViewPDF(OrderVM oderVm, int orderId)
-        {
-            var getOrderLine = db.OrderLine.Where(x => x.OrderId == orderId).ToList();
-            var getTotalPrice = db.Order.Single(x => x.Id == orderId);
-
-            var vm = new OrderVM();
-            foreach (var item in getOrderLine)
-            {
-                vm.OrderId = item.OrderId;
-                vm.ProductId = item.ProductId;
-                vm.Amount = item.Amount;
-                vm.ProductName = GetProductName(item.ProductId);
-                vm.NetUnitPrice = item.NetUnitPrice;
-                vm.PriceTotal = getTotalPrice.PriceTotal;
-            }
-            //Code to get content
-            return new Rotativa.PartialViewAsPdf("_PartialRechnung", vm) { FileName = "Rechnung.pdf" };
-        }
-
-
         // confirming with orderdate & email
         public ActionResult ConfirmOrder(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
+            SendEmail(GetCustomerByEmail(User.Identity.Name).Email);
+            
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             order.DateOrdered = DateTime.Now;
 
@@ -58,8 +44,36 @@ namespace uhrenWelt.Controllers
                 db.SaveChanges();
             }
 
+            var tempCarttList = GetList();
+
             // TODO email & pdf creation to end ordering process
-            return RedirectToAction("OrderConfirmed", "Order", new { Id = id }); ;
+            return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
+        }
+
+        public bool SendEmail(string customerEmail)
+        {
+            var customer = GetCustomerByEmail(User.Identity.Name);
+            OrderVM emailBody = new OrderVM();
+            var tempCarttList = GetList();
+            foreach (var item in tempCarttList)
+            {
+                emailBody.OrderId = item.OrderId;
+                emailBody.ProductId = item.ProductId;
+                emailBody.Amount = item.Amount;
+                emailBody.NetUnitPrice = item.NetUnitPrice;
+                emailBody.PriceTotal = item.PriceTotal;
+                emailBody.FirstName = customer.FirstName;
+                emailBody.LastName = customer.LastName;
+            }
+
+            var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
+            message.Subject = "Vielen Dank für Ihre Bestellung bei uhrenwelt.at!";
+            message.Body = $"Ihre Rechnung {emailBody.FirstName} {emailBody.LastName}! \nGesamtpreis inkl. MwSt.: {emailBody.PriceTotal}";
+            SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
+            mailer.Credentials = new NetworkCredential("testmailuhrenwelt@gmail.com", "User123!");
+            mailer.EnableSsl = true;
+            mailer.Send(message);
+            return true;
         }
 
         // thank you page

@@ -74,20 +74,6 @@ namespace uhrenWelt.Services
             return false;
         }
 
-        public static bool SendEmail(OrderVM oderVm, string customerEmail, byte[] invoicePdf)
-        {
-            var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
-            message.Subject = "Vielen Danke für Ihre Bestellung bei uhrenwelt.at!";
-            message.Body = "Vielen Dank!\n Ihre Rechnung.";
-            //message.Attachments
-            SmtpClient mailer = new SmtpClient("smtp.office365.com", 587);
-            mailer.Credentials = new NetworkCredential("testmailuhrenwelt@gmail.com", "User123!");
-            mailer.EnableSsl = true;
-            mailer.Send(message);
-            return true;
-        }
-
-
         public static int GetUserIdByEmail(string email)
         {
             var getUser = db.Customer.Single(x => x.Email == email);
