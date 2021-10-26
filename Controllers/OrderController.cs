@@ -35,6 +35,7 @@ namespace uhrenWelt.Controllers
                 db.SaveChanges();
             }
 
+            // TODO email & pdf creation to end ordering process
             return RedirectToAction("Index", "Home"); ;
         }
 
