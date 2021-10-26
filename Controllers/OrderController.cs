@@ -28,6 +28,7 @@ namespace uhrenWelt.Controllers
         {
             var getOrderLine = db.OrderLine.Where(x => x.OrderId == orderId).ToList();
             var getTotalPrice = db.Order.Single(x => x.Id == orderId);
+
             var vm = new OrderVM();
             foreach (var item in getOrderLine)
             {
