@@ -1,0 +1,51 @@
+﻿@model IEnumerable<uhrenWelt.ViewModels.OrderVM>
+
+<h2>Adresse</h2>
+<table class="table">
+    <tr>
+        <th>Straße</th>
+        <th>Stadt</th>
+        <th>Postleitzahl</th>
+    </tr>
+    @foreach (var item in Model.Take(1))
+    {
+        <tr>
+            <td>@item.Street</td>
+            <td>@item.City</td>
+            <td>@item.Zip</td>
+        </tr>
+    }
+</table>
+<br />
+@foreach (var item in Model.Take(1))
+{
+    <h2>Rechnung</h2>
+    <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+    <br />
+    <h8>Rechnungsnummer: @item.OrderId</h8>
+}
+<table class="table">
+    <tr>
+        <th>ProduktNr</th>
+        <th>Name</th>
+        <th>Anzahl</th>
+        <th>Gesamtpreis</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.Amount</td>
+            <td>@String.Format("{0:C}", item.NetUnitPrice * item.Amount)</td>
+        </tr>
+    }
+    @foreach (var item in Model.Take(1))
+    {
+        <tr>
+            <th>Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
+        </tr>
+    }
+</table>
+
+

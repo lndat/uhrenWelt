@@ -11,9 +11,16 @@ using uhrenWelt.ViewModels;
 
 namespace uhrenWelt.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
+
+        public ActionResult OrderPdf()
+        {
+            var tempCarttList = GetList();
+            return View(tempCarttList);
+        }
 
         public ActionResult Order()
         {
@@ -55,7 +62,7 @@ namespace uhrenWelt.Controllers
                 emailBody.LastName = customer.LastName;
             }
 
-            var actionPDF = new Rotativa.ActionAsPdf("Order")
+            var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
             {
                 FileName = "Rechnung.pdf",
                 PageSize = Size.A4,
