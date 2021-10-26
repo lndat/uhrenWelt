@@ -22,6 +22,7 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
+        // confirming with orderdate & email
         public ActionResult ConfirmOrder(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,7 +37,16 @@ namespace uhrenWelt.Controllers
             }
 
             // TODO email & pdf creation to end ordering process
-            return RedirectToAction("Index", "Home"); ;
+            return RedirectToAction("OrderConfirmed", "Order", new { Id = id }); ;
+        }
+
+        // thank you page
+        public ActionResult OrderConfirmed(int? id)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            ViewBag.OrderId = id;
+
+            return View(id);
         }
 
         public List<OrderVM> GetList()

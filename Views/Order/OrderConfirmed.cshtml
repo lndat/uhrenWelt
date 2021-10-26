@@ -1,0 +1,20 @@
+﻿@model int
+@{
+    ViewBag.Title = "OrderConfirmed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="text-align:center;">
+    <br />
+    <h2>Vielen Dank für Ihre Bestellung!</h2>
+    <h4>Ihre Bestellnummer lautet: @ViewBag.OrderId</h4>
+    <br />
+    Bitte überweisen Sie auf folgendes Konto unbedingt unter Angabe Ihrer Kundennummer:
+</div>
+<div style="text-align:center;">
+    <br />
+    <p><b>Zahlungsempfänger:</b><br /> uhrenwelt.at GmbH</p>
+    <p><b>Adresse:</b><br />Musterstrasse 17<br />1220 Wien</p>
+    <p><b>IBAN:</b><br />AT110 1001 0100 0001 1101 00</p>
+    <p><b>BIC:</b><br />GGSDAT33BXZ</p>
+</div>
+
