@@ -36,8 +36,22 @@
                     <td>
                         <form class="form-inline" method="post" action="/Cart/ChangeAmount">
                             @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:4px;" })
-                            @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
-                            @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
+                            @if (cart.Amount > 1 && cart.Amount <= 8)
+                            {
+                                @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
+                                @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
+
+                            }
+                            else if (cart.Amount <= 1)
+                            {
+                                <button type="button" disabled class="btn btn-secondary btn-sm" style="margin-right:4px;">-</button>
+                                @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
+                            }
+                            else
+                            {
+                                @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
+                                <button type="button" disabled class="btn btn-secondary btn-sm">+</button>
+                            }
                         </form>
                     </td>
                 </tr>
