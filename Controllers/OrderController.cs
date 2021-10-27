@@ -21,12 +21,11 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
-        // confirming with orderdate & email
+        // confirming order
         public ActionResult ConfirmOrder(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            // TODO customer can change shipping address (in Order)
             SendEmail(GetCustomerByEmail(User.Identity.Name).Email, id);
 
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
@@ -43,6 +42,7 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
         }
 
+        // change address in current order
         [HttpPost]
         public ActionResult ChangeAddress(int? id, string street, string city, string zip)
         {
