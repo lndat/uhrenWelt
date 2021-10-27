@@ -1,5 +1,4 @@
-﻿using Rotativa.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -72,6 +71,7 @@ namespace uhrenWelt.Controllers
             var tempCarttList = GetList();
 
             #region otherwayofcreatingpdf
+
             //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
             //{
             //    FileName = "Rechnung.pdf",
@@ -85,7 +85,8 @@ namespace uhrenWelt.Controllers
             //    var tempCarttList = GetList();
             //    return View();
             //}
-            #endregion
+
+            #endregion otherwayofcreatingpdf
 
             var report = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList);
             byte[] applicationPDFData = report.BuildFile(ControllerContext);
