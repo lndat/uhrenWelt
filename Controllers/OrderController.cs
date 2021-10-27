@@ -16,12 +16,6 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
-        public ActionResult OrderPdf()
-        {
-            var tempCarttList = GetList();
-            return View(tempCarttList);
-        }
-
         public ActionResult Order()
         {
             var tempCarttList = GetList();
@@ -34,7 +28,7 @@ namespace uhrenWelt.Controllers
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             // TODO customer can change shipping address (in Order)
-            SendEmail(GetCustomerByEmail(User.Identity.Name).Email);
+            SendEmail(GetCustomerByEmail(User.Identity.Name).Email, id);
 
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             order.DateOrdered = DateTime.Now;
@@ -50,33 +44,35 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
         }
 
-        public bool SendEmail(string customerEmail)
+        public bool SendEmail(string customerEmail, int? orderId)
         {
             var customer = GetCustomerByEmail(customerEmail);
             var tempCarttList = GetList();
-            OrderVM emailBody = new OrderVM();
 
-            foreach (var item in tempCarttList)
-            {
-                emailBody.FirstName = customer.FirstName;
-                emailBody.LastName = customer.LastName;
-            }
+            #region otherwayofcreatingpdf
+            //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
+            //{
+            //    FileName = "Rechnung.pdf",
+            //    PageSize = Size.A4,
+            //    PageOrientation = Rotativa.Options.Orientation.Landscape,
+            //    PageMargins = { Left = 1, Right = 1 }
+            //};
 
-            var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
-            {
-                FileName = "Rechnung.pdf",
-                PageSize = Size.A4,
-                PageOrientation = Rotativa.Options.Orientation.Landscape,
-                PageMargins = { Left = 1, Right = 1 }
-            };
+            //public ActionResult OrderPdf()
+            //{
+            //    var tempCarttList = GetList();
+            //    return View();
+            //}
+            #endregion
 
-            byte[] applicationPDFData = actionPDF.BuildFile(ControllerContext);
-            string path = Server.MapPath(@"~/Rechnung.pdf");
+            var report = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList);
+            byte[] applicationPDFData = report.BuildFile(ControllerContext);
+            string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
             System.IO.File.WriteAllBytes(path, applicationPDFData);
 
             var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
             message.Subject = "Vielen Dank für Ihre Bestellung bei uhrenwelt.at!";
-            message.Body = $"Ihre Rechnung {emailBody.FirstName} {emailBody.LastName}! \n Danke und bis zum nächsten mal :)";
+            message.Body = $"Ihre Rechnung {customer.FirstName} {customer.LastName}! \n Danke und bis zum nächsten mal :)";
             SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
             message.Attachments.Add(new Attachment(path));
             mailer.Credentials = new NetworkCredential("testmailuhrenwelt@gmail.com", "User123!");
@@ -86,7 +82,6 @@ namespace uhrenWelt.Controllers
             return true;
         }
 
-        // thank you page
         public ActionResult OrderConfirmed(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -125,6 +120,8 @@ namespace uhrenWelt.Controllers
             vm.Street = orderData.Street;
             vm.Zip = orderData.Zip;
             vm.City = orderData.City;
+            vm.FirstName = GetCustomerByEmail(User.Identity.Name).FirstName;
+            vm.LastName = GetCustomerByEmail(User.Identity.Name).LastName;
 
             return vm;
         }
