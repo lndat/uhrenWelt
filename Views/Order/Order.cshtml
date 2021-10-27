@@ -46,12 +46,6 @@
 
         }
     </table>
-    @*<div class="buttonCenter">
-            @foreach (var item in Model.Take(1))
-            {
-                @Html.ActionLink("Bearbeiten", "Order", "Order", new { Id = item.OrderId }, new { @class = "btn btn-warning" })
-            }
-        </div>*@
     <br />
     @foreach (var item in Model.Take(1))
     {
