@@ -94,8 +94,8 @@ namespace uhrenWelt.Controllers
             System.IO.File.WriteAllBytes(path, applicationPDFData);
 
             var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
-            message.Subject = "Vielen Dank für Ihre Bestellung bei uhrenwelt.at!";
-            message.Body = $"Ihre Rechnung {customer.FirstName} {customer.LastName}! \n Danke und bis zum nächsten mal :)";
+            message.Subject = $"Deine Bestellung bei uhrenwelt.at (Nr. {orderId})";
+            message.Body = $"Hallo {customer.FirstName} {customer.LastName}! \nVielen Dank für deine Bestellung bei uhrenwelt.at.\nIm Anhang findest du deine Rechnung,\nbis zum nächsten mal!\n\nDein uhrenwelt.at Team :)";
             SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
             message.Attachments.Add(new Attachment(path));
             mailer.Credentials = new NetworkCredential("testmailuhrenwelt@gmail.com", "User123!");
