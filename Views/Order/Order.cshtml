@@ -11,6 +11,7 @@
             <th>Straße</th>
             <th>Stadt</th>
             <th>Postleitzahl</th>
+            <th></th>
         </tr>
         @foreach (var item in Model.Take(1))
         {
@@ -19,14 +20,38 @@
                 <td>@item.City</td>
                 <td>@item.Zip</td>
             </tr>
+            <tr>
+                <form action="/Order/ChangeAddress" method="post">
+                <td>
+                    <div class="form-group">
+                        <input name="street" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Straße" required>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" name="city" class="form-control" placeholder="Stadt" required>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" name="zip" class="form-control" placeholder="Postleitzahl" required>
+                    </div>
+                </td>
+                <td>
+                    <input hidden name="id" value="@item.OrderId" />
+                    <button type="submit" class="btn btn-primary">Bearbeiten</button>
+                </td>
+                </form>
+            </tr>
+
         }
     </table>
-    <div class="buttonCenter">
-        @foreach (var item in Model.Take(1))
-        {
-            @Html.ActionLink("Bearbeiten", "Order", "Order", new { Id = item.OrderId }, new { @class = "btn btn-warning" })
-        }
-    </div>
+    @*<div class="buttonCenter">
+            @foreach (var item in Model.Take(1))
+            {
+                @Html.ActionLink("Bearbeiten", "Order", "Order", new { Id = item.OrderId }, new { @class = "btn btn-warning" })
+            }
+        </div>*@
     <br />
     @foreach (var item in Model.Take(1))
     {

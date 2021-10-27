@@ -44,6 +44,28 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
         }
 
+        [HttpPost]
+        public ActionResult ChangeAddress(int? id, string street, string city, string zip)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            if (!String.IsNullOrWhiteSpace(street) && !String.IsNullOrWhiteSpace(city) && !String.IsNullOrWhiteSpace(zip))
+            {
+                Order order = db.Order.Where(x => x.Id == id).FirstOrDefault();
+                order.Street = street;
+                order.City = city;
+                order.Zip = zip;
+
+                if (ModelState.IsValid)
+                {
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Order");
+        }
+
         public bool SendEmail(string customerEmail, int? orderId)
         {
             var customer = GetCustomerByEmail(customerEmail);
