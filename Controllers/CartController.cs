@@ -49,7 +49,7 @@ namespace uhrenWelt.Controllers
             else
                 ViewBag.Total = getProductPrice.NetUnitPrice * 1.2m * amount;
 
-            // check if order with date=null exists -> if not -> a new order is created
+            // check if order with date=null exists -> if not -> create new order
             if (getNoOrderDateCart.Count() == 0)
             {
                 // create new order
