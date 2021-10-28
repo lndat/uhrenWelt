@@ -5,7 +5,6 @@ using System.Net;
 using System.Web.Mvc;
 using uhrenWelt.Data;
 using uhrenWelt.Models;
-using uhrenWelt.ViewModels;
 
 namespace uhrenWelt.Controllers
 {
@@ -29,7 +28,6 @@ namespace uhrenWelt.Controllers
                 ViewBag.Message = "EmptyCart";
                 return View();
             }
-
             return View(tempCarttList);
         }
 
@@ -39,9 +37,11 @@ namespace uhrenWelt.Controllers
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             #region qry
+
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var getProductPrice = db.Product.Single(x => x.Id == id);
+
             #endregion qry
 
             if (getNoOrderDateCart.Count() > 0)
@@ -135,12 +135,14 @@ namespace uhrenWelt.Controllers
             orderLine.Amount += 1;
 
             #region qry
+
             var getProductPrice = db.Product.Single(x => x.Id == orderLine.ProductId);
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var totalPriceGen = CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m));
             var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
             order.PriceTotal = (decimal)totalPriceGen;
+
             #endregion qry
 
             if (ModelState.IsValid)
@@ -192,6 +194,7 @@ namespace uhrenWelt.Controllers
             db.SaveChanges();
 
             #region qry
+
             var getProductPrice = db.Product.Single(x => x.Id == orderLine.ProductId);
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
@@ -204,7 +207,8 @@ namespace uhrenWelt.Controllers
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
             }
-            #endregion
+
+            #endregion qry
 
             return RedirectToAction("ShowCart");
         }
