@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rotativa.Options;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -14,6 +15,12 @@ namespace uhrenWelt.Controllers
     public class OrderController : Controller
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
+
+        public ActionResult OrderPdf()
+        {
+            var tempCarttList = GetList();
+            return View(tempCarttList);
+        }
 
         public ActionResult Order()
         {
@@ -72,24 +79,20 @@ namespace uhrenWelt.Controllers
 
             #region otherwayofcreatingpdf
 
-            //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
-            //{
-            //    FileName = "Rechnung.pdf",
-            //    PageSize = Size.A4,
-            //    PageOrientation = Rotativa.Options.Orientation.Landscape,
-            //    PageMargins = { Left = 1, Right = 1 }
-            //};
+            var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
+            {
+                FileName = "Rechnung.pdf",
+                PageSize = Size.A4,
+                PageOrientation = Rotativa.Options.Orientation.Landscape,
+                PageMargins = { Left = 1, Right = 1 }
+            };
 
-            //public ActionResult OrderPdf()
-            //{
-            //    var tempCarttList = GetList();
-            //    return View();
-            //}
+
 
             #endregion otherwayofcreatingpdf
 
-            var report = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList);
-            byte[] applicationPDFData = report.BuildFile(ControllerContext);
+            //var report = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList);
+            byte[] applicationPDFData = actionPDF.BuildFile(ControllerContext);
             string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
             System.IO.File.WriteAllBytes(path, applicationPDFData);
 
