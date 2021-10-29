@@ -34,7 +34,7 @@ namespace uhrenWelt.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            SendEmail(GetCustomerByEmail(User.Identity.Name).Email, id);
+            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
 
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             order.DateOrdered = DateTime.Now;
@@ -73,7 +73,7 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("Order");
         }
 
-        public bool SendEmail(string customerEmail, int? orderId)
+        public bool SendMail(string customerEmail, int? orderId)
         {
             var customer = GetCustomerByEmail(customerEmail);
             var tempCarttList = GetList();
