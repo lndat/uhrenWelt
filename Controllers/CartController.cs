@@ -52,7 +52,7 @@ namespace uhrenWelt.Controllers
                 newOrder.Street = getCustomer.Street;
                 newOrder.Zip = getCustomer.Zip;
                 newOrder.City = getCustomer.City;
-                newOrder.DateOrdered = null;
+                newOrder.DateOrdered = null; 
 
                 // create new OrderLine
                 OrderLine newOrderLine = new OrderLine();
