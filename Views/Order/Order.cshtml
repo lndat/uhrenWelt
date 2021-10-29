@@ -67,7 +67,7 @@
                 <td>@item.ProductId</td>
                 <td>@item.ProductName</td>
                 <td>@item.Amount</td>
-                <td>@String.Format("{0:C}", item.NetUnitPrice * item.Amount)</td>
+                <td>@String.Format("{0:C}", (item.NetUnitPrice * item.Amount) * 1.2m)</td>
             </tr>
         }
         @foreach (var item in Model.Take(1))
