@@ -104,14 +104,14 @@ namespace uhrenWelt.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
-            if (email == null || password == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (email == null || password == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             if (UserService.LoginCheck(email, password))
             {
                 AuthenticateUser(email);
                 return RedirectToAction("Shop", "Shop");
             }
+
             ViewBag.Message = "WrongLoginData";
             return View();
         }
