@@ -140,7 +140,7 @@ namespace uhrenWelt.Controllers
                 encryptedTicket
             );
 
-            // per http response, cookie user übergeben
+            // give formsauthcookie to user on response 
             Response.Cookies.Add(cookie);
         }
     }
