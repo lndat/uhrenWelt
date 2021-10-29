@@ -190,7 +190,7 @@ namespace uhrenWelt.Controllers
             var getProductPrice = db.Product.Single(x => x.Id == orderLine.ProductId);
             var getCustomer = db.Customer.Single(x => x.Email == User.Identity.Name);
             var getOrderId = db.Order.Single(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
-            var totalPriceGen = getOrderId.PriceTotal - (getProductPrice.NetUnitPrice * 1.2m);
+            var totalPriceGen = getOrderId.PriceTotal - ((getProductPrice.NetUnitPrice * 1.2m) * orderLine.Amount);
             Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();
             order.PriceTotal = (decimal)totalPriceGen;
 
