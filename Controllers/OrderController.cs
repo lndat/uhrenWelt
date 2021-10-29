@@ -93,7 +93,7 @@ namespace uhrenWelt.Controllers
             var partialPdf = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList)
             {
                 PageSize = Size.A4,
-                PageOrientation = Rotativa.Options.Orientation.Landscape,
+                PageOrientation = Rotativa.Options.Orientation.Portrait,
                 PageMargins = { Left = 1, Right = 1 },
                 FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
             };

@@ -17,7 +17,7 @@
 @foreach (var item in Model.Take(1))
 {
     <div class="d-flex justify-content-start">
-        <p>@item.Street <br />@item.Zip @item.City</p>
+        <p>@item.FirstName @item.LastName <br />@item.Street <br />@item.Zip @item.City</p>
         <br />
     </div>
 }
@@ -51,8 +51,15 @@
     }
     @foreach (var item in Model.Take(1))
     {
+        @*<tr>
+            <th style="text-align:left" colspan="2">
+                Netto Gesamtpreis: <u style="white-space: nowrap; text-decoration: underline #9CA39D;font-weight: 500;">@String.Format("{0:C}", item.PriceTotal / 1.2m)</u>
+            </th>
+        </tr>*@
         <tr>
-            <th style="text-align:left">Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
+            <th style="text-align:left" colspan="2">
+                Gesamtpreis inkl. MwSt.: <u style="white-space: nowrap; text-decoration: underline #9CA39D;font-weight: 500;">@String.Format("{0:C}", item.PriceTotal)</u>
+            </th>
         </tr>
     }
 </table>

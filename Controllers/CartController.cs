@@ -20,9 +20,6 @@ namespace uhrenWelt.Controllers
             var getNoOrderDateCart = db.Order.Where(x => x.CustomerId == getCustomer.Id && x.DateOrdered == null);
             var tempCarttList = GetList();
 
-            if (getNoOrderDateCart.Count() > 0)
-                ViewBag.Total = CalculateTotalPrice(getCustomer.Email);
-
             if (tempCarttList.Count() <= 0 || getNoOrderDateCart.Count() <= 0)
             {
                 ViewBag.Message = "EmptyCart";
@@ -43,11 +40,6 @@ namespace uhrenWelt.Controllers
             var getProductPrice = db.Product.Single(x => x.Id == id);
 
             #endregion qry
-
-            if (getNoOrderDateCart.Count() > 0)
-                ViewBag.Total = (CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount));
-            else
-                ViewBag.Total = getProductPrice.NetUnitPrice * 1.2m * amount;
 
             // check if order with date=null exists -> if not -> create new order
             if (getNoOrderDateCart.Count() == 0)
