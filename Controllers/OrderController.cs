@@ -17,12 +17,6 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
-        public ActionResult OrderPdf()
-        {
-            var tempCarttList = GetList();
-            return View(tempCarttList);
-        }
-
         public ActionResult Order()
         {
             var tempCarttList = GetList();
@@ -80,6 +74,12 @@ namespace uhrenWelt.Controllers
 
             #region otherwayofcreatingpdf
 
+            //public ActionResult OrderPdf()
+            //{
+            //    var tempCarttList = GetList();
+            //    return View(tempCarttList);
+            //}
+
             //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
             //{
             //    PageSize = Size.A4,
@@ -87,7 +87,6 @@ namespace uhrenWelt.Controllers
             //    PageMargins = { Left = 1, Right = 1 },
             //    FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
             //};
-
 
             #endregion otherwayofcreatingpdf
 
