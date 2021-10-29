@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Web.Mvc;
+using System.Web.Security;
 using uhrenWelt.Data;
 using uhrenWelt.ViewModels;
 
@@ -79,22 +80,28 @@ namespace uhrenWelt.Controllers
 
             #region otherwayofcreatingpdf
 
-            var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
-            {
-                FileName = "Rechnung.pdf",
-                PageSize = Size.A4,
-                PageOrientation = Rotativa.Options.Orientation.Landscape,
-                PageMargins = { Left = 1, Right = 1 }
-            };
-
+            //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
+            //{
+            //    PageSize = Size.A4,
+            //    PageOrientation = Rotativa.Options.Orientation.Portrait,
+            //    PageMargins = { Left = 1, Right = 1 },
+            //    FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
+            //};
 
 
             #endregion otherwayofcreatingpdf
 
-            //var report = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList);
-            byte[] applicationPDFData = actionPDF.BuildFile(ControllerContext);
+            var partialPdf = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList)
+            {
+                PageSize = Size.A4,
+                PageOrientation = Rotativa.Options.Orientation.Landscape,
+                PageMargins = { Left = 1, Right = 1 },
+                FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
+            };
+
+            byte[] invoicePdfData = partialPdf.BuildFile(ControllerContext);
             string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
-            System.IO.File.WriteAllBytes(path, applicationPDFData);
+            System.IO.File.WriteAllBytes(path, invoicePdfData);
 
             var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
             message.Subject = $"Deine Bestellung bei uhrenwelt.at (Nr. {orderId})";
@@ -148,6 +155,9 @@ namespace uhrenWelt.Controllers
             vm.City = orderData.City;
             vm.FirstName = GetCustomerByEmail(User.Identity.Name).FirstName;
             vm.LastName = GetCustomerByEmail(User.Identity.Name).LastName;
+            vm.CStreet = GetCustomerByEmail(User.Identity.Name).Street;
+            vm.CZip = GetCustomerByEmail(User.Identity.Name).Zip;
+            vm.CCity = GetCustomerByEmail(User.Identity.Name).City;
 
             return vm;
         }

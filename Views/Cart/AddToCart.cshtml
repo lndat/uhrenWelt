@@ -21,38 +21,38 @@
         @foreach (var cart in Model)
         {
             var totalPrice = cart.NetUnitPrice * cart.Amount;
-            <tr>
-                <td>
-                    <a href="@Url.Action("Details", "Shop", new { Id = cart.ProductId })"> <img src="@cart.ImagePath" style="max-height:3em"></a>
-                </td>
-                <td>@cart.ManufacturerName</td>
-                <td>@cart.ProductName</td>
-                <td>@cart.Amount</td>
-                <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
-                <td>@String.Format("{0:C}", totalPrice)</td>
-                <td>
-                    <form class="form-inline" method="Post" action="/Cart/ChangeAmount">
-                        @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:4px;" })
-                        @if (cart.Amount > 1 && cart.Amount <= 8)
-                        {
-                            @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
-                            @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
+    <tr>
+        <td>
+            <a href="@Url.Action("Details", "Shop", new { Id = cart.ProductId })"> <img src="@cart.ImagePath" style="max-height:3em"></a>
+        </td>
+        <td>@cart.ManufacturerName</td>
+        <td>@cart.ProductName</td>
+        <td>@cart.Amount</td>
+        <td>@String.Format("{0:C}", (cart.NetUnitPrice) * 1.2m)</td>
+        <td>@String.Format("{0:C}", (totalPrice) * 1.2m)</td>
+        <td>
+            <form class="form-inline" method="Post" action="/Cart/ChangeAmount">
+                @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:4px;" })
+                @if (cart.Amount > 1 && cart.Amount <= 8)
+                {
+                    @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
+                    @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
 
-                        }
-                        else if (cart.Amount <= 1)
-                        {
-                            <button type="button" disabled class="btn btn-secondary btn-sm" style="margin-right:4px;">-</button>
-                            @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
-                            <button type="button" disabled class="btn btn-secondary btn-sm">+</button>
-                        }
-                    </form>
-                </td>
+                }
+                else if (cart.Amount <= 1)
+                {
+                    <button type="button" disabled class="btn btn-secondary btn-sm" style="margin-right:4px;">-</button>
+                    @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })
+                }
+                else
+                {
+                    @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
+                    <button type="button" disabled class="btn btn-secondary btn-sm">+</button>
+                }
+            </form>
+        </td>
 
-            </tr>
+    </tr>
         }
         <tr>
             <th style="white-space: nowrap;" colspan="2">Gesamtpreis inkl. MwSt:</th>

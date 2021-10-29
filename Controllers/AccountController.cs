@@ -105,7 +105,7 @@ namespace uhrenWelt.Controllers
         public ActionResult Login(string email, string password)
         {
             if (email == null || password == null)
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             if (UserService.LoginCheck(email, password))
             {

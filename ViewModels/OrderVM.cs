@@ -16,6 +16,9 @@ namespace uhrenWelt.ViewModels
         public string Street { get; set; }
         public string Zip { get; set; }
         public string City { get; set; }
+        public string CStreet { get; set; }
+        public string CZip { get; set; }
+        public string CCity { get; set; }
         public string ProductName { get; set; }
         public int Amount { get; set; }
         public string FirstName { get; set; }

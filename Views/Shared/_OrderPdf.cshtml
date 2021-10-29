@@ -1,24 +1,43 @@
 ﻿@model IEnumerable<uhrenWelt.ViewModels.OrderVM>
 
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h5>Rechnungs Adresse</h5>
 @foreach (var item in Model.Take(1))
 {
-    <p>@item.FirstName @item.LastName <br />@item.Street <br />@item.Zip @item.City</p>
+    <div class="d-flex justify-content-start">
+        <p>@item.FirstName @item.LastName <br />@item.CStreet <br />@item.CZip @item.CCity</p>
+        <br />
+    </div>
 }
-
+<h5>Liefer Adresse</h5>
+@foreach (var item in Model.Take(1))
+{
+    <div class="d-flex justify-content-start">
+        <p>@item.Street <br />@item.Zip @item.City</p>
+        <br />
+    </div>
+}
 <br />
 @foreach (var item in Model.Take(1))
 {
-    <h2>Rechnung</h2>
-    <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+    <div style="text-align:right">
+        <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+    </div>
+    <div style="text-align:right">
+        <h8 style="text-align:right">Rechnungsnummer: @item.OrderId</h8>
+    </div>
     <br />
-    <h8>Rechnungsnummer: @item.OrderId</h8>
+    <h2>Rechnung</h2>
 }
-<table>
+<table class="table">
     <tr>
-        <th>ProduktNr</th>
-        <th>Name</th>
-        <th>Anzahl</th>
-        <th>Gesamtpreis</th>
+        <th style="text-align:left">ProduktNr</th>
+        <th style="text-align:left">Name</th>
+        <th style="text-align:left">Anzahl</th>
+        <th style="text-align:left">Gesamtpreis</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -26,16 +45,18 @@
             <td>@item.ProductId</td>
             <td>@item.ProductName</td>
             <td>@item.Amount</td>
-            <td>@String.Format("{0:C}", item.NetUnitPrice * item.Amount)</td>
+            <td>@String.Format("{0:C}", (item.NetUnitPrice * item.Amount) * 1.2m)</td>
         </tr>
     }
     @foreach (var item in Model.Take(1))
     {
         <tr>
-            <th>Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
+            <th style="text-align:left">Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
         </tr>
     }
 </table>
+<br />
+<div style="text-align:center"><p>Vielen Dank für Ihren Einkauf!</p></div>
 
 
 
