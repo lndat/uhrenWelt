@@ -354,6 +354,13 @@ go
 insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
 CategoryID)
 values
+('Portugieser', 22700, '/Img/IWC/Schaffhausen-11.png',
+'Durchmesser 42,40 mm, Edelstahl - Datumsanzeige, Wochentage, Ewiger Kalender, Mondphase, Uhrwerk sichtbar, Saphirglas', 5, 3)
+go
+
+insert into Product (ProductName, NetUnitPrice, ImagePath, [Description], ManufacturerId,
+CategoryID)
+values
 ('La Grande Classique', 950, '/Img/Longines/Longines-01.png',
 'Durchmesser 37,00 mm, Edelstahl Quarzwerk, Kaliber L420', 6, 1)
 go
