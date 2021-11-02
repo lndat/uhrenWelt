@@ -46,6 +46,7 @@
 
         }
     </table>
+</div>
     <br />
     @foreach (var item in Model.Take(1))
     {
@@ -54,6 +55,7 @@
         <br />
         <h8>Rechnungsnummer: @item.OrderId</h8>
     }
+<div class="table-responsive">
     <table class="table table-striped">
         <tr style="text-align:left">
             <th>ProduktNr</th>
@@ -73,11 +75,18 @@
         @foreach (var item in Model.Take(1))
         {
             <tr>
+                <th width="310px">Gesamtpreis Netto: <u style="font-weight:500">@String.Format("{0:C}", (item.PriceTotal) / 1.2m)</u></th>
+            </tr>
+            <tr>
+                <th width="310px">MwSt. Betrag: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal - ((item.PriceTotal) / 1.2m))</u></th>
+            </tr>
+            <tr>
                 <th width="310px">Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
             </tr>
         }
     </table>
 </div>
+    
 <div class="buttonCenter">
     @foreach (var item in Model.Take(1))
     {

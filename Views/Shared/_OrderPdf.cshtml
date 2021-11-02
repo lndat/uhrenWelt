@@ -25,8 +25,17 @@
 @foreach (var item in Model.Take(1))
 {
     <div style="text-align:right">
-        <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+        <h8>Wien, am @DateTime.Now.ToShortDateString()</h8>
     </div>
+    @*<div style="text-align:right">
+            <h8>uhrenwelt.at</h8>
+        </div>
+        <div style="text-align:right">
+            <h8>Musterstrasse 17</h8>
+        </div>
+        <div style="text-align:right">
+            <h8>1220 Wien</h8>
+        </div>*@
     <div style="text-align:right">
         <h8 style="text-align:right">Rechnungsnummer: @item.OrderId</h8>
     </div>
@@ -57,9 +66,13 @@
                 </th>
             </tr>*@
         <tr>
-            <th style="text-align:left" colspan="2">
-                Gesamtpreis inkl. MwSt.: <u style="white-space: nowrap; text-decoration: underline #9CA39D;font-weight: 500;">@String.Format("{0:C}", item.PriceTotal)</u>
-            </th>
+            <th style="text-align:left;" width="310px">Netto: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", (item.PriceTotal) / 1.2m)</u></th>
+        </tr>
+        <tr>
+            <th style="text-align:left" width="310px">20% USt.: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal - ((item.PriceTotal) / 1.2m))</u></th>
+        </tr>
+        <tr>
+            <th style="text-align:left" width="310px">Gesamtpreis: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal)</u></th>
         </tr>
     }
 </table>

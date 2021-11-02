@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<uhrenWelt.ViewModels.OrderVM>
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPdf.cshtml";
 }
 <br />
+<img style="max-width: 60px; max-height: 30px; display: block; margin-left: auto; margin-right: auto; width: 50%;" src="~/Img/Logos/uwLogo.png" alt="uhrenweltLogo">
 <h5>Rechnungs Adresse</h5>
 @foreach (var item in Model.Take(1))
 {
@@ -16,7 +17,7 @@
 @foreach (var item in Model.Take(1))
 {
     <div class="d-flex justify-content-start">
-        <p>@item.Street <br />@item.Zip @item.City</p>
+        <p>@item.FirstName @item.LastName <br />@item.Street <br />@item.Zip @item.City</p>
         <br />
     </div>
 }
@@ -24,8 +25,17 @@
 @foreach (var item in Model.Take(1))
 {
     <div style="text-align:right">
-        <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+        <h8>Wien, am @DateTime.Now.ToShortDateString()</h8>
     </div>
+    @*<div style="text-align:right">
+            <h8>uhrenwelt.at</h8>
+        </div>
+        <div style="text-align:right">
+            <h8>Musterstrasse 17</h8>
+        </div>
+        <div style="text-align:right">
+            <h8>1220 Wien</h8>
+        </div>*@
     <div style="text-align:right">
         <h8 style="text-align:right">Rechnungsnummer: @item.OrderId</h8>
     </div>
@@ -50,11 +60,23 @@
     }
     @foreach (var item in Model.Take(1))
     {
+        @*<tr>
+                <th style="text-align:left" colspan="2">
+                    Netto Gesamtpreis: <u style="white-space: nowrap; text-decoration: underline #9CA39D;font-weight: 500;">@String.Format("{0:C}", item.PriceTotal / 1.2m)</u>
+                </th>
+            </tr>*@
         <tr>
-            <th style="text-align:left">Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
+            <th style="text-align:left;" width="310px">Netto: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", (item.PriceTotal) / 1.2m)</u></th>
+        </tr>
+        <tr>
+            <th style="text-align:left" width="310px">20% USt.: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal - ((item.PriceTotal) / 1.2m))</u></th>
+        </tr>
+        <tr>
+            <th style="text-align:left" width="310px">Gesamtpreis: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal)</u></th>
         </tr>
     }
 </table>
+<br />
 <div style="text-align:center"><p>Vielen Dank für Ihren Einkauf!</p></div>
 
 

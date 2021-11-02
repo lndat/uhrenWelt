@@ -66,7 +66,7 @@
                 <th></th>
             </tr>
             <tr>
-                <th style="white-space: nowrap;" colspan="2">Gesamtpreis: </th>
+                <th style="white-space: nowrap;" colspan="2">Netto: </th>
                 @foreach (var item in Model.Take(1))
                 {
                     <td style="white-space: nowrap; text-decoration: underline #9CA39D;">@String.Format("{0:C}", item.PriceTotal / 1.2m)</td>
