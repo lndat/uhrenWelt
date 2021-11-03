@@ -24,31 +24,39 @@ namespace uhrenWelt.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(CustomerVM customerVm)
         {
-            var newCustomer = new Customer();
-            var salt = UserService.CreateSalt(customerVm.PwHash.Length);
-
-            newCustomer.Title = customerVm.Title;
-            newCustomer.FirstName = customerVm.FirstName;
-            newCustomer.LastName = customerVm.LastName;
-            newCustomer.Email = customerVm.Email;
-            newCustomer.Street = customerVm.Street;
-            newCustomer.Zip = customerVm.Zip;
-            newCustomer.City = customerVm.City;
-            newCustomer.PwHash = UserService.HashPassword(customerVm.PwHash + salt);
-            newCustomer.Salt = salt;
-
-            if (ModelState.IsValid)
+            if (customerVm.AcceptTerms == true)
             {
-                if (UserService.EmailCheck(customerVm.Email))
-                {
-                    ViewBag.Message = "EmailDupe";
-                    return View();
-                }
+                var newCustomer = new Customer();
+                var salt = UserService.CreateSalt(customerVm.PwHash.Length);
 
-                db.Customer.Add(newCustomer);
-                db.SaveChanges();
-                AuthenticateUser(newCustomer.Email);
-                return RedirectToAction("Index", "Home");
+                newCustomer.Title = customerVm.Title;
+                newCustomer.FirstName = customerVm.FirstName;
+                newCustomer.LastName = customerVm.LastName;
+                newCustomer.Email = customerVm.Email;
+                newCustomer.Street = customerVm.Street;
+                newCustomer.Zip = customerVm.Zip;
+                newCustomer.City = customerVm.City;
+                newCustomer.PwHash = UserService.HashPassword(customerVm.PwHash + salt);
+                newCustomer.Salt = salt;
+
+                if (ModelState.IsValid)
+                {
+                    if (UserService.EmailCheck(customerVm.Email))
+                    {
+                        ViewBag.Message = "EmailDupe";
+                        return View();
+                    }
+
+                    db.Customer.Add(newCustomer);
+                    db.SaveChanges();
+                    AuthenticateUser(newCustomer.Email);
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                ViewBag.Message = "TermsNotAccepted";
+                return View();
             }
 
             return View(customerVm);

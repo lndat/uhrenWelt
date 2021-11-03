@@ -59,5 +59,12 @@ namespace uhrenWelt.ViewModels
         public string PwCheck { get; set; }
 
         public string Salt { get; set; }
+
+        [Display(Name = "Hiermit bestätige ich, die AGB gelesen und anerkannt zu haben.")]
+        public bool AcceptTerms { get; set; } = false;
     }
+
+
+
+
 }

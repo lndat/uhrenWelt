@@ -59,8 +59,6 @@ namespace uhrenWelt.Controllers
 
             #region otherwayofcreatingpdf
 
-
-
             //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
             //{
             //    PageSize = Size.A4,
@@ -69,7 +67,6 @@ namespace uhrenWelt.Controllers
             //    FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
             //};
 
-            #endregion otherwayofcreatingpdf
 
             //var partialPdf = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList)
             //{
@@ -79,9 +76,9 @@ namespace uhrenWelt.Controllers
             //    FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
             //};
 
+            #endregion otherwayofcreatingpdf
+
             var partialPdf = new Rotativa.ActionAsPdf("OrderPdf");
-
-
 
             byte[] invoicePdfData = partialPdf.BuildFile(ControllerContext);
             string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
