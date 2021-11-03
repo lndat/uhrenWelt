@@ -3,7 +3,7 @@
     ViewBag.Title = "Bestellung";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<br />
 <h2>Lieferadresse</h2>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -78,10 +78,10 @@
                 <th width="310px">Gesamtpreis Netto: <u style="font-weight:500">@String.Format("{0:C}", (item.PriceTotal) / 1.2m)</u></th>
             </tr>
             <tr>
-                <th width="310px">MwSt. Betrag: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal - ((item.PriceTotal) / 1.2m))</u></th>
+                <th width="310px">20% USt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal - ((item.PriceTotal) / 1.2m))</u></th>
             </tr>
             <tr>
-                <th width="310px">Gesamtpreis inkl. MwSt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
+                <th width="310px">Gesamtpreis inkl. 20% USt.: <u style="font-weight:500">@String.Format("{0:C}", item.PriceTotal)</u></th>
             </tr>
         }
     </table>

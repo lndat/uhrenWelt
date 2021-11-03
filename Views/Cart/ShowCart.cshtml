@@ -17,8 +17,8 @@
                 <th>Hersteller</th>
                 <th>Name</th>
                 <th>Anzahl</th>
-                <th>Einzelpreis</th>
-                <th>Gesamtpreis inkl. MwSt.</th>
+                <th>Netto Einzelpreis</th>
+                <th>Gesamtpreis inkl. 20% USt.</th>
                 <th></th>
             </tr>
             @foreach (var cart in Model)
@@ -73,7 +73,7 @@
                 }
             </tr>
             <tr>
-                <th style="white-space: nowrap;" colspan="2">Gesamtpreis inkl. MwSt.:</th>
+                <th style="white-space: nowrap;" colspan="2">Gesamtpreis inkl. 20% USt.:</th>
                 @foreach (var item in Model.Take(1))
                 {
                     <td style="white-space: nowrap; text-decoration: underline #9CA39D;">@String.Format("{0:C}", item.PriceTotal)</td>
