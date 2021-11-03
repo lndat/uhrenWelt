@@ -17,8 +17,8 @@
                 <th>Hersteller</th>
                 <th>Name</th>
                 <th>Anzahl</th>
-                <th>Netto Einzelpreis</th>
-                <th>Gesamtpreis inkl. 20% USt.</th>
+                <th>Brutto Einzelpreis</th>
+                <th>Zeilenpreis</th>
                 <th></th>
             </tr>
             @foreach (var cart in Model)
@@ -31,7 +31,7 @@
                     <td>@cart.ManufacturerName</td>
                     <td>@cart.ProductName</td>
                     <td>@Html.DisplayFor(c => cart.Amount)</td>
-                    <td>@String.Format("{0:C}", cart.NetUnitPrice)</td>
+                    <td>@String.Format("{0:C}", (cart.NetUnitPrice) * 1.2m)</td>
                     <td>@String.Format("{0:C}", (totalPrice) * 1.2m)</td>
                     <td>
                         <form class="form-inline" method="post" action="/Cart/ChangeAmount">
@@ -73,7 +73,7 @@
                 }
             </tr>
             <tr>
-                <th style="white-space: nowrap;" colspan="2">Gesamtpreis inkl. 20% USt.:</th>
+                <th style="white-space: nowrap;" colspan="2">Brutto:</th>
                 @foreach (var item in Model.Take(1))
                 {
                     <td style="white-space: nowrap; text-decoration: underline #9CA39D;">@String.Format("{0:C}", item.PriceTotal)</td>

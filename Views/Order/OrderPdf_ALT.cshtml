@@ -1,13 +1,8 @@
 ﻿@model IEnumerable<uhrenWelt.ViewModels.OrderVM>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LayoutPdf.cshtml";
 }
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
 <br />
 <img style="max-width: 60px; max-height: 30px; display: block; margin-left: auto; margin-right: auto; width: 50%;" src="~/Img/Logos/uwLogo.png" alt="uhrenweltLogo">
 <h5>Rechnungs Adresse</h5>
@@ -30,7 +25,7 @@
 @foreach (var item in Model.Take(1))
 {
     <div style="text-align:right">
-        <h8>Wien, am &nbsp; @DateTime.Now.ToShortDateString()</h8>
+        <h8>Wien, am @DateTime.Now.ToShortDateString()</h8>
     </div>
     @*<div style="text-align:right">
             <h8>uhrenwelt.at</h8>
@@ -52,7 +47,7 @@
         <th style="text-align:left">ProduktNr</th>
         <th style="text-align:left">Name</th>
         <th style="text-align:left">Anzahl</th>
-        <th style="text-align:left">Zeilenpreis</th>
+        <th style="text-align:left">Gesamtpreis</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -77,7 +72,7 @@
             <th style="text-align:left" width="310px">20% USt.: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal - ((item.PriceTotal) / 1.2m))</u></th>
         </tr>
         <tr>
-            <th style="text-align:left" width="310px">Brutto: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal)</u></th>
+            <th style="text-align:left" width="310px">Gesamtpreis: <u style="font-weight: 500; text-align: left;">@String.Format("{0:C}", item.PriceTotal)</u></th>
         </tr>
     }
 </table>

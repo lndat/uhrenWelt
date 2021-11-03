@@ -23,27 +23,6 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
-        // confirming order
-        public ActionResult ConfirmOrder(int? id)
-        {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
-
-            Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
-            order.DateOrdered = DateTime.Now;
-
-            if (ModelState.IsValid)
-            {
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-
-            var tempCarttList = GetList();
-
-            return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
-        }
-
         // change address in current order
         [HttpPost]
         public ActionResult ChangeAddress(int? id, string street, string city, string zip)
@@ -67,6 +46,12 @@ namespace uhrenWelt.Controllers
             return RedirectToAction("Order");
         }
 
+        public ActionResult OrderPdf()
+        {
+            var tempCarttList = GetList();
+            return View(tempCarttList);
+        }
+
         public bool SendMail(string customerEmail, int? orderId)
         {
             var customer = GetCustomerByEmail(customerEmail);
@@ -74,11 +59,7 @@ namespace uhrenWelt.Controllers
 
             #region otherwayofcreatingpdf
 
-            //public ActionResult OrderPdf()
-            //{
-            //    var tempCarttList = GetList();
-            //    return View(tempCarttList);
-            //}
+
 
             //var actionPDF = new Rotativa.ActionAsPdf("OrderPdf")
             //{
@@ -90,13 +71,17 @@ namespace uhrenWelt.Controllers
 
             #endregion otherwayofcreatingpdf
 
-            var partialPdf = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList)
-            {
-                PageSize = Size.A4,
-                PageOrientation = Rotativa.Options.Orientation.Portrait,
-                PageMargins = { Left = 1, Right = 1 },
-                FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
-            };
+            //var partialPdf = new Rotativa.PartialViewAsPdf("_OrderPdf", tempCarttList)
+            //{
+            //    PageSize = Size.A4,
+            //    PageOrientation = Rotativa.Options.Orientation.Portrait,
+            //    PageMargins = { Left = 1, Right = 1 },
+            //    FormsAuthenticationCookieName = FormsAuthentication.FormsCookieName
+            //};
+
+            var partialPdf = new Rotativa.ActionAsPdf("OrderPdf");
+
+
 
             byte[] invoicePdfData = partialPdf.BuildFile(ControllerContext);
             string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
@@ -117,6 +102,27 @@ namespace uhrenWelt.Controllers
             mailer.Send(message);
 
             return true;
+        }
+
+        // confirming order
+        public ActionResult ConfirmOrder(int? id)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
+
+            Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
+            order.DateOrdered = DateTime.Now;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            var tempCarttList = GetList();
+
+            return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
         }
 
         public ActionResult OrderConfirmed(int? id)

@@ -280,6 +280,7 @@
     <Content Include="Img\Logos\tag_heuer.jpg" />
     <Content Include="Img\Logos\tudor.jpg" />
     <Content Include="Img\Logos\uwLogo.png" />
+    <Content Include="Img\Logos\uwLogo2.png" />
     <Content Include="Img\Longines\Longines-01.png" />
     <Content Include="Img\Longines\Longines-02.png" />
     <Content Include="Img\Longines\Longines-03.png" />
@@ -427,9 +428,10 @@
     <Content Include="Views\Cart\ShowCart.cshtml" />
     <Content Include="Views\Order\Order.cshtml" />
     <Content Include="Views\Order\OrderConfirmed.cshtml" />
-    <Content Include="Views\Order\OrderPdf.cshtml" />
+    <Content Include="Views\Order\OrderPdf_ALT.cshtml" />
     <Content Include="Views\Shared\_OrderPdf.cshtml" />
     <Content Include="Views\Shared\_LayoutPdf.cshtml" />
+    <Content Include="Views\Order\OrderPdf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
