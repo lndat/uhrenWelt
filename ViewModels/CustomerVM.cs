@@ -63,8 +63,4 @@ namespace uhrenWelt.ViewModels
         [Display(Name = "Hiermit bestätige ich, die AGB gelesen und anerkannt zu haben.")]
         public bool AcceptTerms { get; set; } = false;
     }
-
-
-
-
 }
