@@ -277,6 +277,11 @@
     <Content Include="Img\Logos\iwc.jpg" />
     <Content Include="Img\Logos\longines.jpg" />
     <Content Include="Img\Logos\panerai.jpg" />
+    <Content Include="Img\Logos\rolexBanner.jpg" />
+    <Content Include="Img\Logos\rolexBanner2.jpg" />
+    <Content Include="Img\Logos\rolexBanner3.jpg" />
+    <Content Include="Img\Logos\rolexBanner4.jpg" />
+    <Content Include="Img\Logos\rolexBanner5.jpg" />
     <Content Include="Img\Logos\tag_heuer.jpg" />
     <Content Include="Img\Logos\tudor.jpg" />
     <Content Include="Img\Logos\uwLogo.png" />

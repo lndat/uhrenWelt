@@ -134,11 +134,49 @@ h7 {
     .product-card {
         flex: 0 29%;
     }
+
+    .homeBigImage img {
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 3px #000000;
+        margin: 5px;
+        border: 1px solid #D8E3DA;
+        border-radius: 7px;
+    }
+}
+
+@media (max-width: 800px) {
+    .form-inline input {
+        margin: 10px 0;
+    }
+
+    .form-inline {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .homeBigImage img {
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 3px #000000;
+        margin: 5px;
+        border: 1px solid #D8E3DA;
+        border-radius: 7px;
+    }
 }
 
 @media (max-width: 600px) {
     .product-card {
         flex: 0 45%;
+    }
+
+    .homeBigImage img {
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 3px #000000;
+        margin: 5px;
+        border: 1px solid #D8E3DA;
+        border-radius: 7px;
     }
 }
 
@@ -149,6 +187,15 @@ h7 {
 
     .sort {
         align-self: flex-start;
+    }
+
+    .homeBigImage img {
+        width: 100%;
+        height: auto;
+        box-shadow: 0px 0px 3px #000000;
+        margin: 5px;
+        border: 1px solid #D8E3DA;
+        border-radius: 7px;
     }
 }
 
@@ -171,17 +218,6 @@ h7 {
     margin-left: 33px;
     display: flex;
     flex-flow: row wrap;
-}
-
-@media (max-width: 800px) {
-    .form-inline input {
-        margin: 10px 0;
-    }
-
-    .form-inline {
-        flex-direction: row;
-        align-items: center;
-    }
 }
 
 .errorMessage{
@@ -208,3 +244,13 @@ input, label {
     -ms-user-select: none;
     user-select: none;
 }
+
+.homeBigImage img {
+    max-width: 1272px;
+    height: auto;
+    box-shadow: 0px 0px 3px #000000;
+    margin: 5px;
+    border: 1px solid #D8E3DA;
+    border-radius: 7px;
+}
+
