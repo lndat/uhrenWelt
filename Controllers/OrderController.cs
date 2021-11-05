@@ -84,7 +84,7 @@ namespace uhrenWelt.Controllers
             string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
             System.IO.File.WriteAllBytes(path, invoicePdfData);
 
-            var message = new MailMessage(@"testmailuhrenwelt@gmail.com", customerEmail);
+            var message = new MailMessage(@"ITN241552@qualifizierung.at", customerEmail);
             message.Subject = $"Deine Bestellung bei uhrenwelt.at (Nr. {orderId})";
             message.Body = $"Hallo {customer.FirstName} {customer.LastName}! " +
                            "\nVielen Dank für deine Bestellung bei uhrenwelt.at." +
@@ -92,9 +92,9 @@ namespace uhrenWelt.Controllers
                            "\nbis zum nächsten mal!" +
                            "\n" +
                            "\nDein uhrenwelt.at Team :)";
-            SmtpClient mailer = new SmtpClient("smtp.gmail.com", 587);
+            SmtpClient mailer = new SmtpClient("smtp.office365.com", 587);
             message.Attachments.Add(new Attachment(path));
-            mailer.Credentials = new NetworkCredential("testmailuhrenwelt@gmail.com", "User123!");
+            mailer.Credentials = new NetworkCredential("ITN241552@qualifizierung.at","User123!");
             mailer.EnableSsl = true;
             mailer.Send(message);
 
