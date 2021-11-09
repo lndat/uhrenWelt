@@ -6,21 +6,22 @@
     <title>@ViewBag.Title - uhrenwelt.at</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-@Html.Partial("_NavBar")
-<div class="container body-content">
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p align="center">
-            @Html.ActionLink("Impressum", "Impressum", "Home", null, new {@class = "removeStyle"}) - @Html.ActionLink("Allgemeine Geschäftsbedingungen", "Geschaeftsbedingungen", "Home", null, new {@class = "removeStyle"}) - @Html.ActionLink("Datenschutz", "Datenschutz", "Home", null, new {@class = "removeStyle"})
-        </p>
-        <p style="color:#0A3826" align="center">&copy; @DateTime.Now.Year - uhrenwelt.at</p>
-    </footer>
-</div>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", false)
+    @Html.Partial("_NavBar")
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p align="center">
+                @Html.ActionLink("Impressum", "Impressum", "Home", null, new { @class = "removeStyle" }) - @Html.ActionLink("Allgemeine Geschäftsbedingungen", "Geschaeftsbedingungen", "Home", null, new { @class = "removeStyle" }) - @Html.ActionLink("Datenschutz", "Datenschutz", "Home", null, new { @class = "removeStyle" })
+            </p>
+            <p style="color:#0A3826" align="center">&copy; @DateTime.Now.Year - uhrenwelt.at</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", false)
 </body>
 </html>
