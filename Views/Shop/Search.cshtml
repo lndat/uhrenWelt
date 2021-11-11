@@ -18,7 +18,7 @@
                 <div class="product-info">
                     <h3>@item.ManufacturerName</h3>
                     <h6>@item.ProductName</h6>
-                    <h7>@Html.DisplayFor(model => item.NetUnitPrice)</h7>
+                    <h7>@String.Format("{0:C}", item.NetUnitPrice * 1.2m)</h7>
                 </div>
             </a>
         }

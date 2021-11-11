@@ -28,7 +28,7 @@ namespace uhrenWelt.Controllers
                {
                    ProductId = g.Key,
                    Amount = g.Sum(f => f.Amount),
-                   NetUnitPrice = g.Sum(f => f.NetUnitPrice),
+                   NetUnitPrice = g.Sum(f => f.NetUnitPrice * f.Amount) * 1.2m,
                    ProductName = GetProductName(g.Key)
                })
                .OrderByDescending(x => x.Amount)
