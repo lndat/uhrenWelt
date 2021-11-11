@@ -18,7 +18,7 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Stats()
         {
             List<OrderLine> orders = db.OrderLine.ToList();
