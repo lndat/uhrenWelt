@@ -1,0 +1,47 @@
+﻿@model IEnumerable<uhrenWelt.Data.Product>
+
+<form class="form-inline" method="post" action="/Account/UpdateProduct">
+    <div class="container">
+        <div class="flex-column">
+            <div class="col-sm">
+                <label for="price">Preis:</label>
+                <input class="form-control" type="number" name="price">
+            </div>
+            <div class="col-sm">
+                <label for="name">Name:</label>
+                <input class="form-control" type="text" name="name">
+            </div>
+            <div class="col-sm">
+                <label for="desc">Beschreibung:</label>
+                <input class="form-control" type="text" name="desc">
+            </div>
+            <div class="col-sm">
+                <label for="manufact">Hersteller:</label>
+                <select class="form-select" name="manufact">
+                    <option hidden="">Hersteller</option>
+                    <option value=1>Rolex</option>
+                    <option value=2>Breitling</option>
+                    <option value=3>Tag Heuer</option>
+                    <option value=4>Hublot</option>
+                    <option value=5>IWC Schaffhausen</option>
+                    <option value=6>Longines</option>
+                    <option value=7>Tudor</option>
+                    <option value=8>Panerai</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <label for="catId">Kategorie:</label>
+                <select class="form-select" name="catId">
+                    <option hidden="">Kategorie</option>
+                    <option value=1>Automatisch</option>
+                    <option value=2>Smartwatch</option>
+                    <option value=3>Mechanisch</option>
+                </select>
+            </div>
+
+            <div class="col-sm">
+                <button style="margin-top:10px;" class="btn btn-sm btn-secondary" type="submit">Ändern</button>
+            </div>
+        </div>
+    </div>
+</form>

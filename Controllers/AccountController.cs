@@ -63,6 +63,18 @@ namespace uhrenWelt.Controllers
             return View(customerVm);
         }
 
+        public ActionResult ShowProducts()
+        {
+            var prodList = db.Product.ToList(); 
+
+            return View(prodList);
+        }
+
+        public ActionResult EnterUpdate(int? id)
+        {
+            return View(id);
+        }
+
         [HttpPost]
         public ActionResult UpdateProduct(int? id, decimal price, string name, string desc, int manufact, int catId)
         {
@@ -81,7 +93,15 @@ namespace uhrenWelt.Controllers
                 db.SaveChanges();
             }
 
-            return View(product);
+            return RedirectToAction("ShowProducts");
+        }
+
+        public ActionResult DeleteProduct(int? id)
+        {
+            Product product = db.Product.Find(id);
+            db.Product.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("ShowProducts");
         }
 
         public List<CustomerVM> GetList()

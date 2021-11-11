@@ -437,6 +437,9 @@
     <Content Include="Views\Shared\_OrderPdf.cshtml" />
     <Content Include="Views\Shared\_LayoutPdf.cshtml" />
     <Content Include="Views\Order\OrderPdf.cshtml" />
+    <Content Include="Views\Account\EnterUpdate.cshtml" />
+    <Content Include="Views\Account\ShowProducts.cshtml" />
+    <Content Include="Views\Account\UpdateProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
