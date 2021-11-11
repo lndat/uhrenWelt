@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -60,6 +61,27 @@ namespace uhrenWelt.Controllers
             }
 
             return View(customerVm);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateProduct(int? id, decimal price, string name, string desc, int manufact, int catId)
+        {
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            Product product = db.Product.SingleOrDefault(x => x.Id == id);
+            product.NetUnitPrice = price;
+            product.ProductName = name;
+            product.Description = desc;
+            product.ManufacturerId = manufact;
+            product.CategoryId = catId;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+            return View(product);
         }
 
         public List<CustomerVM> GetList()
