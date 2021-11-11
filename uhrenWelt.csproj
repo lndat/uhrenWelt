@@ -188,6 +188,7 @@
     <Compile Include="Services\UserService.cs" />
     <Compile Include="ViewModels\CustomerVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
+    <Compile Include="ViewModels\StatsVM.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -438,6 +439,7 @@
     <Content Include="Views\Shared\_LayoutPdf.cshtml" />
     <Content Include="Views\Order\OrderPdf.cshtml" />
     <Content Include="Views\Order\Stats.cshtml" />
+    <Content Include="Views\Account\Register2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

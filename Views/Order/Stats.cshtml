@@ -1,12 +1,45 @@
-﻿@model IEnumerable<int>
+﻿@model IEnumerable<uhrenWelt.ViewModel.StatsVM>
+
 @{
-    ViewBag.Title = "Stats";
+    ViewBag.Title = "Statistik";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Stats</h2>
+<h2>Statistik</h2>
 
-@foreach (var item in Model)
-{
-    @item.
-    @item.ProductId
-}
+<table class="table">
+    <tr>
+        <th>
+            <h6>Produkt ID</h6>
+        </th>
+        <th>
+            <h6>Produkt Name</h6>
+        </th>
+        <th>
+            <h6>Verkaufte Stück</h6>
+        </th>
+        <th>
+            <h6>Einnahmen Gesamt</h6>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NetUnitPrice)
+            </td>
+        </tr>
+    }
+
+</table>

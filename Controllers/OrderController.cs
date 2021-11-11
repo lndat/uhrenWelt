@@ -1,6 +1,7 @@
 ﻿using Rotativa.Options;
 using System;
 using System.Collections.Generic;
+using uhrenWelt.ViewModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -17,12 +18,23 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
+        [AllowAnonymous]
         public ActionResult Stats()
         {
-            var statsList = db.OrderLine
-                .GroupBy(item => item.ProductId)
-                .Select(group => group.Sum(item => item.Amount)).ToList();
-            return View(statsList);
+            List<OrderLine> orders = db.OrderLine.ToList();
+
+            var sums = orders.GroupBy(f => f.ProductId)
+               .Select(g => new StatsVM
+               {
+                   ProductId = g.Key,
+                   Amount = g.Sum(f => f.Amount),
+                   NetUnitPrice = g.Sum(f => f.NetUnitPrice),
+                   ProductName = GetProductName(g.Key)
+               })
+               .OrderByDescending(x => x.Amount)
+               .ToList();
+
+            return View(sums);
         }
 
         public ActionResult Order()
