@@ -19,6 +19,7 @@
                     {
                         @Html.ActionLink("Einkaufswagen", "ShowCart", "Cart", null, new { @class = "nav-link" })
                         <li class="nav-item">@Html.ActionLink("Logout " + "(" + User.Identity.Name + ")", "Logout", "Account", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Statistik", "Stats", "Order", null, new { @class = "nav-link" })</li>
                     }
                 </ul>
             </div>

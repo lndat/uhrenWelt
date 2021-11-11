@@ -17,6 +17,14 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
+        public ActionResult Stats()
+        {
+            var statsList = db.OrderLine
+                .GroupBy(item => item.ProductId)
+                .Select(group => group.Sum(item => item.Amount)).ToList();
+            return View(statsList);
+        }
+
         public ActionResult Order()
         {
             var tempCarttList = GetList();
