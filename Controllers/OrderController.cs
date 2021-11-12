@@ -168,7 +168,6 @@ namespace uhrenWelt.Controllers
 
             return vm;
         }
-
         public Customer GetCustomerByEmail(string email)
         {
             var c = db.Customer.Single(x => x.Email == email);
