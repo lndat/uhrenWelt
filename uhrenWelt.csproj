@@ -236,13 +236,6 @@
     <Content Include="Img\Breitling\Navitimer-12.png" />
     <Content Include="Img\Breitling\Navitimer-13.png" />
     <Content Include="Img\Breitling\Navitimer-14.png" />
-    <Content Include="Img\Carousel\1200x520_TAGHeuer.jpg" />
-    <Content Include="Img\Carousel\Breitling_Header_1.jpg" />
-    <Content Include="Img\Carousel\Hublot_Header.jpg" />
-    <Content Include="Img\Carousel\Longines_1.jpg" />
-    <Content Include="Img\Carousel\Panerai_Header.jpg" />
-    <Content Include="Img\Carousel\Tudor_Header.jpg" />
-    <Content Include="Img\Carousel\Wagner_IWC_1_.jpg" />
     <Content Include="Img\Hublot\Hublot-01.png" />
     <Content Include="Img\Hublot\Hublot-02.png" />
     <Content Include="Img\Hublot\Hublot-03.png" />
