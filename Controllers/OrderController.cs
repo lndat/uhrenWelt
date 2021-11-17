@@ -23,6 +23,7 @@ namespace uhrenWelt.Controllers
         {
             List<OrderLine> orders = db.OrderLine.ToList();
 
+            // Daten grp, sum und als liste zurückgeben
             var sums = orders.GroupBy(f => f.ProductId)
                .Select(g => new StatsVM
                {
@@ -55,7 +56,7 @@ namespace uhrenWelt.Controllers
 
             // List<TotalProductSale> dbData = db.TotalProductSales.OrderByDescending(s => s.TotalSold).Take(5).ToList();
 
-            //Daten in ein passendes Format für den Chart bringen
+            // Daten in ein passendes Format für den Chart bringen
             string[] labels = sums.Select(d => d.ProductName).ToArray();
             int[] values = sums.Select(d => d.Amount).ToArray();
 
@@ -65,7 +66,7 @@ namespace uhrenWelt.Controllers
                 Values = values
             };
 
-            //Daten als json zurückgeben (und get requests erlauben)
+            // Daten als json zurückgeben (und get requests erlauben)
             return Json(returnData, JsonRequestBehavior.AllowGet);
         }
 
