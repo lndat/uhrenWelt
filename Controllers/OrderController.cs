@@ -18,7 +18,7 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
-        //[AllowAnonymous]
+        [AllowAnonymous]
         public ActionResult Stats()
         {
             List<OrderLine> orders = db.OrderLine.ToList();
@@ -34,7 +34,39 @@ namespace uhrenWelt.Controllers
                .OrderByDescending(x => x.Amount)
                .ToList();
 
+            ViewBag.Sums = sums;
+
             return View(sums);
+        }
+
+        public ActionResult ChartData()
+        {
+            List<OrderLine> orders = db.OrderLine.ToList();
+            var sums = orders.GroupBy(f => f.ProductId)
+            .Select(g => new StatsVM
+            {
+                ProductId = g.Key,
+                Amount = g.Sum(f => f.Amount),
+                NetUnitPrice = g.Sum(f => f.NetUnitPrice * f.Amount) * 1.2m,
+                ProductName = GetProductName(g.Key)
+            })
+            .OrderByDescending(x => x.Amount)
+            .ToList();
+
+            // List<TotalProductSale> dbData = db.TotalProductSales.OrderByDescending(s => s.TotalSold).Take(5).ToList();
+
+            //Daten in ein passendes Format für den Chart bringen
+            string[] labels = sums.Select(d => d.ProductName).ToArray();
+            int[] values = sums.Select(d => d.Amount).ToArray();
+
+            var returnData = new
+            {
+                Labels = labels,
+                Values = values
+            };
+
+            //Daten als json zurückgeben (und get requests erlauben)
+            return Json(returnData, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Order()
