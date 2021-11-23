@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="32f223881fa64488bb8809b441eba3a9" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="uhrenWeltModel.Category" Width="1.5" PointX="0.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Category" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.Customer" Width="1.5" PointX="2.375" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.Manufacturer" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.Order" Width="1.5" PointX="4.25" PointY="2.125" IsExpanded="true" />
