@@ -69,6 +69,7 @@
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="ManufacturerId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="ViewCounter" Type="int" />
         </EntityType>
         <Association Name="FK__Order__CustomerI__2D27B809">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
@@ -236,6 +237,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__300424B4" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__30F848ED" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Produ__2F10007B" FromRole="Product" ToRole="OrderLine" />
+          <Property Name="ViewCounter" Type="Int32" />
         </EntityType>
         <Association Name="FK__Product__Categor__300424B4">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -392,6 +394,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="uhrenWeltModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ViewCounter" ColumnName="ViewCounter" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
                 <ScalarProperty Name="NetUnitPrice" ColumnName="NetUnitPrice" />

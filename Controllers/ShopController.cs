@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -9,6 +10,8 @@ namespace uhrenWelt.Controllers
 {
     public class ShopController : Controller
     {
+        private readonly uhrenWeltEntities db = new uhrenWeltEntities();
+
         //[Authorize]
         public ActionResult Shop()
         {
@@ -75,7 +78,34 @@ namespace uhrenWelt.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var tempProductList = GetList().Single(x => x.Id == id);
+
+            Product viewCounter = db.Product.Where(x => x.Id == id).FirstOrDefault();
+
+            viewCounter.ViewCounter = ++viewCounter.ViewCounter;
+
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(viewCounter).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
             return View(tempProductList);
+        }
+
+        public ActionResult RecommendedMan(int? id)
+        {
+            var tempProductList = GetList().Single(x => x.Id == id);
+            var getRecommended = GetList().Where(x => x.ManufacturerId == tempProductList.ManufacturerId && x.Id != tempProductList.Id).Take(2);
+            return PartialView("_Man", getRecommended);
+        }
+
+        public ActionResult RecommendedCat(int? id)
+        {
+            var tempProductList = GetList().Single(x => x.Id == id);
+            var getRecommended = GetList().Where(x => x.CategoryId == tempProductList.CategoryId && x.ManufacturerId != tempProductList.ManufacturerId).Take(2);
+
+            return PartialView("_Cat", getRecommended);
         }
 
         public List<ProductVM> GetList()
@@ -113,6 +143,7 @@ namespace uhrenWelt.Controllers
             vm.Description = databaseData.Description;
             vm.ManufacturerId = databaseData.ManufacturerId;
             vm.CategoryId = databaseData.CategoryId;
+            vm.ViewCounter = (int)databaseData.ViewCounter;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
 
             return vm;

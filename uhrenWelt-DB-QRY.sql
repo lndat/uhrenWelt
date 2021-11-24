@@ -38,6 +38,7 @@ CREATE TABLE [dbo].[Product](
     [Description] [varchar](max) NOT NULL,
     [ManufacturerId] [int] NOT NULL,
     [CategoryId] [int] NOT NULL,
+    [ViewCounter] [int] DEFAULT 0
 )
 
 CREATE TABLE [dbo].[Category](

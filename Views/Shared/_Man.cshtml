@@ -1,0 +1,16 @@
+﻿@model IEnumerable<uhrenWelt.ViewModel.ProductVM>
+@*@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
+<h2>Empfohlene Produkte</h2>
+
+@foreach (var item in Model)
+{
+<div class="d-inline">
+    <a href="@Url.Action("Details", "Shop", new { Id = item.Id })"> <img src="@item.ImagePath" style="max-height:11em"></a>
+    @Html.DisplayFor(model => item.ManufacturerName)
+    &nbsp;
+    @Html.DisplayFor(model => item.CategoryId)
+</div>
+}

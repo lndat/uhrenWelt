@@ -49,6 +49,14 @@
             <dd>
                 @Html.DisplayFor(model => model.Description)
             </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ViewCounter)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViewCounter)
+            </dd>
         </dl>
     </div>
 </div>
@@ -58,10 +66,10 @@
         @*@Html.ActionLink("Kaufen", "AddToCart", "Cart", new { id = Model.Id }, new { @class = "btn btn-secondary" })*@
 
         using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
-        {       
+        {
             @Html.AntiForgeryToken()
 
-            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", max = 9, min = 1 }})
+            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", max = 9, min = 1 } })
             @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
             <input hidden name="id" value="@Model.Id" />
 
@@ -78,3 +86,5 @@
         </div>
     }
 </div>
+@Html.Action("RecommendedMan","Shop")
+@Html.Action("RecommendedCat","Shop")

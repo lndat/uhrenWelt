@@ -427,9 +427,11 @@
     <Content Include="Views\Order\Order.cshtml" />
     <Content Include="Views\Order\OrderConfirmed.cshtml" />
     <Content Include="Views\Order\OrderPdf_ALT.cshtml" />
-    <Content Include="Views\Shared\_OrderPdf.cshtml" />
+    <Content Include="Views\Shared\_Cat.cshtml" />
     <Content Include="Views\Shared\_LayoutPdf.cshtml" />
     <Content Include="Views\Order\OrderPdf.cshtml" />
+    <Content Include="Views\Shared\_OrderPdf - Copy.cshtml" />
+    <Content Include="Views\Shared\_Man.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
