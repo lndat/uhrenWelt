@@ -46,6 +46,7 @@
           <Property Name="Street" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Zip" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="VoucherId" Type="int" />
         </EntityType>
         <EntityType Name="OrderLine">
           <Key>
@@ -71,7 +72,15 @@
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="ViewCounter" Type="int" />
         </EntityType>
-        <Association Name="FK__Order__CustomerI__2D27B809">
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Order__CustomerI__300424B4">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -83,7 +92,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Order__2E1BDC42">
+        <Association Name="FK__OrderLine__Order__30F848ED">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -95,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Produ__2F10007B">
+        <Association Name="FK__OrderLine__Produ__31EC6D26">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -107,7 +116,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Categor__300424B4">
+        <Association Name="FK__Product__Categor__32E0915F">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -119,7 +128,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Manufac__30F848ED">
+        <Association Name="FK__Product__Manufac__33D4B598">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -138,23 +147,24 @@
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderLine" EntityType="Self.OrderLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order__CustomerI__2D27B809" Association="Self.FK__Order__CustomerI__2D27B809">
+          <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Order__CustomerI__300424B4" Association="Self.FK__Order__CustomerI__300424B4">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Order__2E1BDC42" Association="Self.FK__OrderLine__Order__2E1BDC42">
+          <AssociationSet Name="FK__OrderLine__Order__30F848ED" Association="Self.FK__OrderLine__Order__30F848ED">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Produ__2F10007B" Association="Self.FK__OrderLine__Produ__2F10007B">
+          <AssociationSet Name="FK__OrderLine__Produ__31EC6D26" Association="Self.FK__OrderLine__Produ__31EC6D26">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Categor__300424B4" Association="Self.FK__Product__Categor__300424B4">
+          <AssociationSet Name="FK__Product__Categor__32E0915F" Association="Self.FK__Product__Categor__32E0915F">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Manufac__30F848ED" Association="Self.FK__Product__Manufac__30F848ED">
+          <AssociationSet Name="FK__Product__Manufac__33D4B598" Association="Self.FK__Product__Manufac__33D4B598">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
@@ -209,6 +219,7 @@
           <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Order__CustomerI__2D27B809" FromRole="Order" ToRole="Customer" />
           <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Order__2E1BDC42" FromRole="Order" ToRole="OrderLine" />
+          <Property Name="VoucherId" Type="Int32" />
         </EntityType>
         <EntityType Name="OrderLine">
           <Key>
@@ -326,7 +337,16 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
+          <EntitySet Name="Voucher" EntityType="uhrenWeltModel.Voucher" />
         </EntityContainer>
+        <EntityType Name="Voucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -369,6 +389,7 @@
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="uhrenWeltModel.Order">
               <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="PriceTotal" ColumnName="PriceTotal" />
@@ -402,6 +423,15 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voucher">
+            <EntityTypeMapping TypeName="uhrenWeltModel.Voucher">
+              <MappingFragment StoreEntitySet="Voucher">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -47,6 +47,12 @@ CREATE TABLE [dbo].[Category](
     [TaxRate] [decimal](9, 2) NOT NULL
 )
 
+CREATE TABLE [dbo].[Voucher](
+    [Id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+    [Name] [varchar](200) NOT NULL,
+    [Discount] [int] NOT NULL
+)
+
 CREATE TABLE [dbo].[Order](
     [Id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
     [CustomerId] [int] NOT NULL,
@@ -55,6 +61,7 @@ CREATE TABLE [dbo].[Order](
     [Street] [varchar](150) NOT NULL,
     [Zip] [varchar](5) NOT NULL,
     [City] [varchar](200) NOT NULL,
+    [VoucherId] [int] NULL
 )
 
 CREATE TABLE [dbo].[Manufacturer](

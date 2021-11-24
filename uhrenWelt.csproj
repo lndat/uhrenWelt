@@ -178,6 +178,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>uhrenWelt-DB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\Voucher.cs">
+      <DependentUpon>uhrenWelt-DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -432,6 +435,7 @@
     <Content Include="Views\Order\OrderPdf.cshtml" />
     <Content Include="Views\Shared\_OrderPdf - Copy.cshtml" />
     <Content Include="Views\Shared\_Man.cshtml" />
+    <Content Include="Views\Order\Voucher.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

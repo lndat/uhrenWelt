@@ -23,6 +23,41 @@ namespace uhrenWelt.Controllers
             return View(tempCarttList);
         }
 
+        [HttpPost]
+        public ActionResult Voucher(string code)
+        {
+            if (code == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var getCust = GetCustomerByEmail(User.Identity.Name);
+            var voucher = db.Voucher.Where(x => x.Name == code.ToUpper()).FirstOrDefault();
+            var keke = db.Order.Where(x => x.CustomerId == getCust.Id && x.VoucherId == voucher.Id) ?? null;
+
+            if (voucher == null)
+            {
+                ViewBag.Message = "VoucherNotFound";
+            }
+            else if(!keke.Any())
+            {
+                Order vId = db.Order.Single(x => x.CustomerId == getCust.Id && x.DateOrdered == null);
+                var discount = (vId.PriceTotal / 100) * voucher.Discount;
+                vId.VoucherId = voucher.Id;
+                vId.PriceTotal = vId.PriceTotal - discount;
+
+                if (ModelState.IsValid)
+                {
+                    db.Entry(vId).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            else
+            {
+                ViewBag.Message = "AlreadyUsed";
+            }
+
+            var tempCarttList = GetList();
+            return View(tempCarttList);
+        }
+
         // change address in current order
         [HttpPost]
         public ActionResult ChangeAddress(int? id, string street, string city, string zip)
