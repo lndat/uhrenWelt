@@ -53,7 +53,7 @@ namespace uhrenWelt.Controllers
                 newOrder.Zip = getCustomer.Zip;
                 newOrder.City = getCustomer.City;
                 newOrder.DateOrdered = null; 
-                newOrder.VoucherId = -1; 
+                newOrder.VoucherId = null; 
 
                 // create new OrderLine
                 OrderLine newOrderLine = new OrderLine();
