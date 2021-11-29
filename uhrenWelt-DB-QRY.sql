@@ -85,6 +85,9 @@ CREATE TABLE [dbo].[Customer](
 ALTER TABLE [dbo].[Order]  WITH CHECK ADD FOREIGN KEY([CustomerId])
 REFERENCES [dbo].[Customer] ([Id])
 GO
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD FOREIGN KEY([VoucherId])
+REFERENCES [dbo].[Voucher] ([Id])
+GO
 ALTER TABLE [dbo].[OrderLine]  WITH CHECK ADD FOREIGN KEY([OrderId])
 REFERENCES [dbo].[Order] ([Id])
 GO
