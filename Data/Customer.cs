@@ -18,6 +18,7 @@ namespace uhrenWelt.Data
         public Customer()
         {
             this.Order = new HashSet<Order>();
+            this.Rating = new HashSet<Rating>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,7 @@ namespace uhrenWelt.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Rating> Rating { get; set; }
     }
 }

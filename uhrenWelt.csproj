@@ -163,6 +163,9 @@
     <Compile Include="Data\Product.cs">
       <DependentUpon>uhrenWelt-DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Rating.cs">
+      <DependentUpon>uhrenWelt-DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\uhrenWelt-DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

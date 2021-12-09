@@ -19,22 +19,6 @@
     <div class="detailDescription">
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.ManufacturerName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ManufacturerName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ProductName)
-            </dd>
-
-            <dt>
                 @Html.DisplayNameFor(model => model.NetUnitPrice)
             </dt>
 
@@ -77,4 +61,25 @@
             <button type="button" class="btn btn-secondary" disabled>Kaufen</button>
         </div>
     }
+</div>
+<div class="form-horizontal">
+    <form class="form-inline" method="get" action="/Shop/RateProduct">
+        <select class="form-select" name="categories" style="margin-right:3px; max-width:160px;">
+            <option hidden="">Bewertung</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+        </select>
+        <input name="comment" class="form-control" placeholder="Kommentar.." />
+        <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Bewerten</button>
+    </form>
+</div>
+<br />
+<div class="text-center">
+    Rating: @Model.Rating
+</div>
+<div class="text-center">
+    Comment: @Model.Comment
 </div>

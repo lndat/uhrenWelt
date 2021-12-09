@@ -32,5 +32,9 @@ namespace uhrenWelt.ViewModel
         [Display(Name = "Anzahl")]
         [Range(1, 9, ErrorMessage = "Maximal 5 Stück pro Bestellung!")]
         public int Amount { get; set; } = 1;
+
+        public int Rating { get; set; } = 0;
+        public string Comment { get; set; } = "";
+
     }
 }

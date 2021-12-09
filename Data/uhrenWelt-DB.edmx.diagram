@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="uhrenWeltModel.Category" Width="1.5" PointX="0.5" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.Customer" Width="1.5" PointX="2.375" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.Manufacturer" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="uhrenWeltModel.Order" Width="1.5" PointX="4.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Order" Width="1.5" PointX="4.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.OrderLine" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="uhrenWeltModel.Product" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="uhrenWeltModel.FK__Product__Categor__300424B4" ManuallyRouted="false" />
@@ -16,6 +16,9 @@
         <AssociationConnector Association="uhrenWeltModel.FK__Product__Manufac__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="uhrenWeltModel.FK__OrderLine__Order__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="uhrenWeltModel.FK__OrderLine__Produ__2F10007B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Rating" Width="1.5" PointX="4.25" PointY="4.75" />
+        <AssociationConnector Association="uhrenWeltModel.FK__Rating__Customer__300424B4" />
+        <AssociationConnector Association="uhrenWeltModel.FK__Rating__ProductI__2F10007B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

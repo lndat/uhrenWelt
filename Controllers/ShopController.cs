@@ -68,6 +68,16 @@ namespace uhrenWelt.Controllers
             return View();
         }
 
+        //public ActionResult RateProduct(int? prodId, int custId, int rating, string comment)
+        //{
+        //    using (var db = new uhrenWeltEntities())
+        //    {
+               
+
+        //    }
+        //    return View();
+        //}
+
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -117,5 +127,7 @@ namespace uhrenWelt.Controllers
 
             return vm;
         }
+
+
     }
 }

@@ -70,7 +70,17 @@
           <Property Name="ManufacturerId" Type="int" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Order__CustomerI__2D27B809">
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__Order__CustomerI__30F848ED">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -82,7 +92,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Order__2E1BDC42">
+        <Association Name="FK__OrderLine__Order__31EC6D26">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -94,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Produ__2F10007B">
+        <Association Name="FK__OrderLine__Produ__32E0915F">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -106,7 +116,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Categor__300424B4">
+        <Association Name="FK__Product__Categor__33D4B598">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +128,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Manufac__30F848ED">
+        <Association Name="FK__Product__Manufac__34C8D9D1">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,6 +140,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Rating__Customer__300424B4">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rating__ProductI__2F10007B">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="uhrenWeltModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -137,25 +171,34 @@
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderLine" EntityType="Self.OrderLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order__CustomerI__2D27B809" Association="Self.FK__Order__CustomerI__2D27B809">
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Order__CustomerI__30F848ED" Association="Self.FK__Order__CustomerI__30F848ED">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Order__2E1BDC42" Association="Self.FK__OrderLine__Order__2E1BDC42">
+          <AssociationSet Name="FK__OrderLine__Order__31EC6D26" Association="Self.FK__OrderLine__Order__31EC6D26">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Produ__2F10007B" Association="Self.FK__OrderLine__Produ__2F10007B">
+          <AssociationSet Name="FK__OrderLine__Produ__32E0915F" Association="Self.FK__OrderLine__Produ__32E0915F">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Categor__300424B4" Association="Self.FK__Product__Categor__300424B4">
+          <AssociationSet Name="FK__Product__Categor__33D4B598" Association="Self.FK__Product__Categor__33D4B598">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Manufac__30F848ED" Association="Self.FK__Product__Manufac__30F848ED">
+          <AssociationSet Name="FK__Product__Manufac__34C8D9D1" Association="Self.FK__Product__Manufac__34C8D9D1">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__Customer__300424B4" Association="Self.FK__Rating__Customer__300424B4">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__ProductI__2F10007B" Association="Self.FK__Rating__ProductI__2F10007B">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Rating" EntitySet="Rating" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -186,6 +229,7 @@
           <Property Name="PwHash" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Salt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK__Order__CustomerI__2D27B809" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Rating" Relationship="uhrenWeltModel.FK__Rating__Customer__300424B4" FromRole="Customer" ToRole="Rating" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -236,6 +280,7 @@
           <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__300424B4" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__30F848ED" FromRole="Product" ToRole="Manufacturer" />
           <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Produ__2F10007B" FromRole="Product" ToRole="OrderLine" />
+          <NavigationProperty Name="Rating" Relationship="uhrenWeltModel.FK__Rating__ProductI__2F10007B" FromRole="Product" ToRole="Rating" />
         </EntityType>
         <Association Name="FK__Product__Categor__300424B4">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -324,7 +369,52 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
+          <EntitySet Name="Rating" EntityType="uhrenWeltModel.Rating" />
+          <AssociationSet Name="FK__Rating__Customer__300424B4" Association="uhrenWeltModel.FK__Rating__Customer__300424B4">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rating__ProductI__2F10007B" Association="uhrenWeltModel.FK__Rating__ProductI__2F10007B">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating1" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="uhrenWeltModel.FK__Rating__Customer__300424B4" FromRole="Rating" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="uhrenWeltModel.FK__Rating__ProductI__2F10007B" FromRole="Rating" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Rating__Customer__300424B4">
+          <End Type="uhrenWeltModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="uhrenWeltModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rating__ProductI__2F10007B">
+          <End Type="uhrenWeltModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="uhrenWeltModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -399,6 +489,17 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="ManufacturerId" ColumnName="ManufacturerId" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rating">
+            <EntityTypeMapping TypeName="uhrenWeltModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Rating1" ColumnName="Rating" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
