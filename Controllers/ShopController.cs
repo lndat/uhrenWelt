@@ -9,6 +9,9 @@ namespace uhrenWelt.Controllers
 {
     public class ShopController : Controller
     {
+        private readonly uhrenWeltEntities db = new uhrenWeltEntities();
+
+
         //[Authorize]
         public ActionResult Shop()
         {
@@ -68,15 +71,26 @@ namespace uhrenWelt.Controllers
             return View();
         }
 
-        //public ActionResult RateProduct(int? prodId, int custId, int rating, string comment)
-        //{
-        //    using (var db = new uhrenWeltEntities())
-        //    {
-               
+        [Authorize]
+        public ActionResult RateProduct(int prodId, int rating, string comment)
+        {
+            var getUser = User.Identity.Name;
+            var getCustId = db.Customer.Single(x => x.Email == getUser);
 
-        //    }
-        //    return View();
-        //}
+            Rating newRating = new Rating();
+            newRating.Comment = comment;
+            newRating.Rating1 = rating;
+            newRating.ProductId = prodId;
+            newRating.CustomerId = getCustId.Id;
+
+            if (ModelState.IsValid)
+            {
+                db.Rating.Add(newRating);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Details", new { Id = prodId });
+        }
 
         public ActionResult Details(int? id)
         {
@@ -112,6 +126,23 @@ namespace uhrenWelt.Controllers
             }
         }
 
+        //public static int GetRatingFromDB(int? id)
+        //{
+        //    using (var db = new uhrenWeltEntities())
+        //    {
+        //        return db.Rating.Single(x => x.ProductId == id).Rating1;
+        //    }
+        //}
+
+        //public static string GetCommentFromDB(int? id)
+        //{
+        //    using (var db = new uhrenWeltEntities())
+        //    {
+        //        return db.Rating.Single(x => x.ProductId == id).Comment;
+        //    }
+        //}
+
+
         public ProductVM Mapping(Product databaseData)
         {
             var vm = new ProductVM();
@@ -124,6 +155,8 @@ namespace uhrenWelt.Controllers
             vm.ManufacturerId = databaseData.ManufacturerId;
             vm.CategoryId = databaseData.CategoryId;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
+            //vm.Rating = GetRatingFromDB(databaseData.ManufacturerId);
+            //vm.Comment = GetCommentFromDB(databaseData.ManufacturerId);
 
             return vm;
         }
