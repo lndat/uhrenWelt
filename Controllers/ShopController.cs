@@ -151,13 +151,13 @@ namespace uhrenWelt.Controllers
             return vm;
         }
 
-        private static int GetRatingFromDB(int prodId)
-        {
-            var getRating = db.Rating.Any(x => x.ProductId == prodId);
+        //private int GetRatingFromDB(int prodId)
+        //{
+        //    var getRating = db.Rating.Any(x => x.ProductId == prodId);
             
 
-            return getRating;
-        }
+        //    return getRating;
+        //}
 
         public ActionResult AddRating(int prodId, string comment, int rating)
         {
