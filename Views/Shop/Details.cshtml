@@ -19,6 +19,22 @@
     <div class="detailDescription">
         <dl class="dl-horizontal">
             <dt>
+                @Html.DisplayNameFor(model => model.ManufacturerName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ManufacturerName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+
+            <dt>
                 @Html.DisplayNameFor(model => model.NetUnitPrice)
             </dt>
 
@@ -33,51 +49,52 @@
             <dd>
                 @Html.DisplayFor(model => model.Description)
             </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ViewCounter)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ViewCounter)
+            </dd>
         </dl>
     </div>
 </div>
-@if (User.Identity.IsAuthenticated)
-{
-    using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+<div class="buttonCenter">
+    @if (User.Identity.IsAuthenticated)
     {
-        @Html.AntiForgeryToken()
-        <div class="buttonCenter">
+        @*@Html.ActionLink("Kaufen", "AddToCart", "Cart", new { id = Model.Id }, new { @class = "btn btn-secondary" })*@
+
+        using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
             @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control", max = 9, min = 1 } })
             @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
             <input hidden name="id" value="@Model.Id" />
 
-            <input type="submit" value="Kaufen" class="btn btn-secondary" />
+            <div style="text-align: center">
+                <input type="submit" value="Kaufen" class="btn btn-secondary" />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="small">
+            <p style="color:darkred; font-size:15px;">Bitte registrieren und/oder einloggen um dieses Produkt zu kaufen!</p>
+            <button type="button" class="btn btn-secondary" disabled>Kaufen</button>
         </div>
     }
-    <div class="form-horizontal">
-        <form class="form-inline" method="get" action="/Shop/RateProduct">
-            <select class="form-select" name="rating" style="margin-right:3px; max-width:160px;">
-                <option hidden="">Bewertung</option>
-                <option value=1>1</option>
-                <option value=2>2</option>
-                <option value=3>3</option>
-                <option value=4>4</option>
-                <option value=5>5</option>
-            </select>
-            <input hidden name="prodId" value="@Model.Id" />
-            <input name="comment" class="form-control" placeholder="Kommentar.." />
-            <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Bewerten</button>
-        </form>
-    </div>
-}
-else
-{
-    <div class="small">
-        <p style="color:darkred; font-size:15px;">Bitte registrieren und/oder einloggen um dieses Produkt zu kaufen!</p>
-        <button type="button" class="btn btn-secondary" disabled>Kaufen</button>
-    </div>
-}
-
-
+</div>
 <br />
-    <div class="text-center">
-        Rating: @Model.Rating
-    </div>
-    <div class="text-center">
-        Comment: @Model.Comment
-    </div>
+<div class="text-center">
+    Rating: @Model.Rating
+</div>
+<div class="text-center">
+    Comment: @Model.Comment
+</div>
+<br />
+@Html.Action("RecommendedMan", "Shop")
+@Html.Action("RecommendedCat", "Shop")
+
+
