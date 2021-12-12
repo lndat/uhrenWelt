@@ -82,6 +82,18 @@ CREATE TABLE [dbo].[Customer](
     [Salt] [varchar](200) NOT NULL
 )
 
+CREATE TABLE [dbo].[Rating](
+  [Id] [int] PRIMARY KEY IDENTITY(1,1) NOT NULL,
+  [Rating][int] NOT NULL,
+  [ProductId][int] NOT NULL,
+  [CustomerId][int] NOT NULL,
+  [Comment][varchar](200)
+)
+
+ALTER TABLE [dbo].[Rating]  WITH CHECK ADD FOREIGN KEY([ProductId])
+REFERENCES [dbo].[Product] ([Id])
+GO
+
 ALTER TABLE [dbo].[Order]  WITH CHECK ADD FOREIGN KEY([CustomerId])
 REFERENCES [dbo].[Customer] ([Id])
 GO
