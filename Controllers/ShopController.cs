@@ -146,24 +146,35 @@ namespace uhrenWelt.Controllers
             vm.CategoryId = databaseData.CategoryId;
             vm.ViewCounter = (int)databaseData.ViewCounter;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
-            //vm.Ratings = GetRatingFromDB();
+            vm.Ratings = GetRatingFromDB(databaseData.Id);
 
             return vm;
         }
 
-        public ActionResult AddRating(int? prodId, string comment, int rating, string email)
+        private static int GetRatingFromDB(int prodId)
         {
-            var customerId = db.Customer.Where(x => x.Email == User.Identity.Name);
+            var getRating = db.Rating.Any(x => x.ProductId == prodId);
+            
 
-            var newRating = new Rating
-                (
-                CustomerId = customerId,
-                ProductId = prodId,
-                Comment = comment,
-                Rating1 = rating
-                );
+            return getRating;
+        }
 
-            return RedirectToAction("Details", prodId);
+        public ActionResult AddRating(int prodId, string comment, int rating)
+        {
+            var customerId = db.Customer.Single(x => x.Email == User.Identity.Name).Id;
+
+            var newRating = new Rating();
+            newRating.ProductId = prodId;
+            newRating.Comment = comment;    
+            newRating.Rating1 = rating;
+            newRating.CustomerId = customerId;
+
+            using (var db = new uhrenWeltEntities())
+            {
+                db.Rating.Add(newRating);   
+                db.SaveChanges();   
+            }
+                return RedirectToAction("Details", new { Id = prodId });
         }
     }
 }
