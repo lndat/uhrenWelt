@@ -151,16 +151,11 @@ namespace uhrenWelt.Controllers
             return vm;
         }
 
-        public ActionResult AddRating(int prodId, string comment,)
+        public ActionResult AddRating(int? prodId, string comment, int rating, string email)
         {
-            var tempProductList = GetList().Single(x => x.Id == id);
-            var getRecommended = GetList().Where(x => x.CategoryId == tempProductList.CategoryId && x.ManufacturerId != tempProductList.ManufacturerId).Take(2);
+            var newRating = new Rating();
 
-            return PartialView("_Cat", getRecommended);
+            return RedirectToAction("Details", prodId);
         }
-        //private int GetRatingFromDB(int prodId, string comment)
-        //{
-
-        //}
     }
 }

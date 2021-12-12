@@ -1,4 +1,4 @@
-﻿@model IEnumerable<uhrenWelt.ViewModel.ProductVM>
+﻿@model uhrenWelt.ViewModel.ProductVM
 @*@{
         Layout = "~/Views/Shared/_Layout.cshtml";
     }*@
@@ -6,6 +6,17 @@
 <h2>Produkt Bewertungen</h2>
 
 <form method="post" action="/Shop/AddRating">
+    <select class="form-select" name="rating" style="margin-right:3px; max-width:160px;">
+        <option hidden="">Bewerten</option>
+        <option value=1>1 Stern</option>
+        <option value=2>2 Sterne</option>
+        <option value=3>3 Sterne</option>
+        <option value=4>4 Sterne</option>
+        <option value=5>5 Sterne</option>
+    </select>
+    <input hidden name="prodId" value="@Model.Id" />
 
+    <input name="comment" class="form-control" placeholder="Kommentar..." />
+    <button type="submit" class="btn btn-secondary" style="margin-left:3px;">Bewerten</button>
 
 </form>

@@ -68,6 +68,25 @@
         </div>
     }
 </div>
-@Html.Action("RecommendedMan","Shop")
-@Html.Action("RecommendedCat","Shop")
-@Html.Action("AddRating","Shop")
+
+<h2>Produkt Bewertungen</h2>
+
+<form method="post" action="/Shop/AddRating">
+    <select class="form-select" name="rating" style="margin:3px; max-width:130px;">
+        <option hidden="">Bewerten</option>
+        <option value=1>1 Stern</option>
+        <option value=2>2 Sterne</option>
+        <option value=3>3 Sterne</option>
+        <option value=4>4 Sterne</option>
+        <option value=5>5 Sterne</option>
+    </select>
+    <input hidden name="prodId" value="@Model.Id" />
+
+    <input style="margin:3px; name="comment" class="form-control" placeholder="Kommentar..." />
+    <button style="margin:3px; type="submit" class="btn btn-secondary" style="margin-left:3px;">Bewerten</button>
+
+</form>
+
+
+@Html.Action("RecommendedMan", "Shop")
+@Html.Action("RecommendedCat", "Shop")
