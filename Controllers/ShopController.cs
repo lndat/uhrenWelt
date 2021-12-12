@@ -153,7 +153,15 @@ namespace uhrenWelt.Controllers
 
         public ActionResult AddRating(int? prodId, string comment, int rating, string email)
         {
-            var newRating = new Rating();
+            var customerId = db.Customer.Where(x => x.Email == User.Identity.Name);
+
+            var newRating = new Rating
+                (
+                CustomerId = customerId,
+                ProductId = prodId,
+                Comment = comment,
+                Rating1 = rating
+                );
 
             return RedirectToAction("Details", prodId);
         }
