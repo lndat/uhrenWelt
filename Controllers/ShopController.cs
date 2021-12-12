@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -145,8 +146,21 @@ namespace uhrenWelt.Controllers
             vm.CategoryId = databaseData.CategoryId;
             vm.ViewCounter = (int)databaseData.ViewCounter;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
+            //vm.Ratings = GetRatingFromDB();
 
             return vm;
         }
+
+        public ActionResult AddRating(int prodId, string comment,)
+        {
+            var tempProductList = GetList().Single(x => x.Id == id);
+            var getRecommended = GetList().Where(x => x.CategoryId == tempProductList.CategoryId && x.ManufacturerId != tempProductList.ManufacturerId).Take(2);
+
+            return PartialView("_Cat", getRecommended);
+        }
+        //private int GetRatingFromDB(int prodId, string comment)
+        //{
+
+        //}
     }
 }

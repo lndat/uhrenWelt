@@ -439,6 +439,7 @@
     <Content Include="Views\Shared\_OrderPdf - Copy.cshtml" />
     <Content Include="Views\Shared\_Man.cshtml" />
     <Content Include="Views\Order\Voucher.cshtml" />
+    <Content Include="Views\Shared\_Ratings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

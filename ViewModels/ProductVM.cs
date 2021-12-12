@@ -35,5 +35,9 @@ namespace uhrenWelt.ViewModel
 
         [Display(Name = "Anzahl Aufrufe")]
         public int ViewCounter { get; set; }
+
+        public int Ratings { get; set; }
+        public string Comment { get; set; }
+
     }
 }

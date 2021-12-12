@@ -19,22 +19,6 @@
     <div class="detailDescription">
         <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.ManufacturerName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ManufacturerName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ProductName)
-            </dd>
-
-            <dt>
                 @Html.DisplayNameFor(model => model.NetUnitPrice)
             </dt>
 
@@ -63,8 +47,6 @@
 <div class="buttonCenter">
     @if (User.Identity.IsAuthenticated)
     {
-        @*@Html.ActionLink("Kaufen", "AddToCart", "Cart", new { id = Model.Id }, new { @class = "btn btn-secondary" })*@
-
         using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
@@ -88,3 +70,4 @@
 </div>
 @Html.Action("RecommendedMan","Shop")
 @Html.Action("RecommendedCat","Shop")
+@Html.Action("AddRating","Shop")
