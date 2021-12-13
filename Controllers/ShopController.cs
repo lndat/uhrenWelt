@@ -146,32 +146,32 @@ namespace uhrenWelt.Controllers
             vm.CategoryId = databaseData.CategoryId;
             vm.ViewCounter = (int)databaseData.ViewCounter;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
-            vm.Ratings = GetRatingFromDB(databaseData.Id);
+            //vm.Ratings = GetRatingFromDB(databaseData.Id);
 
             return vm;
         }
 
-        public static double GetRatingFromDB(int? id)
-        {
-            using (var db = new uhrenWeltEntities())
-            {
-                double zwischen = 0;
-                if (db.Rating.Any(x => x.ProductId == id))
-                {
-                    var dbdd = db.Rating.Where(x => x.ProductId == id).ToList();
+        //public static double GetRatingFromDB(int? id)
+        //{
+        //    using (var db = new uhrenWeltEntities())
+        //    {
+        //        double zwischen = 0;
+        //        if (db.Rating.Any(x => x.ProductId == id))
+        //        {
+        //            var dbdd = db.Rating.Where(x => x.ProductId == id).ToList();
 
-                    for (int i = 0; i < dbdd.Count; i++)
-                    {
-                        zwischen += dbdd[i].Rating1;
+        //            for (int i = 0; i < dbdd.Count; i++)
+        //            {
+        //                zwischen += dbdd[i].Rating1;
 
-                    }
-                    zwischen = zwischen / dbdd.Count();
-                    zwischen = Math.Round(zwischen, 2);
-                }
+        //            }
+        //            zwischen = zwischen / dbdd.Count();
+        //            zwischen = Math.Round(zwischen, 2);
+        //        }
 
-                return zwischen;
-            }
-        }
+        //        return zwischen;
+        //    }
+        //}
 
 
         //[Authorize]
