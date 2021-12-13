@@ -41,6 +41,15 @@
             <dd>
                 @Html.DisplayFor(model => model.ViewCounter)
             </dd>
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ratings)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ratings)
+            </dd>
         </dl>
     </div>
 </div>
@@ -69,9 +78,12 @@
     }
 </div>
 
-<h2>Produkt Bewertungen</h2>
-Kommentar: @Model.Comment
-Bewertung: @Model.Ratings
+<h2>Kommentare:</h2>
+@foreach (var item in Model.Comment)
+{
+    
+}
+<p>Kommentar: @Model.Comment</p>
 
 @if (User.Identity.IsAuthenticated)
 {

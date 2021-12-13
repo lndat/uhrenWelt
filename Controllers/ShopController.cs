@@ -146,54 +146,53 @@ namespace uhrenWelt.Controllers
             vm.CategoryId = databaseData.CategoryId;
             vm.ViewCounter = (int)databaseData.ViewCounter;
             vm.ManufacturerName = GetManufacturerFromDB(databaseData.ManufacturerId);
-            //vm.Ratings = GetRatingFromDB(databaseData.Id);
+            vm.Ratings = GetRatingFromDB(databaseData.Id);
+            vm.Comment = GetCommentFromDB(databaseData.Id);
 
             return vm;
         }
 
-        //public static double GetRatingFromDB(int? id)
-        //{
-        //    using (var db = new uhrenWeltEntities())
-        //    {
-        //        double zwischen = 0;
-        //        if (db.Rating.Any(x => x.ProductId == id))
-        //        {
-        //            var dbdd = db.Rating.Where(x => x.ProductId == id).ToList();
+        public static double GetRatingFromDB(int? id)
+        {
+            using (var db = new uhrenWeltEntities())
+            {
+                double zwischen = 0;
+                if (db.Rating.Any(x => x.ProductId == id))
+                {
+                    var dbdd = db.Rating.Where(x => x.ProductId == id).ToList();
 
-        //            for (int i = 0; i < dbdd.Count; i++)
-        //            {
-        //                zwischen += dbdd[i].Rating1;
+                    for (int i = 0; i < dbdd.Count; i++)
+                    {
+                        zwischen += dbdd[i].Rating1;
 
-        //            }
-        //            zwischen = zwischen / dbdd.Count();
-        //            zwischen = Math.Round(zwischen, 2);
-        //        }
+                    }
+                    zwischen = zwischen / dbdd.Count();
+                    zwischen = Math.Round(zwischen, 2);
+                }
 
-        //        return zwischen;
-        //    }
-        //}
+                return zwischen;
+            }
+        }
 
+        public static string GetCommentFromDB(int? id)
+        {
+            using (var db = new uhrenWeltEntities())
+            {
+                var comm = "";
+                if (db.Rating.Any(x => x.ProductId == id))
+                {
+                    var dbdd = db.Rating.Where(x => x.ProductId == id).ToList();
 
-        //[Authorize]
-        //public ActionResult RateProduct(int prodId, int rating, string comment)
-        //{
-        //    var getUser = User.Identity.Name;
-        //    var getCustId = db.Customer.Single(x => x.Email == getUser);
+                    for (int i = 0; i < dbdd.Count; i++)
+                    {
+                        comm += dbdd[i].Comment;
 
-        //    Rating newRating = new Rating();
-        //    newRating.Comment = comment;
-        //    newRating.Rating1 = rating;
-        //    newRating.ProductId = prodId;
-        //    newRating.CustomerId = getCustId.Id;
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Rating.Add(newRating);
-        //        db.SaveChanges();
-        //    }
-
-        //    return RedirectToAction("Details", new { Id = prodId });
-        //}
+                    }
+                }
+               
+                return comm;
+            }
+        }
 
         public ActionResult AddRating(int prodId, string comment, int rating)
         {

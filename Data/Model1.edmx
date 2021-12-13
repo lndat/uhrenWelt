@@ -90,7 +90,7 @@
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Discount" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Order__CustomerI__33D4B598">
+        <Association Name="FK__Order__CustomerI__32E0915F">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -102,7 +102,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__VoucherId__34C8D9D1">
+        <Association Name="FK__Order__VoucherId__33D4B598">
           <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -114,7 +114,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Order__35BCFE0A">
+        <Association Name="FK__OrderLine__Order__34C8D9D1">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -126,7 +126,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Produ__36B12243">
+        <Association Name="FK__OrderLine__Produ__35BCFE0A">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -138,7 +138,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Categor__37A5467C">
+        <Association Name="FK__Product__Categor__36B12243">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -150,7 +150,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Manufac__38996AB5">
+        <Association Name="FK__Product__Manufac__37A5467C">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,7 +162,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rating__ProductI__32E0915F">
+        <Association Name="FK__Rating__ProductI__31EC6D26">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,31 +183,31 @@
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Voucher" EntityType="Self.Voucher" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Order__CustomerI__33D4B598" Association="Self.FK__Order__CustomerI__33D4B598">
+          <AssociationSet Name="FK__Order__CustomerI__32E0915F" Association="Self.FK__Order__CustomerI__32E0915F">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__VoucherId__34C8D9D1" Association="Self.FK__Order__VoucherId__34C8D9D1">
+          <AssociationSet Name="FK__Order__VoucherId__33D4B598" Association="Self.FK__Order__VoucherId__33D4B598">
             <End Role="Voucher" EntitySet="Voucher" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Order__35BCFE0A" Association="Self.FK__OrderLine__Order__35BCFE0A">
+          <AssociationSet Name="FK__OrderLine__Order__34C8D9D1" Association="Self.FK__OrderLine__Order__34C8D9D1">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Produ__36B12243" Association="Self.FK__OrderLine__Produ__36B12243">
+          <AssociationSet Name="FK__OrderLine__Produ__35BCFE0A" Association="Self.FK__OrderLine__Produ__35BCFE0A">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Categor__37A5467C" Association="Self.FK__Product__Categor__37A5467C">
+          <AssociationSet Name="FK__Product__Categor__36B12243" Association="Self.FK__Product__Categor__36B12243">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Manufac__38996AB5" Association="Self.FK__Product__Manufac__38996AB5">
+          <AssociationSet Name="FK__Product__Manufac__37A5467C" Association="Self.FK__Product__Manufac__37A5467C">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rating__ProductI__32E0915F" Association="Self.FK__Rating__ProductI__32E0915F">
+          <AssociationSet Name="FK__Rating__ProductI__31EC6D26" Association="Self.FK__Rating__ProductI__31EC6D26">
             <End Role="Product" EntitySet="Product" />
             <End Role="Rating" EntitySet="Rating" />
           </AssociationSet>
@@ -224,7 +224,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TaxRate" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__37A5467C" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Categor__36B12243" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -240,7 +240,7 @@
           <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PwHash" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Salt" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__Order__CustomerI__33D4B598" FromRole="Customer" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__CustomerI__32E0915F" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -248,7 +248,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Manufac__38996AB5" FromRole="Manufacturer" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__Manufac__37A5467C" FromRole="Manufacturer" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -262,9 +262,9 @@
           <Property Name="Zip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="VoucherId" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__Order__CustomerI__33D4B598" FromRole="Order" ToRole="Customer" />
-          <NavigationProperty Name="Voucher" Relationship="Self.FK__Order__VoucherId__34C8D9D1" FromRole="Order" ToRole="Voucher" />
-          <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Order__35BCFE0A" FromRole="Order" ToRole="OrderLine" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Order__CustomerI__32E0915F" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Voucher" Relationship="Self.FK__Order__VoucherId__33D4B598" FromRole="Order" ToRole="Voucher" />
+          <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Order__34C8D9D1" FromRole="Order" ToRole="OrderLine" />
         </EntityType>
         <EntityType Name="OrderLine">
           <Key>
@@ -276,8 +276,8 @@
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="NetUnitPrice" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="TaxRate" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__OrderLine__Order__35BCFE0A" FromRole="OrderLine" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__OrderLine__Produ__36B12243" FromRole="OrderLine" ToRole="Product" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__OrderLine__Order__34C8D9D1" FromRole="OrderLine" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderLine__Produ__35BCFE0A" FromRole="OrderLine" ToRole="Product" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -291,10 +291,10 @@
           <Property Name="ManufacturerId" Type="Int32" Nullable="false" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <Property Name="ViewCounter" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__37A5467C" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__38996AB5" FromRole="Product" ToRole="Manufacturer" />
-          <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Produ__36B12243" FromRole="Product" ToRole="OrderLine" />
-          <NavigationProperty Name="Rating" Relationship="Self.FK__Rating__ProductI__32E0915F" FromRole="Product" ToRole="Rating" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Product__Categor__36B12243" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Manufacturer" Relationship="Self.FK__Product__Manufac__37A5467C" FromRole="Product" ToRole="Manufacturer" />
+          <NavigationProperty Name="OrderLine" Relationship="Self.FK__OrderLine__Produ__35BCFE0A" FromRole="Product" ToRole="OrderLine" />
+          <NavigationProperty Name="Rating" Relationship="Self.FK__Rating__ProductI__31EC6D26" FromRole="Product" ToRole="Rating" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -305,7 +305,7 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Rating__ProductI__32E0915F" FromRole="Rating" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Rating__ProductI__31EC6D26" FromRole="Rating" ToRole="Product" />
         </EntityType>
         <EntityType Name="Voucher">
           <Key>
@@ -314,9 +314,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Discount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK__Order__VoucherId__34C8D9D1" FromRole="Voucher" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__VoucherId__33D4B598" FromRole="Voucher" ToRole="Order" />
         </EntityType>
-        <Association Name="FK__Product__Categor__37A5467C">
+        <Association Name="FK__Product__Categor__36B12243">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,7 +328,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__CustomerI__33D4B598">
+        <Association Name="FK__Order__CustomerI__32E0915F">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -340,7 +340,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Manufac__38996AB5">
+        <Association Name="FK__Product__Manufac__37A5467C">
           <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -352,7 +352,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Order__VoucherId__34C8D9D1">
+        <Association Name="FK__Order__VoucherId__33D4B598">
           <End Role="Voucher" Type="Self.Voucher" Multiplicity="0..1" />
           <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
@@ -364,7 +364,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Order__35BCFE0A">
+        <Association Name="FK__OrderLine__Order__34C8D9D1">
           <End Role="Order" Type="Self.Order" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -376,7 +376,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__OrderLine__Produ__36B12243">
+        <Association Name="FK__OrderLine__Produ__35BCFE0A">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="OrderLine" Type="Self.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
@@ -388,7 +388,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Rating__ProductI__32E0915F">
+        <Association Name="FK__Rating__ProductI__31EC6D26">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
           <ReferentialConstraint>
@@ -409,31 +409,31 @@
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="Rating" EntityType="Self.Rating" />
           <EntitySet Name="Voucher" EntityType="Self.Voucher" />
-          <AssociationSet Name="FK__Product__Categor__37A5467C" Association="Self.FK__Product__Categor__37A5467C">
+          <AssociationSet Name="FK__Product__Categor__36B12243" Association="Self.FK__Product__Categor__36B12243">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__CustomerI__33D4B598" Association="Self.FK__Order__CustomerI__33D4B598">
+          <AssociationSet Name="FK__Order__CustomerI__32E0915F" Association="Self.FK__Order__CustomerI__32E0915F">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Manufac__38996AB5" Association="Self.FK__Product__Manufac__38996AB5">
+          <AssociationSet Name="FK__Product__Manufac__37A5467C" Association="Self.FK__Product__Manufac__37A5467C">
             <End Role="Manufacturer" EntitySet="Manufacturer" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK__Order__VoucherId__34C8D9D1" Association="Self.FK__Order__VoucherId__34C8D9D1">
+          <AssociationSet Name="FK__Order__VoucherId__33D4B598" Association="Self.FK__Order__VoucherId__33D4B598">
             <End Role="Voucher" EntitySet="Voucher" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Order__35BCFE0A" Association="Self.FK__OrderLine__Order__35BCFE0A">
+          <AssociationSet Name="FK__OrderLine__Order__34C8D9D1" Association="Self.FK__OrderLine__Order__34C8D9D1">
             <End Role="Order" EntitySet="Order" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__OrderLine__Produ__36B12243" Association="Self.FK__OrderLine__Produ__36B12243">
+          <AssociationSet Name="FK__OrderLine__Produ__35BCFE0A" Association="Self.FK__OrderLine__Produ__35BCFE0A">
             <End Role="Product" EntitySet="Product" />
             <End Role="OrderLine" EntitySet="OrderLine" />
           </AssociationSet>
-          <AssociationSet Name="FK__Rating__ProductI__32E0915F" Association="Self.FK__Rating__ProductI__32E0915F">
+          <AssociationSet Name="FK__Rating__ProductI__31EC6D26" Association="Self.FK__Rating__ProductI__31EC6D26">
             <End Role="Product" EntitySet="Product" />
             <End Role="Rating" EntitySet="Rating" />
           </AssociationSet>
