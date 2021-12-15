@@ -16,6 +16,8 @@
         <AssociationConnector Association="uhrenWeltModel.FK__Product__Manufac__30F848ED" ManuallyRouted="false" />
         <AssociationConnector Association="uhrenWeltModel.FK__OrderLine__Order__2E1BDC42" ManuallyRouted="false" />
         <AssociationConnector Association="uhrenWeltModel.FK__OrderLine__Produ__2F10007B" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="uhrenWeltModel.Voucher" Width="1.5" PointX="2.375" PointY="6.875" />
+        <AssociationConnector Association="uhrenWeltModel.FK__Order__VoucherId__30F848ED" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
