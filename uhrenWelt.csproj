@@ -189,6 +189,7 @@
     <Compile Include="ViewModels\CustomerVM.cs" />
     <Compile Include="ViewModels\OrderVM.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
+    <Compile Include="ViewModels\StatsVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
