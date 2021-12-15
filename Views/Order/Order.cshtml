@@ -22,39 +22,44 @@
             </tr>
             <tr>
                 <form action="/Order/ChangeAddress" method="post">
-                <td>
-                    <div class="form-group">
-                        <input name="street" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Straße" required>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group">
-                        <input type="text" name="city" class="form-control" placeholder="Stadt" required>
-                    </div>
-                </td>
-                <td>
-                    <div class="form-group">
-                        <input type="text" name="zip" class="form-control" placeholder="Postleitzahl" required>
-                    </div>
-                </td>
-                <td>
-                    <input hidden name="id" value="@item.OrderId" />
-                    <button type="submit" class="btn btn-warning">Bearbeiten</button>
-                </td>
+                    <td>
+                        <div class="form-group">
+                            <input name="street" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Straße" required>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="city" class="form-control" placeholder="Stadt" required>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" name="zip" class="form-control" placeholder="Postleitzahl" required>
+                        </div>
+                    </td>
+                    <td>
+                        <input hidden name="id" value="@item.OrderId" />
+                        <button type="submit" class="btn btn-warning">Bearbeiten</button>
+                    </td>
                 </form>
             </tr>
 
         }
     </table>
 </div>
-    <br />
-    @foreach (var item in Model.Take(1))
+<br />
+@foreach (var item in Model.Take(1))
+{
+    <h2>Rechnung</h2>
+    if (ViewBag.Message != null && ViewBag.Message == "NewCustomer")
     {
-        <h2>Rechnung</h2>
-        <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
         <br />
-        <h8>Rechnungsnummer: @item.OrderId</h8>
+        <p style="color:red; text-align: center;">Für Ihre erste Bestellung erhalten Sie 3% Bonus von uns!</p>
     }
+    <h8>Datum: @DateTime.Now.ToShortDateString()</h8>
+    <br />
+    <h8>Rechnungsnummer: @item.OrderId</h8>
+}
 <div class="table-responsive">
     <table class="table table-striped">
         <tr style="text-align:left">
@@ -86,7 +91,7 @@
         }
     </table>
 </div>
-    
+
 <div class="buttonCenter">
     @foreach (var item in Model.Take(1))
     {

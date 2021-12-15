@@ -20,6 +20,11 @@ namespace uhrenWelt.Controllers
 
         public ActionResult Order()
         {
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            {
+                ViewBag.Message = "NewCustomer";
+
+            }
             var tempCarttList = GetList();
             return View(tempCarttList);
         }
@@ -49,6 +54,10 @@ namespace uhrenWelt.Controllers
 
         public ActionResult OrderPdf()
         {
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            {
+                ViewBag.Message = "ShowDiscount";
+            }
             var tempCarttList = GetList();
             return View(tempCarttList);
         }
@@ -79,8 +88,12 @@ namespace uhrenWelt.Controllers
 
             #endregion otherwayofcreatingpdf
 
-            var partialPdf = new Rotativa.ActionAsPdf("OrderPdf");
 
+            var partialPdf = new Rotativa.ActionAsPdf("OrderPdf");
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            {
+                ViewBag.Message = "ShowDiscount";
+            }
             byte[] invoicePdfData = partialPdf.BuildFile(ControllerContext);
             string path = Server.MapPath(@"~/InvoicePdf/Rechnung" + "-" + orderId + ".pdf");
             System.IO.File.WriteAllBytes(path, invoicePdfData);
@@ -112,6 +125,8 @@ namespace uhrenWelt.Controllers
 
             if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
             {
+                ViewBag.Message = "ShowDiscount";
+
                 if (orderLine.Amount < 10)
                 {
                     order.PriceTotal = order.PriceTotal - (order.PriceTotal / 100) * 3;
@@ -201,7 +216,7 @@ namespace uhrenWelt.Controllers
 
         private bool CheckNewCustomer(int? id)
         {
-            if (db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
+            if (!db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
             {
                 return false;
             }

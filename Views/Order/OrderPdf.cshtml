@@ -63,6 +63,11 @@
             <td>@String.Format("{0:C}", (item.NetUnitPrice * item.Amount) * 1.2m)</td>
         </tr>
     }
+    @if (ViewBag.Message != null && ViewBag.Message == "ShowDiscount")
+    {
+    <br />
+    <p style="color:red; text-align: center;">Da dies Ihre erste Bestellung ist, erhalten Sie 3% Bonus von uns!</p>
+    }
     @foreach (var item in Model.Take(1))
     {
         @*<tr>
