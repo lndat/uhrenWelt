@@ -178,9 +178,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>uhrenWelt-DB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Data\Voucher.cs">
-      <DependentUpon>uhrenWelt-DB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
