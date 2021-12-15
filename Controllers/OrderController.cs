@@ -216,7 +216,7 @@ namespace uhrenWelt.Controllers
 
         private bool CheckNewCustomer(int? id)
         {
-            if (!db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
+            if (db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
             {
                 return false;
             }

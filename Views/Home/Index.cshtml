@@ -39,11 +39,11 @@
     </div>
 </div>
 <br />
-<h3>Unsere top 5 produkte</h3>
+<h3 style="text-align:center">Unsere top 5 produkte</h3>
 <div class="products">
     @foreach (var item in Model)
     {
-        <a href="@Url.Action("Details", "Shop", new {id = item.ProductId})" class="product-card">
+        <a href="@Url.Action("Details", "Shop", new {id = item.ProductId})" class="product-card-front">
             <div class="product-image">
                 <img src="@item.ImagePath" alt="">
             </div>
