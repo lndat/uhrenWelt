@@ -109,16 +109,19 @@ namespace uhrenWelt.Controllers
 
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == order.Id).FirstOrDefault();
-            order.DateOrdered = DateTime.Now;
 
             if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
             {
                 if (orderLine.Amount < 10)
                 {
                     order.PriceTotal = order.PriceTotal - (order.PriceTotal / 100) * 3;
+                    db.Entry(order).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
             }
 
+            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
+            order.DateOrdered = DateTime.Now;
 
             if (ModelState.IsValid)
             {
@@ -126,7 +129,6 @@ namespace uhrenWelt.Controllers
                 db.SaveChanges();
             }
 
-            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
             var tempCarttList = GetList();
 
             return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
@@ -199,7 +201,7 @@ namespace uhrenWelt.Controllers
 
         private bool CheckNewCustomer(int? id)
         {
-            if (!db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
+            if (db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
             {
                 return false;
             }

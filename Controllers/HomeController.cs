@@ -56,7 +56,6 @@ namespace uhrenWelt.Controllers
         {
             List<OrderLine> orders = db.OrderLine.ToList();
 
-            // Daten grp, sum und als liste zurückgeben
             var sums = orders.GroupBy(f => f.ProductId)
                .Select(g => new StatsVM
                {
