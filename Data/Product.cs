@@ -27,7 +27,6 @@ namespace uhrenWelt.Data
         public string Description { get; set; }
         public int ManufacturerId { get; set; }
         public int CategoryId { get; set; }
-        public Nullable<int> ViewCounter { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
