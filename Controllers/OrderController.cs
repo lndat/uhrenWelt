@@ -107,8 +107,6 @@ namespace uhrenWelt.Controllers
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
-
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == order.Id).FirstOrDefault();
             order.DateOrdered = DateTime.Now;
@@ -117,10 +115,10 @@ namespace uhrenWelt.Controllers
             {
                 if (orderLine.Amount < 10)
                 {
-                    order.PriceTotal = order.PriceTotal - (order.PriceTotal * 0.3m);
+                    order.PriceTotal = order.PriceTotal - (order.PriceTotal / 100) * 3;
                 }
-                Debug.WriteLine("zuviele stück");
             }
+
 
             if (ModelState.IsValid)
             {
@@ -128,6 +126,7 @@ namespace uhrenWelt.Controllers
                 db.SaveChanges();
             }
 
+            SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
             var tempCarttList = GetList();
 
             return RedirectToAction("OrderConfirmed", "Order", new { Id = id });
