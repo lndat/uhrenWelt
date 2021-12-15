@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -109,7 +110,17 @@ namespace uhrenWelt.Controllers
             SendMail(GetCustomerByEmail(User.Identity.Name).Email, id);
 
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
+            OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == order.Id).FirstOrDefault();
             order.DateOrdered = DateTime.Now;
+
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            {
+                if (orderLine.Amount < 10)
+                {
+                    order.PriceTotal = order.PriceTotal - (order.PriceTotal * 0.3m);
+                }
+                Debug.WriteLine("zuviele stück");
+            }
 
             if (ModelState.IsValid)
             {
@@ -185,6 +196,16 @@ namespace uhrenWelt.Controllers
             var getName = db.Product.Single(x => x.Id == id);
 
             return getName.ProductName;
+        }
+
+        private bool CheckNewCustomer(int? id)
+        {
+            if (!db.Order.Where(x => x.CustomerId == id && x.DateOrdered != null).Any())
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
