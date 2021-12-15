@@ -18,12 +18,11 @@ namespace uhrenWelt.Controllers
     {
         private readonly uhrenWeltEntities db = new uhrenWeltEntities();
 
-        public ActionResult Order()
+        public ActionResult Order(int? id)
         {
-            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id) && CountOrders(id) < 10)
             {
                 ViewBag.Message = "NewCustomer";
-
             }
             var tempCarttList = GetList();
             return View(tempCarttList);
@@ -49,12 +48,12 @@ namespace uhrenWelt.Controllers
                 }
             }
 
-            return RedirectToAction("Order");
+            return RedirectToAction("Order", new { Id = id });
         }
 
-        public ActionResult OrderPdf()
+        public ActionResult OrderPdf(int? id)
         {
-            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id) && CountOrders(id) < 10)
             {
                 ViewBag.Message = "ShowDiscount";
             }
@@ -89,8 +88,8 @@ namespace uhrenWelt.Controllers
             #endregion otherwayofcreatingpdf
 
 
-            var partialPdf = new Rotativa.ActionAsPdf("OrderPdf");
-            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+            var partialPdf = new Rotativa.ActionAsPdf("OrderPdf", new {Id = orderId });
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id) && CountOrders(orderId) < 10)
             {
                 ViewBag.Message = "ShowDiscount";
             }
@@ -119,16 +118,17 @@ namespace uhrenWelt.Controllers
         public ActionResult ConfirmOrder(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
+            var custId = GetCustomerByEmail(User.Identity.Name).Id;
             Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
             OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == order.Id).FirstOrDefault();
+            OrderLine orderLineDiscountCheck = db.OrderLine.Where(x => x.OrderId == order.Id && x.CustomerId == custId).FirstOrDefault();
 
-            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id))
+
+            if (CheckNewCustomer(GetCustomerByEmail(User.Identity.Name).Id) && CountOrders(id) < 10)
             {
-                ViewBag.Message = "ShowDiscount";
-
-                if (orderLine.Amount < 10)
+                if (CountOrders(id) < 10)
                 {
+                    ViewBag.Message = "ShowDiscount";
                     order.PriceTotal = order.PriceTotal - (order.PriceTotal / 100) * 3;
                     db.Entry(order).State = EntityState.Modified;
                     db.SaveChanges();
@@ -199,6 +199,23 @@ namespace uhrenWelt.Controllers
         {
             var c = db.Customer.Single(x => x.Email == email);
             return c;
+        }
+
+        
+        public int CountOrders(int? id)
+        {
+            var custId = GetCustomerByEmail(User.Identity.Name).Id;
+            Order order = db.Order.Where(x => x.Id == id && x.DateOrdered == null).FirstOrDefault();
+            OrderLine orderLine = db.OrderLine.Where(x => x.OrderId == order.Id).FirstOrDefault();
+            //OrderLine orderLineDiscountCheck = db.OrderLine.Where(x => x.OrderId == order.Id && x.CustomerId == custId).FirstOrDefault();
+            var orderLineDiscountCheck = db.OrderLine.Where(x => x.OrderId == order.Id && x.CustomerId == custId).Sum(y => y.Amount);
+
+
+
+            var orderLineDiscountChec2 = db.OrderLine.Select(g => new { Amount = g.CustomerId, TotalCount = g.Amount }).Count();
+
+
+            return orderLineDiscountCheck;
         }
 
         private decimal GetTotalPrice(int id)
