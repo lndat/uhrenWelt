@@ -208,7 +208,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="csc.txt" />
     <Content Include="Data\uhrenWelt-DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>uhrenWelt-DB.edmx</DependentUpon>
