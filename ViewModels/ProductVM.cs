@@ -10,21 +10,21 @@ namespace uhrenWelt.ViewModel
     {
         public int Id { get; set; }
 
-        [Display(Name = "Name")] 
+        [Display(Name = "Name")]
         public string ProductName { get; set; }
 
-        [Display(Name = "Netto Preis")] 
-        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)] 
+        [Display(Name = "Netto Preis")]
+        [DisplayFormat(DataFormatString = "{0:C}", ApplyFormatInEditMode = true)]
         public decimal NetUnitPrice { get; set; }
 
         public string ImagePath { get; set; }
 
-        [Display(Name = "Beschreibung")] 
+        [Display(Name = "Beschreibung")]
         public string Description { get; set; }
 
         public int ManufacturerId { get; set; }
 
-        [Display(Name = "Hersteller")] 
+        [Display(Name = "Hersteller")]
         public string ManufacturerName { get; set; }
 
         public int CategoryId { get; set; }
