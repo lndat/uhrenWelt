@@ -107,7 +107,7 @@ namespace uhrenWelt.Controllers
             //               "\nDein uhrenwelt.at Team :)";
             //SmtpClient mailer = new SmtpClient("smtp.office365.com", 587);
             //message.Attachments.Add(new Attachment(path));
-            //mailer.Credentials = new NetworkCredential("ITN241552@qualifizierung.at","User123!");
+            //mailer.Credentials = new NetworkCredential("emailadresse@email.at","passwort");
             //mailer.EnableSsl = true;
             //mailer.Send(message);
 
