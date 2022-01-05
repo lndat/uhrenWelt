@@ -6,18 +6,8 @@ GO
 SELECT 'SHA2_512' as HashFunction, 
 HASHBYTES('SHA2_512', 'testSWLm') as HashWErtDesPasswortes, len(HASHBYTES('SHA2_512', 'testSWLm') ) as LaengedesHashWertes 
 
-
-SELECT [NetUnitPrice], [ProductName] FROM [Product] 
-WHERE [NetUnitPrice] > 20000
-ORDER BY [NetUnitPrice] DESC
-
-
-SELECT [CategoryId], [ProductName] FROM [Product] 
-WHERE [CategoryId] = 2
-
 CREATE DATABASE uhrenWelt
 GO
-
 USE uhrenWelt
 GO
 
