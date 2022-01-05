@@ -26,4 +26,13 @@ This website was created with ASP.NET MVC for my graduation project.
   - new customer discount
 
 #### Screenshots
-
+##### Frontpage 
+![Frontpage](/Img/Screenshots/frontpage.png?raw=true "Frontpage")
+##### Shoppage 
+![Shoppage](/Img/Screenshots/shoppage.png?raw=true "Shoppage")
+##### Cart 
+![Cart](/Img/Screenshots/cart.png?raw=true "Cart")
+##### Overview 
+![Overview](/Img/Screenshots/overview.png?raw=true "Overview")
+##### InvoicePdf 
+![Invoice](/Img/Screenshots/invoice.png?raw=true "Invoice")
