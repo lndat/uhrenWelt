@@ -20,6 +20,7 @@ namespace uhrenWelt.Data
         public int Amount { get; set; }
         public decimal NetUnitPrice { get; set; }
         public decimal TaxRate { get; set; }
+        public Nullable<int> CustomerId { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }

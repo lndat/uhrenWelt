@@ -28,6 +28,7 @@ CREATE TABLE [dbo].[OrderLine](
     [Amount] [int] NOT NULL,
     [NetUnitPrice] [decimal](12, 2) NOT NULL,
     [TaxRate] [decimal](9, 2) NOT NULL,
+    [CustomerId] [Int] NULL
 )
 
 CREATE TABLE [dbo].[Product](

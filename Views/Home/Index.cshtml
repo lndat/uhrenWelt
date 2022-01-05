@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable <uhrenWelt.ViewModels.StatsVM>
+    
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="jumbotron jumbotron-fluid">
@@ -35,9 +37,23 @@
     <div class="main-image">
         <img src="~/Img/Logos/tudor.jpg" />
     </div>
-    @*<div class="homeBigImage">
-            <img src="~/Img/Logos/rolexBanner.jpg" />
-        </div>*@
+</div>
+<br />
+<h3 style="text-align:center">Unsere top 5 produkte</h3>
+<div class="products">
+    @foreach (var item in Model)
+    {
+        <a href="@Url.Action("Details", "Shop", new {id = item.ProductId})" class="product-card-front">
+            <div class="product-image">
+                <img src="@item.ImagePath" alt="">
+            </div>
+            <div class="product-info">
+                <h3>@item.ManufacturerName</h3>
+                <h6>@item.ProductName</h6>
+                <h9 style="font-size:12px">Verkaufte Stück: @item.Amount</h9>
+            </div>
+        </a>
+    }
 </div>
 
 

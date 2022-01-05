@@ -33,7 +33,7 @@
                 <td>
                     <form class="form-inline" method="Post" action="/Cart/ChangeAmount">
                         @Html.ActionLink("Löschen", "Delete", "Cart", new { Id = cart.Id }, new { @class = "btn btn-danger btn-sm", style = "margin-right:4px;" })
-                        @if (cart.Amount > 1 && cart.Amount <= 8)
+                        @if (cart.Amount > 1 && cart.Amount <= 15)
                         {
                             @Html.ActionLink("-", "DecrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm", style = "margin-right:4px;" })
                             @Html.ActionLink("+", "IncrementAmount", "Cart", new { Id = cart.Id }, new { @class = "btn btn-secondary btn-sm" })

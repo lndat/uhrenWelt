@@ -62,6 +62,7 @@ namespace uhrenWelt.Controllers
                 newOrderLine.Amount = (int)amount;
                 newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
                 newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
+                newOrderLine.CustomerId = getCustomer.Id;
 
                 if (ModelState.IsValid)
                 {
@@ -103,6 +104,7 @@ namespace uhrenWelt.Controllers
                     newOrderLine.Amount = (int)amount;
                     newOrderLine.NetUnitPrice = GetNetUnitPrice((int)id);
                     newOrderLine.TaxRate = GetTaxRate(GetProductCategoryId((int)id));
+                    newOrderLine.CustomerId = getCustomer.Id;
 
                     var totalPriceGen = CalculateTotalPrice(getCustomer.Email) + ((getProductPrice.NetUnitPrice * 1.2m) * amount);
                     Order order = db.Order.Where(x => x.Id == getOrderId.Id && x.CustomerId == getCustomer.Id).FirstOrDefault();

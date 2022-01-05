@@ -57,6 +57,7 @@
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="NetUnitPrice" Type="decimal" Precision="12" Scale="2" Nullable="false" />
           <Property Name="TaxRate" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -221,6 +222,7 @@
           <Property Name="TaxRate" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK__OrderLine__Order__2E1BDC42" FromRole="OrderLine" ToRole="Order" />
           <NavigationProperty Name="Product" Relationship="Self.FK__OrderLine__Produ__2F10007B" FromRole="OrderLine" ToRole="Product" />
+          <Property Name="CustomerId" Type="Int32" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -380,6 +382,7 @@
           <EntitySetMapping Name="OrderLine">
             <EntityTypeMapping TypeName="uhrenWeltModel.OrderLine">
               <MappingFragment StoreEntitySet="OrderLine">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
