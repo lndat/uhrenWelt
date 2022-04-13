@@ -7,6 +7,7 @@ This website was created with ASP.NET MVC for my graduation project.
 - MSSQL
 - CSS3
 - Bootstrap 5
+- JavaScript
 - HTML
 - Razor
 - C#
