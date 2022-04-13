@@ -16,7 +16,7 @@ This website was created with ASP.NET MVC for my graduation project.
   - with all important featueres like: email dupe check, terms and conditions, password length and complexity check... 
 - Password hashing (SHA512)
 - Password salting
-- Search and filters for products
+- Search and filter products
 - Cart content saved in db the moment you add/remove/change something
 - after checkout -> invoice (pdf) is created and sent via email to customer
 - whole site is responsive
